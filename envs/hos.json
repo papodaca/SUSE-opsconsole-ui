@@ -1,0 +1,11 @@
+{
+  "plugins": [
+    "alarm",
+    "compute",
+    "general",
+    "storage",
+    "networking",
+    "heliondevplatform",
+    "system"
+  ]
+}

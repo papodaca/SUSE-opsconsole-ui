@@ -1,0 +1,13 @@
+<!--template for confirming delete oneview content-->
+<div class="confirm-center less-padding-top">
+    <p>
+        <oc-translate
+                text="{{ 'system.oneview.delete.confirm.line1' | translate: {oneview: $parent.removeOneViewData.host} }}"/>
+    </p>
+    <span ng-if="$parent.$parent.$parent.oneViewMsgShow">
+        <oc-translate
+                    text="{{ 'system.oneview.delete.confirm.incse' | translate: {oneview: $parent.removeOneViewData.host} }}"/>
+    </span>
+    <p class="center">{{'system.oneview.delete.confirm.line3' | translate}}</p>
+</div>
+

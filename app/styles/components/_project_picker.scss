@@ -1,0 +1,14 @@
+// (c) Copyright 2016 Hewlett Packard Enterprise Development LP
+@import '_palette.scss';
+@import '_common.scss';
+
+projectpicker oc-input {
+    .oc-input {
+        margin-bottom: 12px;
+        background: $grommet-white;
+
+        .select-placeholder {
+            color: $grommet-black;
+        }
+    }
+}

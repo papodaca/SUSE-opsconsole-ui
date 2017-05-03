@@ -1,0 +1,8 @@
+<import src="$parent.$parent.$parent" target="controller"/>
+<div class="bkrstr-content">
+    <h2 class="oc-heading page-title">{{"system.backuprestore.config.header" | translate}} {{controller.currentBackupConfig.flow_name}}</h2>
+    <octable enumfilter border modelname="controller.configParams" configname="controller.bkrstConfigTableConfig"
+             singleselect loadflag="configParamslistloading">
+        <oct-std-header></oct-std-header>
+    </octable>
+</div>

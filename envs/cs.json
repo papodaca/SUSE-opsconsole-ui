@@ -1,0 +1,10 @@
+{
+  "plugins": [
+    "compute",
+    "general",
+    "networking",
+    "storage",
+    "system",
+    "alarm"
+  ]
+}

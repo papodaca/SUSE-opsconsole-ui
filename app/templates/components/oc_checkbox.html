@@ -1,0 +1,10 @@
+<i
+  class="helion-icon"
+  click-proxy="[type='checkbox']"
+	ng-class="{'helion-icon-Checkbox':!value, 'helion-icon-Check':value, disabled: hpDisabled()}"></i>
+<input
+  style="display:none;"
+	type="checkbox"
+	name="{{name}}"
+	ng-model="value"
+	ng-disabled="hpDisabled()"/>

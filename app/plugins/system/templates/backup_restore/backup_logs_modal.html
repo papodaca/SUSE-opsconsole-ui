@@ -1,0 +1,22 @@
+<!-- template for backup logs modal -->
+<import src="$parent.$parent.$parent" target="controller"/>
+<div class="bkrstr-content">
+  <h2 class="oc-heading page-title">{{"system.backuprestore.backuplog.title" | translate}} {{controller.currentBackupConfig.flow_name}}</h2>
+
+  <div class="jobloglist-modal">
+    <div class="jobloglist-lastndays-menu">
+      <oc-input class="jobloglist-dropdown"
+              label="system.backuprestore.backuplogs.dropdown.title"
+              type="select"
+              value="controller.lastNDaySelection"
+              select-options="controller.lastNDayOptions"
+              oc-disabled="controller.backupLogDataLoading">
+      </oc-input>
+    </div>
+  </div>
+  <octable enumfilter border modelname="controller.logsForBackupData"
+           configname="controller.bkrstLogsTableConfig"
+           loadflag="controller.backupLogDataLoading">
+           <oct-std-header></oct-std-header>
+  </octable>
+</div>

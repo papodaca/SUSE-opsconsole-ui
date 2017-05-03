@@ -1,0 +1,28 @@
+<import src="$parent.$parent.$parent" target="toolsCtrl"/>
+<div class="col-md-12 oneview-manage-page" ng-controller="IntegratedToolsController">
+    <div class="oneview-page-header">{{ "system.icsp.manage.header" | translate }}</div>
+    <div style="width:100%;" class="oneview-manage-table">
+        <octable selectable actionmenu enumfilter sortcontrol
+                 modelname="$parent.$parent.$parent.$parent.icsp_list"
+                 loadflag="$parent.$parent.$parent.$parent.ManageIcspLoading"
+                 configname="manageicsp_table_config">
+            <oct-std-header></oct-std-header>
+        </octable>
+    </div>
+    <div style="width:89%;">
+        <div class="col-md-2 margin-btn">
+            <button class="oc-btn oc-btn-default" ng-click="closeModal();selectedDatas = []"
+                    ng-bind="'system.HPEoneview.connect.cancel' | translate">
+            </button>
+        </div>
+    </div>
+
+    <!-- confirm delete icsp -->
+    <opsmodal showAttribute="toolsCtrl.removeICSPModalFlag"
+              type="confirm"
+              header-title="system.icsp.delete.confirm"
+              commit-action="toolsCtrl.commitRemoveIcspServer">
+        <div ng-include="'system/templates/integrated_tools/remove_icsp_modal_content.html'"></div>
+        <modal-overlay show-attribute="toolsCtrl.removeIcspOverlayFlag"></modal-overlay>
+    </opsmodal>
+</div>

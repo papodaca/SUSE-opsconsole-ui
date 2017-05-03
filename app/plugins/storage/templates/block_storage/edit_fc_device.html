@@ -1,0 +1,88 @@
+<div class="left-form">
+    <oc-input name="hp_3par_fc_name"
+              value="$parent.bsEditControl.register3PARFCDevice.name"
+              label="storage.register.content.blockstoragedevice.general.name"
+              validate="englishonly"
+              validate-text="hpvalidate.englishonly"
+              oc-required="true"
+              type="text">
+    </oc-input>
+
+    <oc-input name="hp_3par_fc_ipaddress"
+              value="$parent.bsEditControl.register3PARFCDevice.ipaddress"
+              label="storage.register.content.blockstoragedevice.general.ipaddress"
+              validate-text="hpvalidate.ipAddress"
+              validate="ipAddress"
+              oc-required="true"
+              type="text">
+    </oc-input>
+
+    <oc-input name="hp_3par_fc_port"
+              value="$parent.bsEditControl.register3PARFCDevice.portnumber"
+              label="storage.register.content.blockstoragedevice.general.portnumber"
+              validate-text="hpvalidate.port"
+              validate="port"
+              oc-required="true"
+              type="text">
+    </oc-input>
+
+    <oc-input name="hp_3par_fc_username"
+              value="$parent.bsEditControl.register3PARFCDevice.username"
+              label="storage.register.content.blockstoragedevice.general.username"
+              validate-text="hpvalidate.name"
+              oc-required="true"
+              type="text">
+    </oc-input>
+
+    <div class='register-password-input'>
+        <oc-input name="hp_3par_fc_password"
+                  value="$parent.bsEditControl.register3PARFCDevice.password"
+                  label="storage.register.content.blockstoragedevice.general.password"
+                  validate-text="hpvalidate.password"
+                  oc-required="true"
+                  type="{{ $parent.bsEditControl.register3PARFCDevice.showPass1 ? 'text' : 'password'}}">
+        </oc-input>
+
+        <div class="register-showpass">
+            <i class="gi-2x helion-icon view-color"
+               ng-class="{'helion-icon-View_pressed': $parent.bsEditControl.register3PARFCDevice.showPass1, 'helion-icon-View': !$parent.bsEditControl.register3PARFCDevice.showPass1}"
+               ng-click="$parent.bsEditControl.toggleRegisterShowPass('3ParFC')"></i>
+        </div>
+    </div>
+</div>
+
+<div class="right-form">
+    <div class="register-modal-header">{{ 'storage.register.content.blockstoragedevice.sanconfiguration.label' | translate }}</div>
+    <oc-input name="hp_3par_fc_san_ip"
+              value="$parent.bsEditControl.register3PARFCDevice.sanipaddress"
+              label="storage.register.content.blockstoragedevice.sanconfiguration.ipaddress"
+              validate-text="hpvalidate.ipAddress"
+              validate="ipAddress"
+              oc-required="true"
+              type="text">
+    </oc-input>
+
+    <oc-input name="hp_3par_fc_san_username"
+              value="$parent.bsEditControl.register3PARFCDevice.sanusername"
+              label="storage.register.content.blockstoragedevice.sanconfiguration.username"
+              validate-text="hpvalidate.name"
+              oc-required="true"
+              type="text">
+    </oc-input>
+
+    <div class='register-password-input'>
+        <oc-input name="hp_3par_fc_san_password"
+                  value="$parent.bsEditControl.register3PARFCDevice.sanpassword"
+                  label="storage.register.content.blockstoragedevice.sanconfiguration.password"
+                  validate-text="hpvalidate.password"
+                  oc-required="true"
+                  type="{{ $parent.bsEditControl.register3PARFCDevice.showPass2 ? 'text' : 'password'}}">
+        </oc-input>
+
+        <div class="register-showpass">
+            <i class="gi-2x helion-icon view-color"
+               ng-class="{'helion-icon-View_pressed': $parent.bsEditControl.register3PARFCDevice.showPass2, 'helion-icon-View': !$parent.bsEditControl.register3PARFCDevice.showPass2}"
+               ng-click="$parent.bsEditControl.toggleRegisterShowPass('3ParFCSan')"></i>
+        </div>
+    </div>
+</div>

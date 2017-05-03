@@ -1,0 +1,14 @@
+// (c) Copyright 2016 Hewlett Packard Enterprise Development LP
+oc-checkbox {
+	.helion-icon {
+		&.helion-icon-Checkbox {
+			color: $grommet-black;
+		}
+		&.helion-icon-Check {
+			color: $grommet-green;
+		}
+		&.disabled {
+			color: $grommet-icon-grey;
+		}
+	}
+}

@@ -1,0 +1,6 @@
+// (c) Copyright 2016 Hewlett Packard Enterprise Development LP
+.blltest_tile:before{
+  content:"";
+  display:block;
+  padding-top:100%; //aspect ratio of 1:1
+}

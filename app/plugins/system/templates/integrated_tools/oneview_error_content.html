@@ -1,0 +1,6 @@
+<!--template for oneview error content-->
+<import src="$parent.$parent.$parent.$parent.$parent.$parent" target="toolsCtrl" />
+<div class="error-content">
+  <oc-translate
+      text="{{ toolsCtrl.infoModalDetails.warning ? 'system.oneview.warning.details' : 'system.oneview.error.details' | translate: {details: toolsCtrl.infoModalDetails.content} }}"/>
+</div>

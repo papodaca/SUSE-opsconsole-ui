@@ -1,0 +1,45 @@
+<import src="$parent.$parent.$parent" target="toolsCtrl"/>
+<div class="oneview-manage-page" ng-controller="IntegratedToolsController">
+    <div class="oneview-page-header">{{ "system.HPEoneview.manage.header" | translate }}</div>
+    <div style="width:100%;" class="oneview-manage-table">
+        <octable selectable actionmenu enumfilter sortcontrol modelname="$parent.$parent.$parent.$parent.oneviewlist"
+                 loadflag="$parent.$parent.$parent.$parent.ManageOneviewLoading"
+                 configname="manageoneview_table_config">
+            <oct-std-header></oct-std-header>
+        </octable>
+    </div>
+    <div style="width: 100%;">
+        <div class="col-md-3 float-left margin-testcon" style="padding:0px;">
+            <button class="oc-btn oc-btn-default " ng-click="closeModal();selectedDatas = []"
+                    ng-bind="'system.HPEoneview.connect.cancel' | translate"></button>
+        </div>
+    </div>
+    <!-- show error modal-->
+    <opsmodal showAttribute="toolsCtrl.infoOneViewModalFlag"
+              type="error"
+              header-title="{{ toolsCtrl.infoModalDetails.header }}"
+              is-closable="true">
+        <div ng-include="'system/templates/integrated_tools/oneview_error_content.html'"></div>
+    </opsmodal>
+    <!-- show warning modal-->
+    <opsmodal showAttribute="toolsCtrl.infoOneViewWarningModalFlag"
+              type="warning"
+              header-title="{{ toolsCtrl.infoModalDetails.header }}"
+              is-closable="true">
+        <div ng-include="'system/templates/integrated_tools/oneview_error_content.html'"></div>
+    </opsmodal>
+    <!-- confirm delete oneview -->
+    <opsmodal showAttribute="toolsCtrl.removeOneViewModalFlag"
+              type="confirm"
+              header-title="system.oneview.delete.confirm"
+              commit-action="toolsCtrl.commitRemoveOneviewAppliance">
+        <div ng-include="'system/templates/integrated_tools/remove_one_view_modal_content.html'"></div>
+        <modal-overlay show-attribute="toolsCtrl.removeOneViewOverlayFlag"></modal-overlay>
+    </opsmodal>
+    <!-- confirm refresh oneview connection -->
+    <opsmodal showAttribute="showCommitRefresh" type="confirm"
+      commit-action="commitRefresh"
+      header-title="system.oneviews.refresh.header">
+        {{'system.oneviews.refresh.body' | translate}}
+    </opsmodal>
+</div>

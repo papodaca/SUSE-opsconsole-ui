@@ -1,0 +1,9 @@
+<import src="$parent.$parent.$parent" target="controller"/>
+<div class="bkrstr-content" ng-controller="BkRstJobTaskController">
+    <h2 class="oc-heading page-title">{{"system.backuprestore.joblist.jobTaskListHeader" | translate}} : {{controller.showTaskName}}</h2>
+    <octable enumfilter border modelname="controller.taskListData"
+             configname="jobTaskTableConfig"
+             loadflag="controller.jobTaskLoading">
+        <oct-std-header></oct-std-header>
+    </octable>
+</div>

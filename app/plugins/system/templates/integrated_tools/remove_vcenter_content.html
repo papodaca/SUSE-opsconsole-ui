@@ -1,0 +1,9 @@
+<!--template for confirming delete vcenter content-->
+<div class="confirm-center less-padding-top">
+    <p>
+        <oc-translate
+            text="{{ 'system.removevcenter.confirmmessage' | translate: {count: $parent.$parent.$parent.$parent.$parent.$parent.toRemoveVcenter.length, name: $parent.$parent.$parent.$parent.$parent.$parent.toRemoveVcenterNames} }}"/>
+    </p>
+    <p class="center" ng-if="!$parent.$parent.$parent.is_CS_foundation">{{'system.removevcenter.confirm.incse' | translate}}</p>
+    <p class="center">{{'common.delete.confirm.line2' | translate}}</p>
+</div>

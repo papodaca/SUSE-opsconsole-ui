@@ -1,0 +1,9 @@
+<div ng-controller="BkRstJobTaskController">
+    <octable enumfilter border modelname="this_data.tabledata" configname="jobTaskTableConfig">
+        <oct-basic-header>
+            <span class="common_modal_inline_sub_title">
+                {{"system.backuprestore.joblist.jobTaskListSubHeader" | translate:{numentries: $parent.filteredItems.length} }}
+            </span>
+        </oct-basic-header>
+    </octable>
+</div>

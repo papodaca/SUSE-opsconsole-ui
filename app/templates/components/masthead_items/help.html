@@ -1,0 +1,21 @@
+<!-- masthead help content for popover -->
+<div ng-controller="MastheadHelpController">
+    <div class="popover-header">{{ 'masthead.help.doc.header' | translate }}</div>
+    <div class="popover-res-btn help">
+      <div><i class="helion-icon helion-icon-Link link-icon-size"></i></div>
+      <a class="pointer link-color" ng-click="openHelpPage()">{{ 'masthead.help.doc.get_help' | translate }}</a>
+    </div>
+
+    <div class="popover-header" ng-if="$root.appConfig.env === 'cs'">{{ 'masthead.help.version.header' | translate }}</div>
+    <div class="popover-res-btn help" ng-if="$root.appConfig.env === 'cs'">
+      <div><i class="helion-icon helion-icon-Link link-icon-size"></i></div>
+      <a class="nolink link-color" >{{ $root.appConfig.install_version ? 'CloudSystem ' + $root.appConfig.install_version : 'CloudSystem 10.0' }}</a>
+    </div>
+
+    <!-- Only show build info if the buildinfo tag is in the url -->
+    <div ng-if="buildinfo" style="float: right; margin-top: 265px;">
+        <ul style="list-style: none;">
+            <li ng-repeat="(key, value) in version">{{key}}: {{value}}</li>
+        </ul>
+    </div>
+</div>

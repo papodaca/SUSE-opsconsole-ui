@@ -1,0 +1,63 @@
+<div class="col-md-12 oneview-page">
+    <div class="oneview-page-header">{{ "system.icsp.manage.edit.server.header" | translate }}: {{$parent.$parent.$parent.editicspServer.data.icsp_name}}</div>
+    <ng-form name="$parent.$parent.$parent.editIcspFormInput">
+        <div class="col-md-12">
+            <div class="col-md-5 oneview-input-field">
+                <oc-input
+                        value="$parent.$parent.$parent.editicspServer.icsp_username"
+                        name="ICSPusername"
+                        label="system.icsp.manage.input.serverusername"
+                        placeholder="system.HPEoneview.connect.placeholder.applianceusername"
+                        oc-disabled="$parent.$parent.$parent.conectInputDataField"
+                        oc-required="true"
+                        validate="username"
+                        validate-text="hpvalidate.username"
+                        oc-tooltip="'system.oneviewicsp.edit.name'"
+                        type="text"></oc-input>
+                <div class='register-password-input'>
+                    <oc-input value="$parent.$parent.$parent.editicspServer.password"
+                              name="ICSPpassword"
+                              label="system.icsp.manage.input.serverpassword"
+                              placeholder="system.icsp.manage.input.placeholder.serverpassword"
+                              oc-disabled="$parent.$parent.$parent.conectInputDataField"
+                              oc-required="true"
+                              validate-text="hpvalidate.password"
+                              type="{{ $parent.$parent.$parent.inputShowPassIcsp ? 'text' : 'password'}}">
+                    </oc-input>
+                    <div class="register-showpass-two">
+                        <i class="gi-2x helion-icon view-color"
+                           ng-class="{'helion-icon-View_pressed': $parent.$parent.$parent.inputShowPassIcsp, 'helion-icon-View': !$parent.$parent.$parent.inputShowPassIcsp}"
+                           ng-click="$parent.$parent.$parent.toggleEditIcspShowPassword()"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-5 oneview-input-field">
+                <oc-input
+                        value="$parent.$parent.$parent.editicspServer.icsp_host"
+                        name="ICSPserverip"
+                        label="system.icsp.manage.input.serverip"
+                        placeholder="system.HPEoneview.connect.placeholder.appliancedetails"
+                        oc-disabled="true"
+                        oc-required="true"
+                        validate="ipaddr_hostname"
+                        validate-text="hpvalidate.ipaddr_hostname"
+                        type="text"></oc-input>
+            </div>
+        </div>
+    </ng-form>
+    <div class="col-md-12 integrated_modal_footer_margin">
+        <div class="col-md-5">
+            <button class="oc-btn oc-btn-default"
+                    ng-click="closeModal();$parent.$parent.$parent.closeEditIcspModal();"
+                    ng-bind="'system.HPEoneview.connect.cancel' | translate">
+            </button>
+            <button class="oc-btn oc-btn-primary"
+                    ng-disabled="$parent.$parent.$parent.editIcspFormInput.$invalid || $parent.$parent.$parent.connectICSPEnable"
+                    ng-click="$parent.$parent.$parent.confirmUpdateIcspServer();$parent.$parent.$parent.closeEditIcspModal();closeModal();"
+                    ng-bind="'system.icsp.manage.updateserver' | translate | uppercase">
+            </button>
+        </div>
+    </div>
+</div>

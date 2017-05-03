@@ -1,0 +1,11 @@
+<!--template for confirming activate host hlm content-->
+<import src="$parent.computeHostService"
+        alt="$parent.computeHostServiceFromDetail"
+        target="service"/>
+<div class="confirm-center less-padding-top">
+  <div class="bold">
+  <oc-translate
+      text="{{ 'compute.compute_nodes.hlm.activate.p0' | translate: {host: service.hlmConfirmData.name} }}"/>
+  </div>
+  <p>{{'compute.compute_nodes.hlm.activate.p1' | translate}}</p>
+</div>

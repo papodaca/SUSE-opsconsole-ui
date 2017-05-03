@@ -1,0 +1,42 @@
+<!-- template for backup restore -->
+<octable modelname="bkrstdata" enumfilter sortcontrol transformable actionmenu expandable
+         expand-template-url="system/templates/backup_restore/backuprestore_expand.html"
+         tile-template-url="system/templates/backup_restore/backuprestore_list_tile.html"
+         loadflag="backuplistloading" class="bkrsttable"
+        >
+    <oct-std-header></oct-std-header>
+</octable>
+<stackablemodal
+    name="jobListStackableModal"
+    showAttribute="showJobList"
+    modalTemplateUrl="'system/templates/backup_restore/joblist_modal.html'">
+</stackablemodal>
+<opsmodal showAttribute="showBackupConfirmation" closable class="backup_trigger_modal"
+          headerTemplateUrl="system/templates/backup_restore/start_backup_header.html"
+          footerTemplateUrl="system/templates/backup_restore/start_backup_footer.html"
+          commit-action="startBackup">
+    <span ng-include="'system/templates/backup_restore/start_backup_modal.html'"></span>
+</opsmodal>
+<stackablemodal
+    name="backupLogStackableModal"
+    showAttribute="showBackupLogs"
+    modalTemplateUrl="'system/templates/backup_restore/backup_logs_modal.html'">
+</stackablemodal>
+<opsmodal showAttribute="showRestoreConfirmation" closable class="backup_trigger_modal"
+          headerTemplateUrl="system/templates/backup_restore/start_restore_header.html"
+          footerTemplateUrl="system/templates/backup_restore/start_restore_footer.html"
+          commit-action="startRestore">
+    <span ng-include="'system/templates/backup_restore/start_restore_modal.html'"></span>
+</opsmodal>
+<opsmodal showAttribute="showResyncActionModal" closable class="resync_trigger_modal"
+          headerTemplateUrl="system/templates/backup_restore/resync_action_header.html"
+          footerTemplateUrl="system/templates/backup_restore/resync_action_footer.html"
+          commit-action="startResync">
+    <span ng-include="'system/templates/backup_restore/resync_action_modal.html'"></span>
+    <modal-overlay show-attribute="maskResyncModal"></modal-overlay>
+</opsmodal>
+<stackablemodal
+    name="showConfiguration"
+    showAttribute="showConfigurationModal"
+    modalTemplateUrl="'system/templates/backup_restore/config_modal.html'">
+</stackablemodal>
