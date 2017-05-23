@@ -1,4 +1,5 @@
-// (c) Copyright 2016 Hewlett Packard Enterprise Development LP
+// (c) Copyright 2016-2017 Hewlett Packard Enterprise Development LP
+// (c) Copyright 2017 SUSE LLC
 /**
  * This is to handle the directive <alarm-summary></alarm-summary>
  * This directive needs to be used with alarm plugin

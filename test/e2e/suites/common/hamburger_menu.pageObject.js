@@ -1,4 +1,5 @@
-// (c) Copyright 2016 Hewlett Packard Enterprise Development LP
+// (c) Copyright 2016-2017 Hewlett Packard Enterprise Development LP
+// (c) Copyright 2017 SUSE LLC
 // PageObject used for navigating the hamburger menu
 
 var HamburgerMenu = function() {

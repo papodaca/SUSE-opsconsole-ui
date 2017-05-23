@@ -1,4 +1,5 @@
-// (c) Copyright 2016 Hewlett Packard Enterprise Development LP
+// (c) Copyright 2016-2017 Hewlett Packard Enterprise Development LP
+// (c) Copyright 2017 SUSE LLC
 //sorting utilities for object datasets, primarily for sorting tables
 //NOT DONE YET
 angular.module("operations-ui").factory("sortUtils", ['isUndefined', '$translate', function(isUndefined, $translate) {

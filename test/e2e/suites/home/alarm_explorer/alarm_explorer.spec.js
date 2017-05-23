@@ -1,4 +1,5 @@
-// (c) Copyright 2016 Hewlett Packard Enterprise Development LP
+// (c) Copyright 2016-2017 Hewlett Packard Enterprise Development LP
+// (c) Copyright 2017 SUSE LLC
 // Specs for the Alarm Explorer page at: /#/alarm/alarm_explorer
 var AlarmExplorer = require('./alarm_explorer.pageObject.js');
 var OcTable = require('../../common/octable.pageObject.js');
