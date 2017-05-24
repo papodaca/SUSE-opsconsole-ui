@@ -1,4 +1,5 @@
-// (c) Copyright 2016 Hewlett Packard Enterprise Development LP
+// (c) Copyright 2016-2017 Hewlett Packard Enterprise Development LP
+// (c) Copyright 2017 SUSE LLC
 // Specs for the System Appliances page at: /#/system/appliance_list
 
 var Appliances = require('./appliances.pageObject.js');

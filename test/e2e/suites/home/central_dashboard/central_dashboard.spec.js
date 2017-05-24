@@ -1,4 +1,5 @@
-// (c) Copyright 2016 Hewlett Packard Enterprise Development LP
+// (c) Copyright 2016-2017 Hewlett Packard Enterprise Development LP
+// (c) Copyright 2017 SUSE LLC
 // Specs for the Central / Alarms Dashboard page at: /#/general/dashboard_alarms_summary
 
 var CentralDashboard = require('./central_dashboard.pageObject.js');

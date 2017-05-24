@@ -1,4 +1,5 @@
-// (c) Copyright 2016 Hewlett Packard Enterprise Development LP
+// (c) Copyright 2016-2017 Hewlett Packard Enterprise Development LP
+// (c) Copyright 2017 SUSE LLC
 // edit matchby modal depends on stackable_modal
 
 var StackableModal = require('./stackable_modal.pageObject.js');

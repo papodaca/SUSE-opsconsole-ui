@@ -1,4 +1,5 @@
-// (c) Copyright 2016 Hewlett Packard Enterprise Development LP
+// (c) Copyright 2016-2017 Hewlett Packard Enterprise Development LP
+// (c) Copyright 2017 SUSE LLC
 // Represents the Compute Baremetal Instances page at: /#/compute/baremetal_instances
 
 var HamburgerMenu = require('../../common/hamburger_menu.pageObject.js');
