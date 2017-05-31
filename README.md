@@ -1,4 +1,5 @@
-# (c) Copyright 2016 Hewlett Packard Enterprise Development LP
+# (c) Copyright 2016-2017 Hewlett Packard Enterprise Development LP
+# (c) Copyright 2017 SUSE LLC
 # Ops Console
 The UI project runs on nodejs on port 9000 by default, and will auto-reload on changes
 
