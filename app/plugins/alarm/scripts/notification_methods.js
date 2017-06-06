@@ -113,7 +113,7 @@
                                 $translate.instant("notification_methods.empty.data"),
                                 '',
                                 'notification_methods.empty.data.action_label',
-                                 $scope.CreateNotification
+                                 showCreateNotificationModal
                             );
                         }
                         else {
