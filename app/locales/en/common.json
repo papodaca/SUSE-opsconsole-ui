@@ -265,10 +265,8 @@
     "login.user.placeholder" : "Enter Your Account",
     "login.password.placeholder" : "Enter Your Password",
 
-    "footer.copyright": "HPE Helion OpenStack - Copyright 2016. All rights reserved.",
     "footer.terms": "Terms of Use",
     "footer.privacy": "Privacy Policy",
-    "footer.privacy.url": "https://www.hpe.com/us/en/legal/privacy.html",
 
     "common.confirm.deletion": "Confirm Deletion",
     "common.delete.confirm.line2": "This cannot be undone. Select \"CONFIRM\" to continue...",
