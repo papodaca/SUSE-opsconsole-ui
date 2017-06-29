@@ -1,5 +1,7 @@
 {
     "branding.product.login.title" : "OpenStack",
     "branding.pageTitle.title" : "OpenStack Operations Console",
-    "branding.masthead.title": "Ops Console"
+    "branding.masthead.title": "Ops Console",
+    "footer.privacy.url": "https://www.privacypolicyurlhere.com/policy.html",
+    "footer.copyright": "Company ProductName - Copyright YEAR. All rights reserved."
 }
