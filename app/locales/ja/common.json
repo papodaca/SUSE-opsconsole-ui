@@ -236,7 +236,6 @@
   "login.user.placeholder": "アカウントを入力",
   "login.password.placeholder": "パスワードを入力",
   "footer.terms": "使用条件",
-  "footer.privacy": "プライバシーポリシー",
   "common.confirm.deletion": "削除の確認",
   "common.delete.confirm.line2": "これは取り消せません。続行するには [確認] を選択します...",
   "common.confirm.line2": "続行するには [確認] を選択してください...",

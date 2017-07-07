@@ -266,7 +266,6 @@
     "login.password.placeholder" : "Enter Your Password",
 
     "footer.terms": "Terms of Use",
-    "footer.privacy": "Privacy Policy",
 
     "common.confirm.deletion": "Confirm Deletion",
     "common.delete.confirm.line2": "This cannot be undone. Select \"CONFIRM\" to continue...",
