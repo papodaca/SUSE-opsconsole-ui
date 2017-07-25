@@ -1,4 +1,6 @@
 // (C) Copyright 2015-2017 Hewlett Packard Enterprise Development LP
+// (c) Copyright 2017 SUSE LLC
+
 var message = "© Copyright 2015-2016 Hewlett Packard Enterprise Development LP",
    jsCssMessage = "/*! " + message + " */\n";
 
