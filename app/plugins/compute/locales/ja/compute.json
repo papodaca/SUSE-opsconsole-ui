@@ -325,7 +325,7 @@
   "compute.compute_nodes.hlm.add.infoModal.p1": "続行する前に、ホストに適切なオペレーションシステムがインストールされていることを確認してください。ホストが作成されると、通知が送られます。",
   "compute.compute_nodes.hlm.add.gitCommitMessage": "Ops Console - サーバー '{{name}}' を追加しています",
   "compute.compute_nodes.hlm.add.notification.success": "コンピュートホスト '{{name}}' は正常に作成されました。",
-  "compute.compute_nodes.hlm.add.notification.deploy_started": "コンピュートホスト '{{name}}' を展開しています。完了まで約1時間かかります。完了したら、デプロイヤー上の/opt/stack/service/hlm-ux-services/venv/logs/{{processId}}.logを参照してください。",
+  "compute.compute_nodes.hlm.add.notification.deploy_started": "コンピュートホスト '{{name}}' を展開しています。完了まで約1時間かかります。完了したら、デプロイヤー上の/opt/stack/service/ardana-service/venv/logs/{{processId}}.logを参照してください。",
   "compute.compute_nodes.hlm.add.notification.error": "コンピュートホスト '{{name}}' の作成中にエラーが発生しました。{{details}}。",
   "compute.compute_nodes.hlm.add.notification.poll_failed": "ホスト '{{name}}' の展開中に、ステータスのポーリングに失敗しました。展開が成功したかどうかを判定できません。",
   "compute.compute_nodes.hlm.add.notification.deploy_failed": "ホスト '{{name}}' を展開できませんでした。",

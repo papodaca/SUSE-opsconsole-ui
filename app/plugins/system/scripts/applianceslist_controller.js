@@ -6,8 +6,8 @@
     var p = ng.module('plugins');
 
     p.controller('AppliancesListController', ['$scope', '$http', '$translate', 'bllApiRequest', 'ocValidators',
-        '$timeout', 'addNotification', 'log', '$q', 'isUndefined', 'HLMUXService', 'filterOutComputeRoles',
-        function($scope, $http, $translate, bllApiRequest, ocValidators, $timeout, addNotification, log, $q, isUndefined, HLMUXService, filterOutComputeRoles) {
+        '$timeout', 'addNotification', 'log', '$q', 'isUndefined', 'ArdanaService', 'filterOutComputeRoles',
+        function($scope, $http, $translate, bllApiRequest, ocValidators, $timeout, addNotification, log, $q, isUndefined, ArdanaService, filterOutComputeRoles) {
             $scope.selectedAppliances = [];
 
             $scope.tableConfig = {
@@ -411,7 +411,7 @@
             $scope.getApplianceListData = function() {
                 $scope.applistLoading = true;
 
-                HLMUXService.getServerInfo().then(function(data) {
+                ArdanaService.getServerInfo().then(function(data) {
                         var rawData = filterOutComputeRoles(data);
                         var composedData = [];
 

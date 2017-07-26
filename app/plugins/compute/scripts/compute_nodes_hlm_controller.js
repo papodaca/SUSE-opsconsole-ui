@@ -8,11 +8,11 @@
 
     p.controller('ComputeNodesHLMController', [
         '$scope', '$translate', '$q', '$timeout', 'addNotification',
-        'bllApiRequest', 'HLMUXService', 'AnsiColoursService',
+        'bllApiRequest', 'ArdanaService', 'AnsiColoursService',
         'updateEmptyDataPage', 'getClusterGrouping', 'getHostAlarmCountForGroup',
         'getHostWorstAlarmForGroup','computeHostHelperService', 'getComputeHostStateString',
         function ($scope, $translate, $q, $timeout, addNotification,
-                  bllApiRequest, HLMUXService, AnsiColoursService,
+                  bllApiRequest, ArdanaService, AnsiColoursService,
                   updateEmptyDataPage, getClusterGrouping,  getHostAlarmCountForGroup,
                   getHostWorstAlarmForGroup, computeHostHelperService, getComputeHostStateString) {
             $scope.computeDataLoading = true;
@@ -207,11 +207,11 @@
                 globalActionsConfig: []
             };
 
-            // Set the actions menu for HLM Ops to the action menu items, if HLM UX Service is unavailable
-            HLMUXService.readyPromise
-                .then(HLMUXService.updateIsConfigEncrypted)
+            // Set the actions menu for HLM Ops to the action menu items, if Ardana Service is unavailable
+            ArdanaService.readyPromise
+                .then(ArdanaService.updateIsConfigEncrypted)
                 .then(function () {
-                    if (HLMUXService.isAvailable()) {
+                    if (ArdanaService.isAvailable()) {
                         $scope.compute_nodes_table_config.actionMenuConfig = [
                             {
                                 label: $translate.instant("compute.compute_nodes.hlm.button.activate"),
@@ -262,8 +262,8 @@
                     start: {}
                 };
                 // If we don't override values make promise a no-op with empty collections (functionality as before)
-                var hlmOverridesPromise = hlmOverride && HLMUXService.isAvailable() ?
-                    HLMUXService.findStartStopRuns(120 * 1000).catch(function () {
+                var hlmOverridesPromise = hlmOverride && ArdanaService.isAvailable() ?
+                    ArdanaService.findStartStopRuns(120 * 1000).catch(function () {
                         return hlmOverrides;
                     }) : $q.when(hlmOverrides);
 
@@ -431,8 +431,8 @@
                 return not_found;
             }
 
-            // Initial load - wait until we know if the HLM UX Services are available
-            HLMUXService.readyPromise.then(function () {
+            // Initial load - wait until we know if the Ardana Service is available
+            ArdanaService.readyPromise.then(function () {
                 setComputeData(true);
             });
 

@@ -21,8 +21,8 @@
 
   ng.module('plugins').directive('dashboardMetricCard', [
     'bllApiRequest', 'filterAlarmCount', '$rootScope',
-    '$location', '$q', 'round', 'animationLoop', 'HLMUXService', 'filterOutComputeRoles', 'monascaHasData', 'extractMetricData', 'bytesToSize',
-    function(bllApiRequest, filterAlarmCount, $rootScope, $location, $q, round, animationLoop, HLMUXService, filterOutComputeRoles, monascaHasData, extractMetricData, bytesToSize) {
+    '$location', '$q', 'round', 'animationLoop', 'ArdanaService', 'filterOutComputeRoles', 'monascaHasData', 'extractMetricData', 'bytesToSize',
+    function(bllApiRequest, filterAlarmCount, $rootScope, $location, $q, round, animationLoop, ArdanaService, filterOutComputeRoles, monascaHasData, extractMetricData, bytesToSize) {
     return {
       restrict: "E",
       templateUrl: "alarm/templates/dashboard/dashboard_metric_card.html",
@@ -168,7 +168,7 @@
             },
             applianceSummary: function() {
               var deferred = $q.defer();
-              HLMUXService.getServerInfo().then(function(servers_dict) {
+              ArdanaService.getServerInfo().then(function(servers_dict) {
                   var appliances = filterOutComputeRoles(servers_dict).map(
                       function(server) {
                           //only need the hostname

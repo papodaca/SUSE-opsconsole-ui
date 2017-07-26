@@ -329,7 +329,7 @@
   "compute.compute_nodes.hlm.add.infoModal.p1": "Before continuing, please ensure that the host has the appropriate Operation System installed. You will receive a notification once the host is created.",
   "compute.compute_nodes.hlm.add.gitCommitMessage": "Ops Console - Adding server '{{name}}'",
   "compute.compute_nodes.hlm.add.notification.success": "Compute Host '{{name}}' created successfully.",
-  "compute.compute_nodes.hlm.add.notification.deploy_started": "Deploying Compute Host '{{name}}'. It takes approximately an hour to finish; refer to /opt/stack/service/hlm-ux-services/venv/logs/{{processId}}.log on the deployer when completed.",
+  "compute.compute_nodes.hlm.add.notification.deploy_started": "Deploying Compute Host '{{name}}'. It takes approximately an hour to finish; refer to /opt/stack/service/ardana-service/venv/logs/{{processId}}.log on the deployer when completed.",
   "compute.compute_nodes.hlm.add.notification.error": "Error while creating Compute Host '{{name}}' {{details}}.",
   "compute.compute_nodes.hlm.add.notification.poll_failed": "Failed to poll for status when deploying Host '{{name}}'. Unable to determine if deploy has succeeded.",
   "compute.compute_nodes.hlm.add.notification.deploy_failed": "Failed to deploy Host '{{name}}'.",
