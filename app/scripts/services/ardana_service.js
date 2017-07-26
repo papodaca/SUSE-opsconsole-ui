@@ -5,7 +5,7 @@
     'use strict';
 
     var p = ng.module('plugins');
-    p.service('HLMUXService', [
+    p.service('ArdanaService', [
      '$rootScope', '$q', '$window', '$timeout','$translate', 'bllApiRequest',
     function($rootScope, $q, $window, $timeout, $translate, bllApiRequest) {
 
@@ -36,7 +36,7 @@
         var serverAPI = 'servers/';
         var serverInfo = 'cp_output/server_info_yml';
 
-        // Make a request to the HLM UX Services backend to discover if the service is up and running
+        // Make a request to the Ardana Service backend to discover if the service is up and running
         this.readyPromise = updateIsAvailable();
 
         var findStartLimitRegEx = /(?:hlm-start.yml --limit )(\S+)/;
@@ -46,7 +46,7 @@
 
         /**
          * @ngdoc method
-         * @description Is the HLM UX Service available (cached value set at service creation)?
+         * @description Is the Ardana Service available (cached value set at service creation)?
          *
          * @returns {boolean} Availability
          */
@@ -56,18 +56,18 @@
 
         /**
          * @ngdoc method
-         * @description Is the HLM UX Service available (updates {@link #isAvailable})?
+         * @description Is the Ardana Service available (updates {@link #isAvailable})?
          *
          * @returns {object} promise for when update has completed (does not contain result)
          */
         function updateIsAvailable() {
-            return bllApiRequest.get('hlm_ux', {path: 'heartbeat'})
+            return bllApiRequest.get('ardana', {path: 'heartbeat'})
                 .then(_.partial(_handleBllResponse))
                 .then(function(response) {
                     available = response.data;
                 })
                 .catch(function(err) {
-                    // Ignore errors - just means HLM UX Services is not available
+                    // Ignore errors - just means Ardana Service is not available
                     return err;
                 });
         }
@@ -83,7 +83,7 @@
             if (!pRef) {
                 return $q.reject('pRef must not be empty');
             }
-            return bllApiRequest.get('hlm_ux', {path: playsAPI + pRef + '/log'})
+            return bllApiRequest.get('ardana', {path: playsAPI + pRef + '/log'})
                 .then(_.partial(_handleBllResponse));
         }
 
@@ -104,7 +104,7 @@
          * @returns {object} promise for when update has completed (does not contain result)
          */
         function updateIsConfigEncrypted() {
-            return bllApiRequest.get('hlm_ux', {path: modelAPI + 'is_encrypted'})
+            return bllApiRequest.get('ardana', {path: modelAPI + 'is_encrypted'})
                 .then(_.partial(_handleBllResponse))
                 .then(function(response) {
                     configEncrypted = response.data && response.data.isEncrypted;
@@ -119,7 +119,7 @@
             var deferred = previousDeferred || $q.defer();
             $window.setTimeout(function() {
                 // Poll the process until it completes
-                bllApiRequest.get('hlm_ux', {path: playsAPI + pref})
+                bllApiRequest.get('ardana', {path: playsAPI + pref})
                     .then(_.partial(_handleBllResponse))
                     .then(function(data) {
                         if (data.data.alive) {
@@ -169,10 +169,10 @@
                     var options = {
                         'region': node.region
                     };
-                    return bllApiRequest.post('hlm_ux', data, options);
+                    return bllApiRequest.post('ardana', data, options);
                 }
                 else {
-                    return bllApiRequest.post('hlm_ux', data);
+                    return bllApiRequest.post('ardana', data);
                 }
             });
         }
@@ -197,10 +197,10 @@
                     var options = {
                         'region': node.region
                     };
-                    return bllApiRequest.post('hlm_ux', data, options);
+                    return bllApiRequest.post('ardana', data, options);
                 }
                 else {
-                    return bllApiRequest.post('hlm_ux', data);
+                    return bllApiRequest.post('ardana', data);
                 }
             });
         }
@@ -232,10 +232,10 @@
                 var options = {
                     'region': server.region
                 };
-                return bllApiRequest.delete('hlm_ux',data, options).then(_.partial(_handleBllResponse));
+                return bllApiRequest.delete('ardana',data, options).then(_.partial(_handleBllResponse));
             }
             else {
-                return bllApiRequest.delete('hlm_ux', data).then(_.partial(_handleBllResponse));
+                return bllApiRequest.delete('ardana', data).then(_.partial(_handleBllResponse));
             }
 
         }
@@ -246,7 +246,7 @@
          * @returns {boolean} promise containing bll response
          */
         function getModel() {
-            return bllApiRequest.get('hlm_ux', {path: modelAPI})
+            return bllApiRequest.get('ardana', {path: modelAPI})
                 .then(_.partial(_handleBllResponse))
                 .then(function(response) {
                     if (response.data && response.data.errors && response.data.errors.length > 0) {
@@ -263,7 +263,7 @@
          * get the server info from hlm service
          */
         function getServerInfo() {
-            return bllApiRequest.get('hlm_ux', {path: modelAPI + serverInfo}).then(
+            return bllApiRequest.get('ardana', {path: modelAPI + serverInfo}).then(
                 function(response) {
                     var resData = response.data;
                     if(angular.isDefined(resData) && Object.keys(resData).length > 0) {
@@ -284,7 +284,7 @@
          * @description Fetch a subset of the HLM input model that deals with server data
          */
         function getServerDetails() {
-            return bllApiRequest.get('hlm_ux', {
+            return bllApiRequest.get('ardana', {
                  operation: 'get_expanded_details',
                  location: 'expandedInputModel/internal/servers'})
                 .then(_.partial(_handleBllResponse))
@@ -324,10 +324,10 @@
                 var options = {
                     'region': hlmServer.region
                 };
-                return bllApiRequest.post('hlm_ux',data, options).then(_.partial(_handleBllResponse));
+                return bllApiRequest.post('ardana',data, options).then(_.partial(_handleBllResponse));
             }
             else {
-                return bllApiRequest.post('hlm_ux', data).then(_.partial(_handleBllResponse));
+                return bllApiRequest.post('ardana', data).then(_.partial(_handleBllResponse));
             }
         }
 
@@ -473,7 +473,7 @@
                 data.request_parameters = ['maxAge=' + maxAge];
             }
 
-            return bllApiRequest.get('hlm_ux', data).then(_.partial(_handleBllResponse));
+            return bllApiRequest.get('ardana', data).then(_.partial(_handleBllResponse));
         }
 
         /**

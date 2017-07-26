@@ -6,11 +6,11 @@
     p.controller('DashboardControllerAlarms', ['$scope', '$rootScope', '$translate', '$http', '$cookieStore',
                  'isUndefined', 'addNotification', 'bllApiRequest', '$filter', 'styleutils', 'dimObjToStr',
                  'renderLineOfDimension', 'getTimeToGoBackISODateStr', 'getStartUpdateTimeISODateString', 'ocTimeSelections', '$q', 'log', '$window',
-                 'getDisplayDateAndUTC', 'prefSaver', 'filterAlarmCount', 'genRandomString', 'animationLoop', 'HLMUXService',
+                 'getDisplayDateAndUTC', 'prefSaver', 'filterAlarmCount', 'genRandomString', 'animationLoop',
         function ($scope, $rootScope, $translate, $http, $cookieStore,
                   isUndefined, addNotification, bllApiRequest, $filter, styleutils, dimObjToStr,
                   renderLineOfDimension, getTimeToGoBackISODateStr, getStartUpdateTimeISODateString, ocTimeSelections, $q, log, $window,
-                  getDisplayDateAndUTC, prefSaver, filterAlarmCount, genRandomString, animationLoop, HLMUXService) {
+                  getDisplayDateAndUTC, prefSaver, filterAlarmCount, genRandomString, animationLoop) {
 
             $scope.anyErrors = function() {
                 if($scope.checkAllLoaded() && $scope.alarmErrorCount > 0) {

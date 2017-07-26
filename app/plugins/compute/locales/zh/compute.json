@@ -325,7 +325,7 @@
   "compute.compute_nodes.hlm.add.infoModal.p1": "在继续之前，请确保主机已安装相应的操作系统。创建主机后，您将收到通知。",
   "compute.compute_nodes.hlm.add.gitCommitMessage": "Ops Console - 正在添加服务器“{{name}}”",
   "compute.compute_nodes.hlm.add.notification.success": "已成功创建计算主机“{{name}}”。",
-  "compute.compute_nodes.hlm.add.notification.deploy_started": "正在部署计算主机“{{name}}”。此操作大约需要一小时才能完成；完成后，请参考部署程序上的 /opt/stack/service/hlm-ux-services/venv/logs/{{processId}}.log。",
+  "compute.compute_nodes.hlm.add.notification.deploy_started": "正在部署计算主机“{{name}}”。此操作大约需要一小时才能完成；完成后，请参考部署程序上的 /opt/stack/service/ardana-service/venv/logs/{{processId}}.log。",
   "compute.compute_nodes.hlm.add.notification.error": "创建计算主机“{{name}}”时出错。{{details}}。",
   "compute.compute_nodes.hlm.add.notification.poll_failed": "无法在部署主机“{{name}}”时轮询状态。无法确定部署是否成功。",
   "compute.compute_nodes.hlm.add.notification.deploy_failed": "无法部署主机“{{name}}”。",

@@ -3,9 +3,9 @@
 (function (ng) {
     'use strict';
     ng.module('operations-ui').service('computeHostHelperService', [
-        'bllApiRequest','HLMUXService', '$rootScope', '$q', '$translate',
+        'bllApiRequest','ArdanaService', '$rootScope', '$q', '$translate',
         'addNotification', 'log', 'AnsiColoursService', '$timeout', 'getRegions',
-        function (bllApiRequest, HLMUXService, $rootScope, $q, $translate,
+        function (bllApiRequest, ArdanaService, $rootScope, $q, $translate,
                   addNotification, log, AnsiColoursService, $timeout, getRegions) {
 
         //this service intends to serve the common functions that could be used
@@ -60,7 +60,7 @@
         this.askEncryptionModalHLM = {
             _show: false,
             show: function () {
-                if (!HLMUXService.isConfigEncrypted()) {
+                if (!ArdanaService.isConfigEncrypted()) {
                     return $q.when('');
                 }
 
@@ -143,7 +143,7 @@
             self.addComputeNodeModalHLM.stackableScope.values = {};
 
             // Fetch the latest model, this will contain server roles, server groups and nic-mapping options
-            HLMUXService.getModel()
+            ArdanaService.getModel()
                 .catch(function (error) {
                     addNotification(
                         "error",
@@ -163,10 +163,10 @@
                     scope.selections = {};
 
                     // ... Server roles. Only compute roles are valid (roles that contain nova-client)
-                    scope.selections.roles = HLMUXService.findComputeRoles(model);
+                    scope.selections.roles = ArdanaService.findComputeRoles(model);
 
                     // ... Server Groups. Discover the leaf server groups and their group breadcrumb
-                    scope.selections.groups = HLMUXService.findLeafServerGroups(model);
+                    scope.selections.groups = ArdanaService.findLeafServerGroups(model);
 
                     // ... NIC Mappings
                     scope.selections.nicMappings =
@@ -180,7 +180,7 @@
                     //Current Servers
                     scope.selections.servers = _.map(model.inputModel.servers, "id");
 
-                    scope.options.encryptionRequired = HLMUXService.isConfigEncrypted();
+                    scope.options.encryptionRequired = ArdanaService.isConfigEncrypted();
 
                     // Create the initial values for the modal, either from previous entries or default
                     function defaultSelectOption(valueName, groupsName) {
@@ -247,7 +247,7 @@
             //will be used to block actions as singleton value
             self.blockActionFlag = false;
 
-            HLMUXService.addServer(self.addHostServer, self.addHostValues.encryptionKey, true)
+            ArdanaService.addServer(self.addHostServer, self.addHostValues.encryptionKey, true)
                 .then(function (data) {
                     // Successfully submitted (model changed, validation passed, ready deploy ran,
                     // deploy started).
@@ -266,7 +266,7 @@
                     self.showConfirmAddModalFlag = false;
                     self.updatingHostOverlayFlag = false;
 
-                    HLMUXService.poll(pRef, '')
+                    ArdanaService.poll(pRef, '')
                         .then(function () {
                             addNotification(
                                 "info",
@@ -368,7 +368,7 @@
             if(angular.isDefined(self.hlmConfirmData.region)) {
                 activateNode.region = self.hlmConfirmData.region;
             }
-            HLMUXService.activate(activateNode, self.encryptionKey).then(
+            ArdanaService.activate(activateNode, self.encryptionKey).then(
                 function () {
                     addNotification("info",
                         $translate.instant(
@@ -485,7 +485,7 @@
             if(angular.isDefined(self.hlmConfirmData.region)) {
                 deactivateNode.region = self.hlmConfirmData.region;
             }
-            HLMUXService.deactivate(deactivateNode, self.encryptionKey).then(
+            ArdanaService.deactivate(deactivateNode, self.encryptionKey).then(
                 function () {
                     addNotification(
                         "info",
@@ -575,7 +575,7 @@
             self.hlmConfirmData = {};
             self.hlmServerInfo = '';
             //get the server_info.yml
-            HLMUXService.getServerInfo()
+            ArdanaService.getServerInfo()
                 .then(function(serverInfo) {
                     self.hlmServerInfo = serverInfo;
                     self.askEncryptionModalHLM.show()
@@ -668,7 +668,7 @@
                 return;
             }
 
-            HLMUXService.delete(deleteNode, hlmServer, self.encryptionKey).then(
+            ArdanaService.delete(deleteNode, hlmServer, self.encryptionKey).then(
                 function () {
                     addNotification("info",
                         $translate.instant(
@@ -789,7 +789,7 @@
                     // No log, show 'fetching' message and reach out to the backend
                     self.logViewHLM.stackableScope.log = $translate.instant(
                         "compute.compute_nodes.hlm.logView.fetching");
-                    HLMUXService.getLog(opts.pRef).
+                    ArdanaService.getLog(opts.pRef).
                     then(function (logData) {
                     self.logViewHLM.stackableScope.log =
                         self.logViewHLM.colouriser.ansiColoursToHtml(logData.data.log);

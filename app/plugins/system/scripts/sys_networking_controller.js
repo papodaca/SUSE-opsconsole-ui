@@ -6,10 +6,10 @@
     p.controller('SystemNetworkingController', [
         '$scope', '$translate', 'log', '$q', 'bllApiRequest', 'addNotification',
         'removeDuplicateInArray', 'checkIpRangesValid', 'checkIpRangesNoOverlapValid',
-        'convertIp4ToInt', 'ocValidators', 'HLMUXService',
+        'convertIp4ToInt', 'ocValidators', 'ArdanaService',
         function ($scope, $translate, log, $q, bllApiRequest, addNotification,
                   removeDuplicateInArray, checkIpRangesValid, checkIpRangesNoOverlapValid,
-                  convertIp4ToInt, ocValidators, HLMUXService) {
+                  convertIp4ToInt, ocValidators, ArdanaService) {
             $scope.networkTableData = [];
             $scope.networkDataLoading = true;
             $scope.showEditNetworkModalFlag = false;
@@ -156,7 +156,7 @@
                     'operation': 'get_network_data'
                 };
 
-                return bllApiRequest.get('hlm_ux', req).then(
+                return bllApiRequest.get('ardana', req).then(
                     function(response) {
                         var nData = response.data || [];
                         for(var idx in nData) {
@@ -457,7 +457,7 @@
                 req.path = 'playbooks/network_interface-reconfigure';
 
                 var networkMsg = network + ' gateway=' + gatewayIp;
-                bllApiRequest.post('hlm_ux', req).then(
+                bllApiRequest.post('ardana', req).then(
                     function(response) {
                         var data = response.data;
                         if (angular.isDefined(data) && data.alive === true) {
@@ -504,7 +504,7 @@
                     return;
                 }
 
-                HLMUXService.poll(processRef, '').then(
+                ArdanaService.poll(processRef, '').then(
                     function () {
                         addNotification(
                             "info",
@@ -621,7 +621,7 @@
                 var extraVarsMsg = getUpdateNetworkMsg(req);
                 log('debug', 'update network request = ' + extraVarsMsg);
 
-                bllApiRequest.post('hlm_ux', req).then(
+                bllApiRequest.post('ardana', req).then(
                     function(response) {
                         var data = response.data;
                         if (angular.isDefined(data) && data.alive === true) {

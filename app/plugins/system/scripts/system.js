@@ -10,7 +10,7 @@
                 type: 'menu',
                 envs: ['cs', 'hos'],
                 needBllPlugins: [
-                    'ace', 'attis', 'cinder', 'hlm_ux', 'monitor', 'sirius',
+                    'ace', 'attis', 'cinder', 'ardana', 'monitor', 'sirius',
                     'user_group','vcenters'
                 ],
                 slug: 'system',
@@ -21,7 +21,7 @@
                     {
                         type: 'controller',
                         envs: ['cs'],
-                        needBllPlugins: ['hlm_ux'],
+                        needBllPlugins: ['ardana'],
                         controllerName: "SystemNetworkingController",
                         path: '/system_networking',
                         template: 'sys_networking/networking.html',
