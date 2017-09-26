@@ -8,7 +8,7 @@
       {{label | translate}}
 
       <div ng-if="ocTooltip"
-           class="oc-info helion-icon helion-icon-Unknown_L vert-offset-top-half"
+           class="oc-info ardana-icon ardana-icon-Unknown_L vert-offset-top-half"
            uib-tooltip="{{ocTooltip | translate}}"
            tooltip-placement="right">
        </div>
@@ -20,7 +20,7 @@
     {{(validateText || label) | translate}}
 
     <div ng-if="ocTooltip"
-         class="oc-info helion-icon helion-icon-Unknown_L vert-offset-top-half"
+         class="oc-info ardana-icon ardana-icon-Unknown_L vert-offset-top-half"
          uib-tooltip="{{ocTooltip | translate}}"
          tooltip-placement="right">
      </div>
@@ -31,7 +31,7 @@
     {{ customValidateText }}
 
     <div ng-if="ocTooltip"
-         class="oc-info helion-icon helion-icon-Unknown_L vert-offset-top-half"
+         class="oc-info ardana-icon ardana-icon-Unknown_L vert-offset-top-half"
          uib-tooltip="{{ocTooltip | translate}}"
          tooltip-placement="right">
      </div>
@@ -122,27 +122,27 @@
     </div>
     <div ng-if="type == 'dimension'" class="inline dimension-container">
       <div class="inline dimension" ng-repeat="dimension in dimensions">
-        <i class="remove helion-icon helion-icon-Close" ng-click="removeDimension(dimension)"/>
+        <i class="remove ardana-icon ardana-icon-Close" ng-click="removeDimension(dimension)"/>
         {{dimension.key}}={{dimension.value}}
       </div></br>
     </div>
     <div ng-if="type == 'matchby'" class="inline dimension-container">
       <div class="inline dimension" ng-repeat="dimension in dimensions">
-        <i class="remove helion-icon helion-icon-Close" ng-click="removeDimension(dimension)"/>
+        <i class="remove ardana-icon ardana-icon-Close" ng-click="removeDimension(dimension)"/>
         {{dimension}}
       </div></br>
     </div>
 
     <div ng-if="type == 'collection'" class="inline dimension-container">
       <div class="inline dimension" ng-repeat="item in collection" ng-show="item.value">
-        <i class="remove helion-icon helion-icon-Close" ng-click="falsifyFromCollection(item)"/>
+        <i class="remove ardana-icon ardana-icon-Close" ng-click="falsifyFromCollection(item)"/>
         {{item.title}}
       </div></br>
     </div>
     <div ng-if="type == 'iprange'" class="inline dimension-container narrower">
       <div class="dimension range-list" ng-repeat="item in ranges">
         <i ng-if="!item.readonly"
-           class="remove helion-icon helion-icon-Close" ng-click="removeRange(item)"/>
+           class="remove ardana-icon ardana-icon-Close" ng-click="removeRange(item)"/>
         {{item.range}}
       </div></br>
     </div>

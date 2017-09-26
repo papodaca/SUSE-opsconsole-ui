@@ -662,8 +662,8 @@ octable[selectable] .octable_global_action_container {
     min-height: 190px;
 }
 
-oct-global-actions-control .dropdown-toggle i.helion-icon,
-oct-multi-row-actions-control .dropdown-toggle i.helion-icon {
+oct-global-actions-control .dropdown-toggle i.ardana-icon,
+oct-multi-row-actions-control .dropdown-toggle i.ardana-icon {
     padding: 0 0 0 70px;
 }
 
@@ -789,7 +789,7 @@ oct-multi-row-actions-control .dropdown-toggle i.helion-icon {
   padding-right: 4px;
   vertical-align: middle;
   color: $grommet-dark-grey;
-  .helion-icon-Close{
+  .ardana-icon-Close{
     vertical-align: middle;
     margin-left: 6px;
   }

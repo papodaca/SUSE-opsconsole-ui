@@ -27,7 +27,7 @@
                     oc-disabled="true"
                     oc-required="true"
                     validate="username"
-                    validate-text="hpvalidate.username"
+                    validate-text="ocvalidate.username"
                     type="text"></oc-input>
             <div class='register-password-input'>
                 <oc-input value="$parent.$parent.$parent.baremetalprovisionospassword"
@@ -36,12 +36,12 @@
                           placeholder="compute.baremetal.register.input.placeholder.ospassword"
                           oc-disabled="$parent.$parent.$parent.baremetalRegisterDisable"
                           oc-required="true"
-                          validate-text="hpvalidate.password"
+                          validate-text="ocvalidate.password"
                           type="{{ $parent.$parent.$parent.inputOsPass ? 'text' : 'password'}}">
                 </oc-input>
                 <div class="register-showpass-two">
-                    <i class="gi-2x helion-icon view-color"
-                       ng-class="{'helion-icon-View_pressed': $parent.$parent.$parent.inputOsPass, 'helion-icon-View': !$parent.$parent.$parent.inputOsPass}"
+                    <i class="gi-2x ardana-icon view-color"
+                       ng-class="{'ardana-icon-View_pressed': $parent.$parent.$parent.inputOsPass, 'ardana-icon-View': !$parent.$parent.$parent.inputOsPass}"
                        ng-click="$parent.$parent.$parent.toggleShowOsPassword()"></i>
                 </div>
             </div>

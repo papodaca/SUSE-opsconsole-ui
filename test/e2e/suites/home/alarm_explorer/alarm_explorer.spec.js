@@ -59,7 +59,7 @@ describe('alarm explorer', function() {
 
   describe('Alarm Notification ', function() {
     it('should create new notification method', function() {
-      alarmExplorer.addNewNotificationMethod('Test', 'someone@hp.com', true);
+      alarmExplorer.addNewNotificationMethod('Test', 'someone@email.com', true);
       alarmExplorer.verifyNotificationMethod('Test');
       expect(alarmExplorer.notificationName.getText()).toContain('Test');
 
@@ -68,11 +68,11 @@ describe('alarm explorer', function() {
       expect(alarmExplorer.notificationName.isPresent()).toBe(false);
     });
     it('should update new notification method', function() {
-      alarmExplorer.addNewNotificationMethod('Test', 'someone@hp.com', true);
+      alarmExplorer.addNewNotificationMethod('Test', 'someone@email.com', true);
       alarmExplorer.verifyNotificationMethod('Test');
       expect(alarmExplorer.notificationName.getText()).toContain('Test');
 
-      alarmExplorer.updateNewNotificationMethod('Testupd', 'update@hp.com', true);
+      alarmExplorer.updateNewNotificationMethod('Testupd', 'update@email.com', true);
       alarmExplorer.verifyNotificationMethod('Testupd');
       expect(alarmExplorer.notificationName.getText()).toContain('Testupd');
 

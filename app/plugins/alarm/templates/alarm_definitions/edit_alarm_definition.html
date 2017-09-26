@@ -2,7 +2,7 @@
 <import src="$parent.$parent.$parent.$parent" target="pctrl"></import>
 <import src="$parent.$parent.$parent.definition" target="definition"></import>
 <div class="error-banner" ng-if="ctrl.alarmDefinitionErrorFlag || pctrl.alarmDefinitionErrorFlag">
-  <div class="error-icon"><i class="helion-icon helion-icon-Error_outline"></i></div>
+  <div class="error-icon"><i class="ardana-icon ardana-icon-Error_outline"></i></div>
   <div class="error-body">
     <div class="error-header">{{ctrl.$parent.modalEditing ? 'alarm_definitions.edit.error.title' : 'alarm_definitions.create.error.title' | translate}}</div>
     <div>{{ctrl.errorMessage}}</div>

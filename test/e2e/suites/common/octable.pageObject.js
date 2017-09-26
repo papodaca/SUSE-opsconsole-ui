@@ -31,7 +31,7 @@ var OCTable = function() {
   this.tableFilterItems = this.tableFilterInput
     .$$('button[ng-repeat="filter in enumFilters"]');
   this.tableFilterItemClearBtns = this.tableFilterItems
-    .$$('span.helion-icon-Close');
+    .$$('span.ardana-icon-Close');
   this.tableFilterItemTextSpans = this.tableFilterInput.$$('span.ng-binding');
 
   this.rowCount = this.tableFilterContainer.$('.row_count');

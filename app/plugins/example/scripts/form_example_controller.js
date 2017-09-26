@@ -8,7 +8,7 @@
       function ($scope) {
         $scope.settings = {
           user: {
-            email: "person@hp.com"
+            email: "person@email.com"
           }
         };
         $scope.select_options = [

@@ -38,8 +38,8 @@
                         displayLabel: $translate.instant('system.filter.role.enterprise-role'),
                         value: 'ENTERPRISE-ROLE'
                     }, {
-                        displayLabel: $translate.instant('system.filter.role.hlm-role'),
-                        value: 'HLM-ROLE'
+                        displayLabel: $translate.instant('system.filter.role.ardana-role'),
+                        value: 'ARDANA-ROLE'
                     }, {
                         displayLabel: $translate.instant('system.filter.role.db_rabbit-role'),
                         value: 'DB_RABBIT-ROLE'

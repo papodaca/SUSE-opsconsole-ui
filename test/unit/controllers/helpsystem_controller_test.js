@@ -26,9 +26,9 @@ describe('Controller: HelpSystemController', function () {
     it('should add and remove recommendations', function () {
         expect(addRec).toBeDefined();
         expect(remRec).toBeDefined();
-        addRec("testMessage", "http://www.hp.com", false);
+        addRec("testMessage", "http://www.openstack.org", false);
         expect(scope.helpOptions.recommended.length === 1).toBe(true);
-        remRec("testMessage", "http://www.hp.com", false);
+        remRec("testMessage", "http://www.openstack.org", false);
         expect(scope.helpOptions.recommended.length === 0).toBe(true);
     });
 

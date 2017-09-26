@@ -10,7 +10,7 @@
             {
                 type: 'menu',
                 slug: 'general',
-                envs: ['cs', 'hos'],
+                envs: ['stdcfg'],
                 needBllPlugins: ['monitor', 'preferences'],
                 label: 'general.home',
                 icon: 'Home',
@@ -18,17 +18,17 @@
                 children: [
                     {
                         type: 'controller',
-                        envs: ['hos', 'cs'],
+                        envs: ['stdcfg'],
                         needBllPlugins: ['monitor', 'preferences'],
                         controllerName: "CentralDashboardPageController",
-                        path: '/dashboard_alarms_summary',//to change this path need to change the cloud_system.json in ansible
+                        path: '/dashboard_alarms_summary',//to change this path need to change the opscon_config.json in ansible
                         template: 'central_dashboard.html',
-                        label: window.appConfig && window.appConfig.env === 'hos' ? 'general.dashboardsummary' : 'general.alarmsdashboard',
+                        label: window.appConfig && window.appConfig.env === 'stdcfg' ? 'general.dashboardsummary' : 'general.alarmsdashboard',
                         order: 1
                     },
                     {
                         type: 'controller',
-                        envs: ['cs', 'hos'],
+                        envs: ['stdcfg'],
                         //don't need bll plugins
                         controllerName: "LoggingController",
                         path: '/logging',

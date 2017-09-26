@@ -20,12 +20,12 @@
 
         window.fti_state = "bll_failure";
 
-        promises.push($http.get("/cloud_system.json").then(function(response) {
+        promises.push($http.get("/opscon_config.json").then(function(response) {
             config = response.data;
             window.appConfig = response.data;
             if(typeof window.appConfig.env === 'undefined') {
-              //assume we are in Helion Openstack env "hos" if there is not an env specified
-              window.appConfig.env = "hos";
+              //assume we are in standard Openstack env "stdcfg" if there is not an env specified
+              window.appConfig.env = "stdcfg";
             }
         }));
 

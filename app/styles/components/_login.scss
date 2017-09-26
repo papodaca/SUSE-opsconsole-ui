@@ -110,7 +110,7 @@ $server_image: '#{$images_base_path}/login-page-midground-art.png';
   @extend .inline;
 }
 
-#login-white-box-cs {
+#login-white-box-legacy {
   position: absolute;
   left: 0px;
   top: 40px;
@@ -120,7 +120,7 @@ $server_image: '#{$images_base_path}/login-page-midground-art.png';
   z-index:5;
 }
 
-#login-white-box-hos {
+#login-white-box-stdcfg {
   position: absolute;
   padding-top: 60px;
   left: -60px;

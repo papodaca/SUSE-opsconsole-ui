@@ -648,26 +648,26 @@ td.tile-spacing {
 
 //**************************************************//
 
-.ocsidebar {
+.sidebar {
 
   .apply_settings {
     margin-top: 20px;
   }
 
-  .ocsidebar-left-col {
+  .sidebar-left-col {
     width: 32%;
     border-right: 1px solid #CCCCCC;
     height: 678px;
     float: left;
   }
 
-  .ocsidebar-right-col {
+  .sidebar-right-col {
     width: 65%;
     height: 678px;
     float: right;
   }
 
-  .ocsidebar-left-col > .inner-sidebar {
+  .sidebar-left-col > .inner-sidebar {
     display: block;
     height: 527px;
     border: 1px solid #bcbcbc;
@@ -853,11 +853,11 @@ td.tile-spacing {
     font-size: 16px;
   }
 
-  .ocsidebar-input {
+  .sidebar-input {
     margin-top: 20px;
   }
 
-  .ocsidebar-input input[type='text'], .ocsidebar-input input[type='password'] {
+  .sidebar-input input[type='text'], .sidebar-input input[type='password'] {
     width: 100%;
     height: 36px;
     background-color: #F2F2F2;
@@ -1060,10 +1060,6 @@ opsmodal#compute_activities {
   display: inline-block;
 }
 
-button#actLeiabtn {
-  width: 250px;
-}
-
 .col-md-2_4 {
   width: 17% !important;
   float: left;
@@ -1099,7 +1095,7 @@ button#actLeiabtn {
   padding-top: 25px;
 }
 
-octable.hos {
+octable.stdcfg {
   .actionMenuSubheader {
     display: none;
   }
@@ -1521,7 +1517,7 @@ textarea {
   }
 }
 
-/* HLM */
+/* Ardana */
 .compute_main {
 
   // When the add/delete stackable is being removed, don't show the popup background
@@ -1529,7 +1525,7 @@ textarea {
     background-color: transparent;
   }
 
-  .hlm_confirm_modal_widget {
+  .ardana_confirm_modal_widget {
 
     .oc-modal-wrapper .oc-modal {
       height: 314px;
@@ -1564,12 +1560,12 @@ textarea {
       margin-top: 60px;
     }
 
-    &[name='askEncryptionStackableHLM'] {
+    &[name='askEncryptionStackableArdana'] {
       @include stackable-width(60%);
     }
   }
 
-  #logViewHLMModal {
+  #logViewArdanaModal {
 
     .content-form {
       display: flex;
@@ -1616,7 +1612,7 @@ textarea {
 }
 
 // overwrite css hack to turn old graph into new graph, at least, visualy
-// CS Next will be done with new graphs
+// Next will be done with new graphs
 .oldComputeGrid .col-md-6 {
   padding-left: 0;
   padding-top: 13px;

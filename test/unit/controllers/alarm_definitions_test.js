@@ -14,8 +14,8 @@
                     "href": "http://10.1.217.121:8080/v2.0/alarm-definitions/08397b8f-35b5-4a75-ab04-06529189a08a"
                 }
             ],
-            "name": "passive CS appliances monitoring",
-            "description": "Monitor CS appliances passively using received measurements",
+            "name": "passive legacy appliances monitoring",
+            "description": "Monitor legacy appliances passively using received measurements",
             "expression": "max(monasca.emit_time_sec{host_type=appliance}) > 60",
             "match_by": [
                 "hostname"
@@ -108,18 +108,18 @@
 
         var dimensionListData = {
             "cpu.idle_perc": {
-                "cloud_name": ["helion-poc-hlm-001"],
+                "cloud_name": ["ardana-poc-ardana-001"],
                 "cluster": ["compute", "c1", "c0"],
                 "control_plane": ["ccp"],
-                "hostname": ["hlm001-cp1-comp0001-mgmt", "hlm001-cp1-comp0003-mgmt", "hlm001-cp1-c1-m3-mgmt",
-                    "hlm001-cp1-comp0002-mgmt", "hlm001-cp1-c1-m2-mgmt", "hlm001-cp1-c1-m1-mgmt", "hlm001-cp1-c0-m1-mgmt"]
+                "hostname": ["ardana001-cp1-comp0001-mgmt", "ardana001-cp1-comp0003-mgmt", "ardana001-cp1-c1-m3-mgmt",
+                    "ardana001-cp1-comp0002-mgmt", "ardana001-cp1-c1-m2-mgmt", "ardana001-cp1-c1-m1-mgmt", "ardana001-cp1-c0-m1-mgmt"]
             },
             "cpu.user_perc": {
-                "cloud_name": ["helion-poc-hlm-001"],
+                "cloud_name": ["ardana-poc-ardana-001"],
                 "cluster": ["compute", "c1", "c0"],
                 "control_plane": ["ccp"],
-                "hostname": ["hlm001-cp1-comp0001-mgmt", "hlm001-cp1-comp0003-mgmt", "hlm001-cp1-c1-m3-mgmt",
-                    "hlm001-cp1-comp0002-mgmt", "hlm001-cp1-c1-m2-mgmt", "hlm001-cp1-c1-m1-mgmt", "hlm001-cp1-c0-m1-mgmt"]
+                "hostname": ["ardana001-cp1-comp0001-mgmt", "ardana001-cp1-comp0003-mgmt", "ardana001-cp1-c1-m3-mgmt",
+                    "ardana001-cp1-comp0002-mgmt", "ardana001-cp1-c1-m2-mgmt", "ardana001-cp1-c1-m1-mgmt", "ardana001-cp1-c0-m1-mgmt"]
             },
         };
 
@@ -138,7 +138,7 @@
             "dimensions": {
                 "service": "monitoring",
                 "role": "CloudController",
-                "hostname": "cmc.hpiscmgmt.local",
+                "hostname": "cmc.iscmgmt.local",
                 "host_type": "appliance"
             }
         }, {
@@ -147,7 +147,7 @@
             "dimensions": {
                 "service": "monitoring",
                 "role": "UpdateAppliance",
-                "hostname": "ua1.hpiscmgmt.local",
+                "hostname": "ua1.iscmgmt.local",
                 "host_type": "appliance"
             }
         }, {
@@ -250,12 +250,12 @@
             });
         });
 
-        describe('in HOS environment', function() {
+        describe('in stdcfg environment', function() {
             describe('and successful cases', function() {
 
                 beforeEach(inject(function(_$controller_, _$rootScope_, _$q_) {
                     q = _$q_;
-                    _$rootScope_.appConfig = {env: 'hos'};
+                    _$rootScope_.appConfig = {env: 'stdcfg'};
                     scope = _$rootScope_.$new();
                     alarm_def_controller = _$controller_('AlarmDefinitionsController', {$scope: scope});
                 }));
@@ -324,7 +324,7 @@
 
                 beforeEach(inject(function(_$controller_, _$rootScope_, _$q_) {
                     q = _$q_;
-                    _$rootScope_.appConfig = {env: 'hos'};
+                    _$rootScope_.appConfig = {env: 'stdcfg'};
                     scope = _$rootScope_.$new();
                     alarm_def_controller = _$controller_('AlarmDefinitionsController', {$scope: scope});
                 }));

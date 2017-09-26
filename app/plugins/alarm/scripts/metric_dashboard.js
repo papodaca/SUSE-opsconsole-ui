@@ -138,7 +138,7 @@
 
             /* drag and drop end */
             $scope.$on('dashboard-items.drop-model', function() {
-                $scope.prefs.dashboards['HPE.MY.DASHBOARD'].TABS = $scope.tabList.map(function(tab) {
+                $scope.prefs.dashboards['OC.MY.DASHBOARD'].TABS = $scope.tabList.map(function(tab) {
                     return {
                         name: tab.name,
                         items: tab.items.map(function(item) {
@@ -297,30 +297,19 @@
 
             function createTabs() {
                 var needsSave = false;
-                if(Array.isArray($scope.prefs.dashboards['HPE.MY.DASHBOARD'].DEFAULT) && !Array.isArray($scope.prefs.dashboards['HPE.MY.DASHBOARD'].TABS)) {
+                if(angular.isDefined($scope.prefs.dashboards['OC.MY.DASHBOARD']) === false){
+                  $scope.prefs.dashboards['OC.MY.DASHBOARD'] = prefSaver.getDefaultPrefs().dashboards['OC.MY.DASHBOARD'];
+                }
+                if(Array.isArray($scope.prefs.dashboards['OC.MY.DASHBOARD'].DEFAULT) && !Array.isArray($scope.prefs.dashboards['OC.MY.DASHBOARD'].TABS)) {
                     //upgrade to tabbed dashboard
                     var newDashboardTab = {
                         name: 'DEFAULT',
-                        items: $scope.prefs.dashboards['HPE.MY.DASHBOARD'].DEFAULT
+                        items: $scope.prefs.dashboards['OC.MY.DASHBOARD'].DEFAULT
                     };
-                    if($rootScope.appConfig.env === 'cs' && newDashboardTab.items.length === 0) {
-                        //add cs default content
-                        newDashboardTab = {
-                            name: 'SUMMARY',
-                            items: [
-                                'MY.DASHBOARD.COMPUTE_HOSTS',
-                                'MY.DASHBOARD.APPLIANCES',
-                                'MY.DASHBOARD.SERVICES'
-                            ]
-                        };
-                        default_widgets.forEach(function(item) {
-                            $scope.prefs.cardAndChartStore[item.id] = item;
-                        });
-                    }
-                    $scope.prefs.dashboards['HPE.MY.DASHBOARD'].TABS = [newDashboardTab];
+                    $scope.prefs.dashboards['OC.MY.DASHBOARD'].TABS = [newDashboardTab];
                     needsSave = true;
                 }
-                $scope.tabs = $scope.prefs.dashboards['HPE.MY.DASHBOARD'].TABS.map(function(tab) {
+                $scope.tabs = $scope.prefs.dashboards['OC.MY.DASHBOARD'].TABS.map(function(tab) {
                   return {
                       name: tab.name,
                       items: tab.items.map(function(itemId) {
@@ -337,7 +326,7 @@
             }
 
             function updateSavedPrefs() {
-                $scope.prefs.dashboards['HPE.MY.DASHBOARD'].TABS = $scope.tabs.map(function(tab) {
+                $scope.prefs.dashboards['OC.MY.DASHBOARD'].TABS = $scope.tabs.map(function(tab) {
                     return {
                         name: tab.name,
                         items: tab.items.map(function(item) {
@@ -350,7 +339,7 @@
                 });
                 prefSaver.save($scope.prefs).then(function() {
                     // noting to do?
-                }, function() {
+                }, function(error) {
                     addNotification('error', $translate.instant('monitoring_dashboard.update.error', {details: error}));
                 });
             }

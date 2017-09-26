@@ -9,7 +9,7 @@
     return [
       {
         slug: 'compute',
-        envs: ['cs', 'hos'],
+        envs: ['stdcfg'],
         needBllPlugins: ['compute','nova', 'monitor', 'ace', 'ironic', 'baremetal'],
         type: 'menu',
         label: 'compute.main_menu',
@@ -18,7 +18,7 @@
         children: [
           {
             type: 'controller',
-            envs: ['hos', 'cs'],
+            envs: ['stdcfg'],
             needBllPlugins: ['monitor'],
             controllerName: "ComputeSummaryPageController",
             path: '/compute_alarm_summary',
@@ -28,20 +28,9 @@
           },
           {
             type: 'controller',
-            envs: ['cs'],
-            needBllPlugins: ['ace','baremetal'],
-            bllPluginsOrOp: true, //do OR operation on the plugins
-            controllerName: "HardwarePageController",
-            path: '/hardware',
-            template: 'hardware/hardware.html',
-            order: 2,
-            label: 'compute.hardware.menu'
-          },
-          {
-            type: 'controller',
-            envs: ['hos'],
+            envs: ['stdcfg'],
             needBllPlugins: ['compute'],
-            controllerName: "ComputeNodesHLMController",
+            controllerName: "ComputeNodesArdanaController",
             path: '/compute_nodes',
             template: 'compute_nodes.html',
             order: 2,
@@ -49,7 +38,7 @@
           },
           {
             type: 'controller',
-            envs: ['hos', 'cs'],
+            envs: ['stdcfg'],
             needBllPlugins: ['nova', 'monitor'],
             controllerName: "ComputeInstancesController",
             path: '/compute_instances',
@@ -59,7 +48,7 @@
           },
           {
             type: 'controller',
-            envs: ['hos'],
+            envs: ['stdcfg'],
             needBllPlugins: ['nova', 'monitor', 'ironic'],
             controllerName: "ComputeBaremetalInstancesController",
             path: '/baremetal_instances',

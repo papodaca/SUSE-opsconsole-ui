@@ -50,8 +50,7 @@ module.exports = {
   middleware: function (connect, options) {
     if(config && config.proxy) {
       options.route = proxyPath;
-      //TODO - remove cloudsystem_bll_url once configuration scripts are updaetd
-      options.proxyRoot = config.bll_url || config.cloudsystem_bll_url || "/";
+      options.proxyRoot = config.bll_url || "/";
       var proxy = new Proxy(options);
       return [proxy];
     } else {

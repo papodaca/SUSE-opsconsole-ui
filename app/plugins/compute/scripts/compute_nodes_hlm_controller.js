@@ -6,7 +6,7 @@
 
     var p = ng.module('plugins');
 
-    p.controller('ComputeNodesHLMController', [
+    p.controller('ComputeNodesArdanaController', [
         '$scope', '$translate', '$q', '$timeout', 'addNotification',
         'bllApiRequest', 'ArdanaService', 'AnsiColoursService',
         'updateEmptyDataPage', 'getClusterGrouping', 'getHostAlarmCountForGroup',
@@ -207,41 +207,41 @@
                 globalActionsConfig: []
             };
 
-            // Set the actions menu for HLM Ops to the action menu items, if Ardana Service is unavailable
+            // Set the actions menu for Ardana Ops to the action menu items, if Ardana Service is unavailable
             ArdanaService.readyPromise
                 .then(ArdanaService.updateIsConfigEncrypted)
                 .then(function () {
                     if (ArdanaService.isAvailable()) {
                         $scope.compute_nodes_table_config.actionMenuConfig = [
                             {
-                                label: $translate.instant("compute.compute_nodes.hlm.button.activate"),
+                                label: $translate.instant("compute.compute_nodes.ardana.button.activate"),
                                 name: "activate",
                                 action: function (data) {
-                                    activateCompute_HLM(angular.copy(data));
+                                    activateCompute_Ardana(angular.copy(data));
                                 }
                             },
                             {
-                                label: $translate.instant("compute.compute_nodes.hlm.button.deactivate"),
+                                label: $translate.instant("compute.compute_nodes.ardana.button.deactivate"),
                                 name: "deactivate",
                                 action: function (data) {
-                                    deactivateCompute_HLM(angular.copy(data));
+                                    deactivateCompute_Ardana(angular.copy(data));
                                 }
                             },
                             {
-                                label: $translate.instant("compute.compute_nodes.hlm.button.delete"),
+                                label: $translate.instant("compute.compute_nodes.ardana.button.delete"),
                                 name: "delete",
                                 action: function (data) {
-                                    deleteCompute_HLM(angular.copy(data));
+                                    deleteCompute_Ardana(angular.copy(data));
                                 }
                             }];
                         $scope.compute_nodes_table_config.globalActionsConfigFunction =
                             $scope.globalActionPermissionsCheck;
                         $scope.compute_nodes_table_config.globalActionsConfig = [
                             {
-                                label: $translate.instant("compute.compute_nodes.hlm.button.create_host"),
+                                label: $translate.instant("compute.compute_nodes.ardana.button.create_host"),
                                 name: 'globalActionAddCompute',
                                 action: function () {
-                                    addComputeNode_HLM();
+                                    addComputeNode_Ardana();
                                 },
                                 disabled: true
                             }
@@ -249,33 +249,33 @@
                     }
                 });
 
-            function setComputeData(hlmOverride) {
+            function setComputeData(ardanaOverride) {
                 $scope.computeDataLoading = true;
 
-                // Overwrite the monasca state for nodes with in play or recently completed hlm processes. Monasca
-                // status will lag behind the hlm action. In order to avoid flip-flopping of state on refresh, or new
+                // Overwrite the monasca state for nodes with in play or recently completed Ardana processes. Monasca
+                // status will lag behind the Ardana action. In order to avoid flip-flopping of state on refresh, or new
                 // clients seeing stale state, check active or recently completed plays and overwrite any laggy value.
                 // This is only applicable for 60 seconds, afterwards the monasca state will be reported again
                 // regardless.
-                var hlmOverrides = {
+                var ardanaOverrides = {
                     stop: {},
                     start: {}
                 };
                 // If we don't override values make promise a no-op with empty collections (functionality as before)
-                var hlmOverridesPromise = hlmOverride && ArdanaService.isAvailable() ?
+                var ardanaOverridesPromise = ardanaOverride && ArdanaService.isAvailable() ?
                     ArdanaService.findStartStopRuns(120 * 1000).catch(function () {
-                        return hlmOverrides;
-                    }) : $q.when(hlmOverrides);
+                        return ardanaOverrides;
+                    }) : $q.when(ardanaOverrides);
 
                 var request = {operation: 'get_compute_list'};
 
                 $scope.emptyDataPage.computeHost = {};
 
                 // Wait for completion in parallel to help with load time
-                $q.all([bllApiRequest.get("compute", request), hlmOverridesPromise])
+                $q.all([bllApiRequest.get("compute", request), ardanaOverridesPromise])
                     .then(function (results) {
                         $scope.hostData = results[0];
-                        hlmOverrides = results[1];
+                        ardanaOverrides = results[1];
 
                         //show empty data page
                         if (!angular.isDefined($scope.hostData) || !angular.isDefined($scope.hostData.data) ||
@@ -319,7 +319,7 @@
                                                 if (angular.isDefined(worstAlarm)) {
                                                     compute_data.alarm_state = worstAlarm;
                                                 }
-                                                processComputeData(compute_data, hlmOverrides);
+                                                processComputeData(compute_data, ardanaOverrides);
                                             });
                                         }
                                     });
@@ -361,18 +361,18 @@
                     });
             }
 
-            function processComputeData(compute_data, hlmOverrides) {
+            function processComputeData(compute_data, ardanaOverrides) {
                 var state;
-                // Check if hlm_start or hlm_stop has run/is running on this node. If so override the
+                // Check if ardana_start or ardana_stop has run/is running on this node. If so override the
                 // monasca state until it has had a chance to catch up
-                if (angular.isDefined(hlmOverrides.start[compute_data.name])) {
+                if (angular.isDefined(ardanaOverrides.start[compute_data.name])) {
                     // If the process is alive, 'ing' it. Otherwise 'ed' it.
-                    state = hlmOverrides.start[compute_data.name] ? 'activating' : 'activated';
+                    state = ardanaOverrides.start[compute_data.name] ? 'activating' : 'activated';
                     // Only override if state is stale
                     compute_data.state = compute_data.state === 'deactivated' ? state : compute_data.state;
-                } else if (angular.isDefined(hlmOverrides.stop[compute_data.name])) {
+                } else if (angular.isDefined(ardanaOverrides.stop[compute_data.name])) {
                     // If the process is alive, 'ing' it. Otherwise 'ed' it.
-                    state = hlmOverrides.stop[compute_data.name] ? 'deactivating' : 'deactivated';
+                    state = ardanaOverrides.stop[compute_data.name] ? 'deactivating' : 'deactivated';
                     // Only override if state is stale
                     compute_data.state = compute_data.state === 'activated' ? state : compute_data.state;
                 }
@@ -445,7 +445,7 @@
             };
 
             //this function is used to set the table state during progress
-            //especially for hlm that the transition state is not persisted.
+            //especially for Ardana that the transition state is not persisted.
             var setProgressState = function(id, state) {
                 if(!angular.isDefined(id)) {
                     return;
@@ -462,23 +462,23 @@
                 'broadcastResetInputFunc': broadcastRestInputs
             });
 
-            //for hos hlm, actions code moved to compute_host_helper_service.js
+            //actions code moved to compute_host_helper_service.js
             //so they could be shared across pages.
 
-            function addComputeNode_HLM() {
-                computeHostHelperService.addCompute_HLM();
+            function addComputeNode_Ardana() {
+                computeHostHelperService.addCompute_Ardana();
             }
 
-            function activateCompute_HLM (data) {
-                computeHostHelperService.activateCompute_HLM(data);
+            function activateCompute_Ardana (data) {
+                computeHostHelperService.activateCompute_Ardana(data);
             }
 
-            function deactivateCompute_HLM (data) {
-                computeHostHelperService.deactivateCompute_HLM(data);
+            function deactivateCompute_Ardana (data) {
+                computeHostHelperService.deactivateCompute_Ardana(data);
             }
 
-            function deleteCompute_HLM(data) {
-                computeHostHelperService.deleteCompute_HLM(data);
+            function deleteCompute_Ardana(data) {
+                computeHostHelperService.deleteCompute_Ardana(data);
             }
         }
     ]);

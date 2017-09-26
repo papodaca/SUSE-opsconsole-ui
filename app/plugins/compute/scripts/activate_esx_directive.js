@@ -102,14 +102,6 @@
                     };
 
 
-                    scope.$watch(function() {return $rootScope.available_bllplugins;}, function() {
-                        if (angular.isDefined($rootScope.available_bllplugins) &&
-                            $rootScope.available_bllplugins.indexOf('eon') !== -1 &&
-                            $rootScope.appConfig.env === 'cs') {
-                            scope.getServerGroupList();
-                        }
-                    });
-
                     scope.launchAddCloudTrunkModal = function() {
                         modalCtrl.trunk = {};
                         modalCtrl.trunk.inputCloudTrunkName = "";

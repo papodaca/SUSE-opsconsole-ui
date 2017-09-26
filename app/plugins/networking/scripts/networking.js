@@ -9,7 +9,7 @@
     return [
       {
         slug: 'networking',
-        envs: ['cs', 'hos'],
+        envs: ['stdcfg'],
         needBllPlugins: ['monitor', 'sys_sum', 'user_group'],
         type: 'menu',
         label: 'networking.main_menu',
@@ -18,7 +18,7 @@
         children: [
           {
             type: 'controller',
-            envs: ['hos', 'cs'],
+            envs: ['stdcfg'],
             needBllPlugins: ['monitor'],
             controllerName: "NetworkingSummaryPageController",
             path: '/networking_summary',

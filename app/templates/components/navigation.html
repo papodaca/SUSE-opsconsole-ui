@@ -3,12 +3,12 @@
     <ul>
       <li ng-repeat="navItem in nav">
         <div class="section" ng-click="toggle($index)">
-          <i class="helion-icon helion-icon-{{navItem.icon}} section-icon"></i>
+          <i class="ardana-icon ardana-icon-{{navItem.icon}} section-icon"></i>
 
           <a ng-if="! navItem.children" ng-click="hide()" href="#/{{navItem.pluginName}}{{navItem.path}}{{query}}">{{navItem.label | translate}}</a>
           <a ng-if="navItem.children" class="header {{navItem.icon}}" ng-class="{expanded: navItem.expand}"
                   >{{navItem.label | translate}}</i></a>
-          <i class="helion-icon helion-icon-Up expanded-icon" ng-show="navItem.expand"></i>
+          <i class="ardana-icon ardana-icon-Up expanded-icon" ng-show="navItem.expand"></i>
         </div>
 
         <ul ng-if="navItem.children">

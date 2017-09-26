@@ -9,7 +9,7 @@
     return [
       {
         slug: 'storage',
-        envs: ['cs','hos'],
+        envs: ['stdcfg'],
         needBllPlugins: ['monitor', 'block_device', 'objectstorage_summary'],
         type: 'menu',
         label: 'storage.menu',
@@ -18,7 +18,7 @@
         children: [
           {
             type: 'controller',
-            envs: ['hos', 'cs'],
+            envs: ['stdcfg'],
             needBllPlugins: ['monitor'],
             controllerName: "BlockStoragePageController",
             path: '/block_storage_summary',
@@ -28,17 +28,7 @@
           },
           {
             type: 'controller',
-            envs: ['cs'],
-            needBllPlugins: ['block_device'],
-            controllerName: "BlockStorageController",
-            path: '/block_storage',
-            template: 'block_storage.html',
-            order: 3,
-            label: 'storage.block_storage.menu'
-          },
-          {
-            type: 'controller',
-            envs: ['hos','cs'],
+            envs: ['stdcfg'],
             needBllPlugins: ['monitor', 'objectstorage_summary'],
             controllerName: "ObjectStoragePageController",
             path: '/object_storage_summary',

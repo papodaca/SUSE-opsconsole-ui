@@ -28,7 +28,7 @@ var sync = true;
 
 gulp.task('protractor-jenkins-env', function() {
     jenkinsConfig = {
-        bll_url: "https://demo.rose.hpecorp.net:9095/api/v1/",
+        bll_url: "https://127.0.0.1:9095/api/v1/",//TODO-replace with local test system
         proxy: true,
         is_foundation_installed: true
     };
@@ -67,7 +67,7 @@ gulp.task('instrument', ['build', 'wire-deps'], function() {
 });
 
 gulp.task('setup-env', function() {
-    return gulp.src('.tmp/cloud_system.json')
+    return gulp.src('.tmp/opscon_config.json')
         .pipe(plugins.jsonEditor({
             env: protractorConfig.env,
             protractor_testing: true
@@ -107,28 +107,28 @@ gulp.task('protractor-tests', function() {
         });
 });
 
-gulp.task('protractor-hos', function(callback) {
-    if (args.env === 'hos' || args.env === null) {
-        protractorConfig.env = 'hos';
+gulp.task('protractor-stdcfg', function(callback) {
+    if (args.env === 'stdcfg' || args.env === null) {
+        protractorConfig.env = 'stdcfg';
         plugins.runSequence(
             'setup-env',
             'protractor-tests',
             callback);
     } else {
-        console.log('Protractor tests against hos skipped.');
+        console.log('Protractor tests against stdcfg skipped.');
         callback();
     }
 });
 
-gulp.task('protractor-cs', function(callback) {
-    if (args.env === 'cs' || args.env === null) {
-        protractorConfig.env = 'cs';
+gulp.task('protractor-legacy', function(callback) {
+    if (args.env === 'legacy' || args.env === null) {
+        protractorConfig.env = 'legacy';
         plugins.runSequence(
             'setup-env',
             'protractor-tests',
             callback);
     } else {
-        console.log('Protractor tests against cs skipped.');
+        console.log('Protractor tests against legacy skipped.');
         callback();
     }
 });
@@ -178,8 +178,8 @@ gulp.task('post-protractor', function(callback) {
 gulp.task('protractor', function(callback) {
     plugins.runSequence(
         'pre-protractor',
-        'protractor-hos',
-        'protractor-cs',
+        'protractor-stdcfg',
+        'protractor-legacy',
         'post-protractor',
         callback);
 });

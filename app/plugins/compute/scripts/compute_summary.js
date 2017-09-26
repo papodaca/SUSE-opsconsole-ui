@@ -95,22 +95,7 @@
                 fractionPercent: true
             }];
 
-            if($rootScope.appConfig.env === 'cs') {
-              default_widgets = default_widgets.concat(default_resource_widgets.map(function(widget) {
-                var this_widget = angular.copy(widget);
-                this_widget.dimensions.cluster = 'rhel-compute';
-                this_widget.visibility = 'data';
-                return this_widget;
-              }));
-              default_widgets = default_widgets.concat(default_resource_widgets.map(function(widget) {
-                var this_widget = angular.copy(widget);
-                this_widget.dimensions.cluster = 'esx-compute';
-                this_widget.visibility = 'data';
-                return this_widget;
-              }));
-            } else {
-              default_widgets = default_widgets.concat(default_resource_widgets);
-            }
+            default_widgets = default_widgets.concat(default_resource_widgets);
 
             $scope.currentDashboardItems = default_widgets;
 

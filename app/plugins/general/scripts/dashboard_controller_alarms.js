@@ -52,7 +52,10 @@
                             $scope.deltaRefreshTime = data.deltaRefreshTime[window.location.hash];
                         }
 
-                        var userList = data.dashboards["HPE.CENTRAL.DASHBOARD"]["HPE.ALARMSUMMARY"];
+                        var userList;
+                        if(angular.isDefined(data.dashboards) && angular.isDefined(data.dashboards["CENTRAL.DASHBOARD"])){
+                          userList = prefSaver.getDefaultPrefs().dashboards["CENTRAL.DASHBOARD"].ALARMSUMMARY;
+                        }
                         if(angular.isDefined(userList)) {
                             userList.forEach(function(datum) {
                                 var cData = data.cardAndChartStore[datum];
@@ -174,10 +177,13 @@
                     newCard.hostnames = choices;
 
                 $scope.userPref.cardAndChartStore[cardName] = newCard;
+                if(angular.isDefined($scope.userPref.dashboards['CENTRAL.DASHBOARD']) == false){
+                    $scope.userPref.dashboards['CENTRAL.DASHBOARD'] = prefSaver.getDefaultPrefs().dashboards['CENTRAL.DASHBOARD'];
+                }
                 if($scope.newCardSelections.index === undefined)
-                    $scope.userPref.dashboards['HPE.CENTRAL.DASHBOARD']['HPE.ALARMSUMMARY'].push(cardName);
+                    $scope.userPref.dashboards['CENTRAL.DASHBOARD'].ALARMSUMMARY.push(cardName);
                 else {
-                    $scope.userPref.dashboards['HPE.CENTRAL.DASHBOARD']['HPE.ALARMSUMMARY'][$scope.newCardSelections.index] = cardName;
+                    $scope.userPref.dashboards['CENTRAL.DASHBOARD'].ALARMSUMMARY[$scope.newCardSelections.index] = cardName;
                 }
 
 
@@ -194,7 +200,7 @@
                 if(typeof idx === 'undefined')
                     return false;
 
-                $scope.userPref.dashboards['HPE.CENTRAL.DASHBOARD']['HPE.ALARMSUMMARY'].splice(idx,1);
+                $scope.userPref.dashboards['CENTRAL.DASHBOARD'].ALARMSUMMARY.splice(idx,1);
 
                 prefSaver.save($scope.userPref).then(
                     function () {
@@ -206,7 +212,7 @@
             };
 
             $scope.mUpDynCard = function(idx) {
-                var target = $scope.userPref.dashboards['HPE.CENTRAL.DASHBOARD']['HPE.ALARMSUMMARY'];
+                var target = $scope.userPref.dashboards['CENTRAL.DASHBOARD'].ALARMSUMMARY;
                 if(typeof target[idx-1] === 'undefined')
                     return false;
                 target.splice(idx-1,0, target.splice(idx,1)[0]);
@@ -219,7 +225,7 @@
             };
 
             $scope.mDwnDynCard = function(idx) {
-                var target = $scope.userPref.dashboards['HPE.CENTRAL.DASHBOARD']['HPE.ALARMSUMMARY'];
+                var target = $scope.userPref.dashboards['CENTRAL.DASHBOARD'].ALARMSUMMARY;
                 if(typeof target[idx+1] === 'undefined')
                     return false;
                 target.splice(idx+1,0, target.splice(idx,1)[0]);
@@ -562,7 +568,6 @@
             $scope.modalTableAlarmServices = [];
             $scope.modalTableAlarmQueryParams = {};
             $scope.modalTableAlarmHostnames = [];
-            $scope.csEnvironment = ( $rootScope.appConfig.env === 'cs' );
             $scope.modalCreateAlarmsServiceMode = 'service';
             $scope.newAlarmOldTotal = {total: 0, critical: 0, warning: 0, unknown: 0};
 

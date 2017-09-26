@@ -44,7 +44,7 @@ angular.module("operations-ui").factory("sortUtils", ['isUndefined', '$translate
         return 0;
     };
 
-    //TODO - update with REAL status values from cloudsystem backend
+    //TODO - update with REAL status values from backend
     var statusStringComparator = function(str1, str2, reverse){
         var str1_val = statusStringValueConverter(str1);
         var str2_val = statusStringValueConverter(str2);

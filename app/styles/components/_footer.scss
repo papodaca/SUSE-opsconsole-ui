@@ -37,25 +37,14 @@ body:before {
   background-color: black;
   color: white;
 
-  .helionLogo {
+  .ardanaLogo {
       display: inline-block;
-      background-image: url($helion_logo_rev);
+      background-image: url($ardana_logo_rev);
       background-repeat: no-repeat;
       height: 110px;
       width: 190px;
       margin-top: 27px;
       margin-left: 40px;
-  }
-
-  .hpeLogo {
-      display: inline-block;
-      float:right;
-      background-image: url($hpe_logo_rev);
-      background-repeat: no-repeat;
-      height: 110px;
-      width: 170px;
-      margin-top: 24px;
-      margin-right: 30px;
   }
 
   .copyright {

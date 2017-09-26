@@ -9,7 +9,7 @@
       require: "ngModel",
       templateUrl: "components/oc_checkbox.html",
       scope: {
-          "hpDisabled": "&",
+          "ocDisabled": "&",
           "disabledClear": "&"
       },
       link: function(scope, element, attributes, ngModel) {
@@ -23,9 +23,9 @@
 
         if(scope.disabledClear && scope.disabledClear()) {
           scope.$watch(function() {
-            return scope.hpDisabled();
+            return scope.ocDisabled();
           }, function() {
-            if(scope.hpDisabled()) {
+            if(scope.ocDisabled()) {
               ngModel.$setViewValue(false);
             }
           });

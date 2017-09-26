@@ -11,7 +11,7 @@
                 </tr>
                 <tr class="item-line">
                     <td class="item-label" style="width: 250px;">{{"compute.compute_nodes.table.row.label.contains" | translate }}
-                        <div class="oc-info helion-icon helion-icon-Unknown_L vert-offset-top-half"
+                        <div class="oc-info ardana-icon ardana-icon-Unknown_L vert-offset-top-half"
                              uib-tooltip="{{'compute.tooltip.contains' | translate}}"
                              tooltip-placement="right"></div>
                     </td>
@@ -21,7 +21,7 @@
                 </tr>
                 <tr class="item-line">
                     <td class="item-label">{{"compute.compute_nodes.table.row.label.technology" | translate}}
-                        <div class="oc-info helion-icon helion-icon-Unknown_L"
+                        <div class="oc-info ardana-icon ardana-icon-Unknown_L"
                              uib-tooltip="{{'compute.tooltip.technology' | translate}}"
                              tooltip-placement="right"></div>
                     </td>
@@ -33,10 +33,10 @@
                 </tr>
                 <tr class="item-line">
                     <td class="item-label">{{"compute.details.server_group.header" | translate |uppercase}}</td>
-                    <td ng-if="computeDetails['details'].data.hlm['server-group'] !== undefined">
-                        {{computeDetails['details'].data.hlm['server-group'] | uppercase}}
+                    <td ng-if="computeDetails['details'].data.ardana['server-group'] !== undefined">
+                        {{computeDetails['details'].data.ardana['server-group'] | uppercase}}
                     </td>
-                    <td ng-if="computeDetails['details'].data.hlm['server-group'] === undefined">{{"compute.notavailable.data" |
+                    <td ng-if="computeDetails['details'].data.ardana['server-group'] === undefined">{{"compute.notavailable.data" |
                         translate | uppercase}}
                     </td>
                 </tr>
@@ -64,7 +64,7 @@
             </table>
 
             <!-- action buttons corresponding to row actions -->
-           <div ng-show="$root.appConfig.env === 'hos'" class="button-area">
+           <div ng-show="$root.appConfig.env === 'stdcfg'" class="button-area">
                 <button class="oc-btn oc-btn-primary"
                         ng-bind="'compute.compute_nodes.button.activate' | translate"
                         ng-click="activateComputeHost(data)"
@@ -161,44 +161,44 @@
     </div>
 </div>
 
-<!-- hlm actions from drilldonw from other places-->
+<!-- ardana actions from drilldonw from other places-->
 <div ng-if="computeHostServiceFromDetail">
-     <stackablemodal id="askEncryptionStackableHLMId2" name="askEncryptionStackableHLMName2"
-                     showAttribute="computeHostServiceFromDetail.askEncryptionModalHLM._show"
-                     modalTemplateUrl="'compute/templates/hlm/encryption_compute_node.html'"
-                     closeaction="computeHostServiceFromDetail.askEncryptionModalHLM.stackableScope.clearAndClose">
+     <stackablemodal id="askEncryptionStackableArdanaId2" name="askEncryptionStackableArdanaName2"
+                     showAttribute="computeHostServiceFromDetail.askEncryptionModalArdana._show"
+                     modalTemplateUrl="'compute/templates/ardana/encryption_compute_node.html'"
+                     closeaction="computeHostServiceFromDetail.askEncryptionModalArdana.stackableScope.clearAndClose">
      </stackablemodal>
 
      <!-- logview for error message of action-->
-    <stackablemodal id="logViewHLMModalId2" name="logViewHLMModalName2"
-                    showAttribute="computeHostServiceFromDetail.logViewHLM.show"
-                    modalTemplateUrl="'compute/templates/hlm/log_view.html'">
+    <stackablemodal id="logViewArdanaModalId2" name="logViewArdanaModalName2"
+                    showAttribute="computeHostServiceFromDetail.logViewArdana.show"
+                    modalTemplateUrl="'compute/templates/ardana/log_view.html'">
     </stackablemodal>
 
-     <!--confirm delete host hlm -->
+     <!--confirm delete host ardana -->
     <opsmodal showAttribute="computeHostServiceFromDetail.showConfirmDeleteModalFlag"
               type="confirm"
-              commit-action="computeHostServiceFromDetail.commitDeleteHost_HLM"
-              header-title="compute.compute_nodes.hlm.delete.confirm.title">
-        <div ng-include="'compute/templates/hlm/delete_host_confirm.html'"></div>
+              commit-action="computeHostServiceFromDetail.commitDeleteHost_Ardana"
+              header-title="compute.compute_nodes.ardana.delete.confirm.title">
+        <div ng-include="'compute/templates/ardana/delete_host_confirm.html'"></div>
         <modal-overlay show-attribute="computeHostServiceFromDetail.updatingHostOverlayFlag"></modal-overlay>
     </opsmodal>
 
-    <!--confirm deactivate host hlm -->
+    <!--confirm deactivate host ardana -->
     <opsmodal showAttribute="computeHostServiceFromDetail.showConfirmDeactivateModalFlag"
               type="confirm"
-              commit-action="computeHostServiceFromDetail.commitDeactivateHost_HLM"
-              header-title="compute.compute_nodes.hlm.deactivate.title">
-        <div ng-include="'compute/templates/hlm/deactivate_host_confirm.html'"></div>
+              commit-action="computeHostServiceFromDetail.commitDeactivateHost_Ardana"
+              header-title="compute.compute_nodes.ardana.deactivate.title">
+        <div ng-include="'compute/templates/ardana/deactivate_host_confirm.html'"></div>
         <modal-overlay show-attribute="computeHostServiceFromDetail.updatingHostOverlayFlag"></modal-overlay>
     </opsmodal>
 
-    <!--confirm activate host hlm -->
+    <!--confirm activate host ardana -->
     <opsmodal showAttribute="computeHostServiceFromDetail.showConfirmActivateModalFlag"
               type="confirm"
-              commit-action="computeHostServiceFromDetail.commitActivateHost_HLM"
-              header-title="compute.compute_nodes.hlm.activate.title">
-        <div ng-include="'compute/templates/hlm/activate_host_confirm.html'"></div>
+              commit-action="computeHostServiceFromDetail.commitActivateHost_Ardana"
+              header-title="compute.compute_nodes.ardana.activate.title">
+        <div ng-include="'compute/templates/ardana/activate_host_confirm.html'"></div>
         <modal-overlay show-attribute="computeHostServiceFromDetail.updatingHostOverlayFlag"></modal-overlay>
     </opsmodal>
 </div>

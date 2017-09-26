@@ -9,10 +9,10 @@ To update the branding of the Ops Console UI, several files need to be updated o
 app/locales/en/branding.json
 app/locales/ja/branding.json
 app/locales/zh/branding.json
-for example, the 3 files above should have the following entries for the CloudSystem branch of the Ops Console:
-    "branding.product.login.title" : "HPE Helion CloudSystem",
-    "branding.pageTitle.title" : "HPE Helion CloudSystem Operations Console",
-    "branding.masthead.title": "HPE Helion CloudSystem Operations Console",
+for example, to update the titles of the product, change the following entries:
+    "branding.product.login.title" : "PRODUCTNAME",
+    "branding.pageTitle.title" : "PRODUCTNAME Operations Console",
+    "branding.masthead.title": "PRODUCTNAME Operations Console",
 
 
 # the following file contains the declaration of the login artwork and masthead logos used

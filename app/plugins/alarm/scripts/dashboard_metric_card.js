@@ -311,11 +311,6 @@
         var handleComputeResource = function(res) {
             scope.data.max = 0;
             scope.data.data = {count: 0};
-            if($rootScope.appConfig.env === 'cs') {
-                res.data = res.data.filter(function(host) {
-                    return host.state === 'activated';
-                });
-            }
             res.data.forEach(function(computeHost) {
                 scope.data.max += computeHost[scope.card.config.total];
                 scope.data.data.count += computeHost[scope.card.config.fraction];

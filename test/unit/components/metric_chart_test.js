@@ -20,14 +20,14 @@
             metric: 'cpu.system_perc',
             dimensions: [{
                 key: 'hostname',
-                value: 'padawan-ccp-c1-m1-mgmt'
+                value: 'apprentice-ccp-c1-m1-mgmt'
             }]
         };
         var element2 = {
             metric: 'cpu.user_perc',
             dimensions: [{
                 key: 'hostname',
-                value: 'padawan-ccp-c1-m1-mgmt'
+                value: 'apprentice-ccp-c1-m1-mgmt'
             }]
         };
         var rawData = [

@@ -5,7 +5,7 @@
     var p = ng.module('plugins');
     p.controller('ComputeSummaryPageController', ['$scope', '$rootScope',
         function ($scope,$rootScope) {
-            if($rootScope.appConfig.env === 'hos') {
+            if($rootScope.appConfig.env === 'stdcfg') {
                 $scope.computeSummaryPages = [
                     {header: 'common.inventory_summary', template: 'compute/templates/inventorysummary/compute_inventory_summary.html', tabname:'inventorysummary'},
                     {header: 'common.alarmsummary.title', template: 'compute/templates/alarmsummary/compute_alarm_summary.html', tabname:'alarmsummary'}

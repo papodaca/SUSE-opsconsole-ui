@@ -10,7 +10,7 @@
 
         //this service intends to serve the common functions that could be used
         //anywhere. The code moved from compute_nodes.js
-        //actions for HOS (HLM) are moved, not for cs. Will do cs actions later.
+        //actions for stdcfg (Ardana) are moved, not for legacy. Will do legacy actions later.
         var self = this;
 
         this.isValidToEnableGlobalAction = function(data, actionName) {
@@ -56,34 +56,34 @@
             return true;
         };
 
-        //deal with actions for HOS using HLM
-        this.askEncryptionModalHLM = {
+        //deal with actions for stdcfg using Ardana
+        this.askEncryptionModalArdana = {
             _show: false,
             show: function () {
                 if (!ArdanaService.isConfigEncrypted()) {
                     return $q.when('');
                 }
 
-                if (self.askEncryptionModalHLM._show) {
+                if (self.askEncryptionModalArdana._show) {
                     return $q.reject('Singleton pattern for ask encryption modal');
                 }
 
-                self.askEncryptionModalHLM._show = true;
-                self.askEncryptionModalHLM._showDeferred = $q.defer();
-                return self.askEncryptionModalHLM._showDeferred.promise;
+                self.askEncryptionModalArdana._show = true;
+                self.askEncryptionModalArdana._showDeferred = $q.defer();
+                return self.askEncryptionModalArdana._showDeferred.promise;
             },
             stackableScope: {
                 values: {},
                 clearAndClose: function (ok) {
-                    self.askEncryptionModalHLM._show = false;
+                    self.askEncryptionModalArdana._show = false;
 
                     if (ok) {
-                        self.askEncryptionModalHLM._showDeferred
-                            .resolve(self.askEncryptionModalHLM.stackableScope.values.encryptionKey);
+                        self.askEncryptionModalArdana._showDeferred
+                            .resolve(self.askEncryptionModalArdana.stackableScope.values.encryptionKey);
                     } else {
-                        self.askEncryptionModalHLM._showDeferred.reject();
+                        self.askEncryptionModalArdana._showDeferred.reject();
                     }
-                    self.askEncryptionModalHLM.stackableScope.values = {};
+                    self.askEncryptionModalArdana.stackableScope.values = {};
 
                     if(angular.isDefined(self.broadcastResetInputFunction)) {
                         self.broadcastResetInputFunction();
@@ -92,16 +92,16 @@
             }
         };
 
-        this.addComputeNodeModalHLM = {
+        this.addComputeNodeModalArdana = {
             _show: false,
             show: function () {
-                if (self.askEncryptionModalHLM._show) {
+                if (self.askEncryptionModalArdana._show) {
                     return $q.reject('Singleton pattern for add compute host');
                 }
 
-                self.addComputeNodeModalHLM._show = true;
-                self.addComputeNodeModalHLM._showDeferred = $q.defer();
-                return self.addComputeNodeModalHLM._showDeferred.promise;
+                self.addComputeNodeModalArdana._show = true;
+                self.addComputeNodeModalArdana._showDeferred = $q.defer();
+                return self.addComputeNodeModalArdana._showDeferred.promise;
             },
             stackableScope: {
                 values: {},
@@ -113,23 +113,23 @@
                     encryptionRequired: false
                 },
                 cancel: function () {
-                    self.addComputeNodeModalHLM._show = false;
-                    self.addComputeNodeModalHLM.stackableScope.values = {};
+                    self.addComputeNodeModalArdana._show = false;
+                    self.addComputeNodeModalArdana.stackableScope.values = {};
 
                     if(angular.isDefined(self.broadcastResetInputFunction)) {
                         self.broadcastResetInputFunction();
                     }
-                    self.addComputeNodeModalHLM._showDeferred.reject();
+                    self.addComputeNodeModalArdana._showDeferred.reject();
                 },
                 add: function () {
-                    self.addComputeNodeModalHLM._show = false;
-                    self.addComputeNodeModalHLM._showDeferred
-                        .resolve(self.addComputeNodeModalHLM.stackableScope.values);
+                    self.addComputeNodeModalArdana._show = false;
+                    self.addComputeNodeModalArdana._showDeferred
+                        .resolve(self.addComputeNodeModalArdana.stackableScope.values);
                 },
                 validateServer: function (serverId) {
                     serverId = serverId.toLowerCase();
                     return _.filter(
-                        self.addComputeNodeModalHLM.stackableScope.selections.servers,
+                        self.addComputeNodeModalArdana.stackableScope.selections.servers,
                         function (value) {
                             return value.toLowerCase() === serverId;
                         }).length === 0;
@@ -137,10 +137,10 @@
             }
         };
 
-        this.addCompute_HLM = function() {
+        this.addCompute_Ardana = function() {
             self.addHostValues = {};
             self.addHostServer = {};
-            self.addComputeNodeModalHLM.stackableScope.values = {};
+            self.addComputeNodeModalArdana.stackableScope.values = {};
 
             // Fetch the latest model, this will contain server roles, server groups and nic-mapping options
             ArdanaService.getModel()
@@ -148,7 +148,7 @@
                     addNotification(
                         "error",
                         $translate.instant(
-                            "compute.compute_nodes.hlm.add.notification.fetch_model_failed",
+                            "compute.compute_nodes.ardana.add.notification.fetch_model_failed",
                             {'details': error.data ? error.data[0].data : ''}
                         )
                     );
@@ -157,7 +157,7 @@
                 // Process model to discover server roles, etc
                 .then(function (model) {
 
-                    var scope = self.addComputeNodeModalHLM.stackableScope;
+                    var scope = self.addComputeNodeModalArdana.stackableScope;
 
                     // Create the collection to populate select form inputs
                     scope.selections = {};
@@ -217,8 +217,8 @@
 
                 })
                 // Show the add compute host slideout
-                .then(_.partial(self.addComputeNodeModalHLM.show))
-                // Create the HLM server object
+                .then(_.partial(self.addComputeNodeModalArdana.show))
+                // Create the Ardana server object
                 .then(function (values) {
                     self.addHostValues = values;
                     // Create server with mandatory fields
@@ -242,7 +242,7 @@
 
         };
 
-        this.commitAddHost_HLM = function()  {
+        this.commitAddHost_Ardana = function()  {
             self.updatingHostOverlayFlag = true;
             //will be used to block actions as singleton value
             self.blockActionFlag = false;
@@ -255,7 +255,7 @@
                     addNotification(
                         "info",
                         $translate.instant(
-                            "compute.compute_nodes.hlm.add.notification.deploy_started",
+                            "compute.compute_nodes.ardana.add.notification.deploy_started",
                             {'name': self.addHostServer.id, 'processId': pRef}
                         )
                     );
@@ -271,7 +271,7 @@
                             addNotification(
                                 "info",
                                 $translate.instant(
-                                    "compute.compute_nodes.hlm.add.notification.success",
+                                    "compute.compute_nodes.ardana.add.notification.success",
                                     {name: self.addHostValues.id}
                                 )
                             );
@@ -279,7 +279,7 @@
 
                             // Successfully added host, give some time for nova to update and refresh
                             //when it is done just wait a little and refresh it
-                            //add compute host for HLM only in compute host table page
+                            //add compute host for Ardana only in compute host table page
                             if(angular.isDefined(self.refreshTableFunction)) {
                                 $timeout( function() {
                                     self.refreshTableFunction();
@@ -294,10 +294,10 @@
                             var code = _.get(data.data, 'code', -1);
                             if (code > 0) {
                                 // Deploy failed
-                                self.logViewHLM.addCustomNotification(
+                                self.logViewArdana.addCustomNotification(
                                     "error",
                                     $translate.instant(
-                                        "compute.compute_nodes.hlm.add.notification.deploy_failed",
+                                        "compute.compute_nodes.ardana.add.notification.deploy_failed",
                                         {name: self.addHostValues.id}),
                                     data
                                 );
@@ -305,7 +305,7 @@
                                 // Poll failed
                                 addNotification("error",
                                     $translate.instant(
-                                        "compute.compute_nodes.hlm.add.notification.poll_failed",
+                                        "compute.compute_nodes.ardana.add.notification.poll_failed",
                                         {name: self.addHostValues.id}));
                             }
                             self.blockActionFlag = false;
@@ -317,56 +317,56 @@
                     var errorCode = _.get(error, 'data.errorCode');
                     if (errorCode) {
                         errorNotification = $translate.instant(
-                            "compute.compute_nodes.hlm.add.notification.error", {
+                            "compute.compute_nodes.ardana.add.notification.error", {
                                 name: self.addHostServer.id,
-                                details: $translate.instant("compute.compute_nodes.hlm.errors." + errorCode)
+                                details: $translate.instant("compute.compute_nodes.ardana.errors." + errorCode)
                             });
                     } else {
                         errorNotification = $translate.instant(
-                            "compute.compute_nodes.hlm.add.notification.error", {
+                            "compute.compute_nodes.ardana.add.notification.error", {
                                 'name': self.addHostServer.id,
                                 'details': error.data ? error.data[0].data : ''
                             });
                     }
 
-                    self.logViewHLM.addCustomNotification("error", errorNotification, error);
+                    self.logViewArdana.addCustomNotification("error", errorNotification, error);
                     self.showConfirmAddModalFlag = false;
                     self.updatingHostOverlayFlag = false;
                 }
             );
         };
 
-        this.activateCompute_HLM = function(data) {
+        this.activateCompute_Ardana = function(data) {
             self.encryptionKey = '';
-            self.hlmConfirmData = {};
+            self.ardanaConfirmData = {};
 
-            self.askEncryptionModalHLM.show()
+            self.askEncryptionModalArdana.show()
             .then(function (key) {
                 self.encryptionKey = key;
             })
             .then(function () {
                 self.showConfirmActivateModalFlag = true;
-                self.hlmConfirmData = data;
+                self.ardanaConfirmData = data;
             });
         };
 
-        this.commitActivateHost_HLM = function() {
+        this.commitActivateHost_Ardana = function() {
             var progress_count = 0;
 
-            if(!angular.isDefined(self.hlmConfirmData)) {
+            if(!angular.isDefined(self.ardanaConfirmData)) {
                 self.showConfirmActivateModalFlag = false;
                 return;
             }
 
-            var originState = self.hlmConfirmData.state;
+            var originState = self.ardanaConfirmData.state;
             self.updatingHostOverlayFlag = true;
 
             var activateNode = {
-                'id': self.hlmConfirmData.id,
-                'name': self.hlmConfirmData.name
+                'id': self.ardanaConfirmData.id,
+                'name': self.ardanaConfirmData.name
             };
-            if(angular.isDefined(self.hlmConfirmData.region)) {
-                activateNode.region = self.hlmConfirmData.region;
+            if(angular.isDefined(self.ardanaConfirmData.region)) {
+                activateNode.region = self.ardanaConfirmData.region;
             }
             ArdanaService.activate(activateNode, self.encryptionKey).then(
                 function () {
@@ -408,7 +408,7 @@
                         errorNotification = $translate.instant(
                             "compute.activate_compute.messages.activate.error", {
                                 name: activateNode.name,
-                                details: $translate.instant("compute.compute_nodes.hlm.errors." + errorCode)
+                                details: $translate.instant("compute.compute_nodes.ardana.errors." + errorCode)
                             });
                     } else {
                         errorNotification = $translate.instant(
@@ -416,7 +416,7 @@
                             {'name': activateNode.name, 'details': error.data ? error.data[0].data : ''}
                         );
                     }
-                    self.logViewHLM.addCustomNotification("error", errorNotification, error);
+                    self.logViewArdana.addCustomNotification("error", errorNotification, error);
 
                     log('error', 'Failed to activate compute host ' + activateNode.name);
                     log('error', JSON.stringify(error));
@@ -441,7 +441,7 @@
                     if (progress_data) {
                         var id = progress_data.id;
                         log('info', 'Activation in progress for compute host ' + activateNode.name + ' state=' + progress_data.state);
-                        //hlm doesn't update the transition state, have to set it during progress
+                        //Ardana doesn't update the transition state, have to set it during progress
                         //however if user refresh table, the state will be gone
                         //only set the transition state once here...here is 'activating'
                         if(angular.isDefined(self.setProgressStateFunction) && progress_count === 0) {
@@ -453,37 +453,37 @@
             );
         };
 
-        this.deactivateCompute_HLM = function(data) {
+        this.deactivateCompute_Ardana = function(data) {
             self.encryptionKey = '';
-            self.hlmConfirmData = {};
+            self.ardanaConfirmData = {};
             //ask user to enter encryption key if the system is encrypted
-            self.askEncryptionModalHLM.show()
+            self.askEncryptionModalArdana.show()
             .then(function (key) {
                 self.encryptionKey = key;
             })
             .then ( function() {
                 self.showConfirmDeactivateModalFlag = true;
-                self.hlmConfirmData = data;
+                self.ardanaConfirmData = data;
             });
         };
 
-        this.commitDeactivateHost_HLM = function() {
+        this.commitDeactivateHost_Ardana = function() {
             var progress_count = 0;
 
-            if(!angular.isDefined(self.hlmConfirmData)) {
+            if(!angular.isDefined(self.ardanaConfirmData)) {
                 self.showConfirmDeactivateModalFlag = false;
                 return;
             }
 
-            var originState = self.hlmConfirmData.state;
+            var originState = self.ardanaConfirmData.state;
             self.updatingHostOverlayFlag = true;
 
             var deactivateNode = {
-                'id': self.hlmConfirmData.id,
-                'name': self.hlmConfirmData.name
+                'id': self.ardanaConfirmData.id,
+                'name': self.ardanaConfirmData.name
             };
-            if(angular.isDefined(self.hlmConfirmData.region)) {
-                deactivateNode.region = self.hlmConfirmData.region;
+            if(angular.isDefined(self.ardanaConfirmData.region)) {
+                deactivateNode.region = self.ardanaConfirmData.region;
             }
             ArdanaService.deactivate(deactivateNode, self.encryptionKey).then(
                 function () {
@@ -526,7 +526,7 @@
                         errorNotification = $translate.instant(
                             "compute.deactivate_compute.messages.deactivate.error", {
                                 name: deactivateNode.name,
-                                details: $translate.instant("compute.compute_nodes.hlm.errors." + errorCode)
+                                details: $translate.instant("compute.compute_nodes.ardana.errors." + errorCode)
                             });
                     } else {
                         errorNotification = $translate.instant(
@@ -535,7 +535,7 @@
                         );
                     }
 
-                    self.logViewHLM.addCustomNotification("error", errorNotification, error);
+                    self.logViewArdana.addCustomNotification("error", errorNotification, error);
 
                     log('error', 'Failed to deactivate compute host ' + deactivateNode.name);
                     log('error', JSON.stringify(error));
@@ -560,7 +560,7 @@
                     if (progress_data) {
                         log('info', 'Deactivation in progress for compute host ' +
                              deactivateNode.name + ' state=' + progress_data.state);
-                        //see the corresponding comments in commitActivateHost_HLM
+                        //see the corresponding comments in commitActivateHost_Ardana
                         if(angular.isDefined(self.setProgressStateFunction) && progress_count === 0) {
                             self.setProgressStateFunction(deactivateNode.id, progress_data.state );
                             progress_count++;
@@ -570,27 +570,27 @@
             );
         };
 
-        this.deleteCompute_HLM = function(data) {
+        this.deleteCompute_Ardana = function(data) {
             self.encryptionKey = '';
-            self.hlmConfirmData = {};
-            self.hlmServerInfo = '';
+            self.ardanaConfirmData = {};
+            self.ardanaServerInfo = '';
             //get the server_info.yml
             ArdanaService.getServerInfo()
                 .then(function(serverInfo) {
-                    self.hlmServerInfo = serverInfo;
-                    self.askEncryptionModalHLM.show()
+                    self.ardanaServerInfo = serverInfo;
+                    self.askEncryptionModalArdana.show()
                     .then(function (key) {
                         self.encryptionKey = key;
                     })
                     .then(function () {
                         self.showConfirmDeleteModalFlag = true;
-                        self.hlmConfirmData = data;
+                        self.ardanaConfirmData = data;
                     });
                 })
                 .catch(function (error) {
                     if(angular.isDefined(error)) {
                         var errMsg1 = $translate.instant(
-                            "compute.compute_nodes.hlm.delete.serverinfo.error", {
+                            "compute.compute_nodes.ardana.delete.serverinfo.error", {
                                 'name': data.name,
                                 'details': error.data ? error.data[0].data : ''
                             }
@@ -600,7 +600,7 @@
                     }
                     else { //have nod data;
                         var errMsg = $translate.instant(
-                            "compute.compute_nodes.hlm.delete.serverinfo.empty", {
+                            "compute.compute_nodes.ardana.delete.serverinfo.empty", {
                                 'name': data.name
                             }
                         );
@@ -617,43 +617,43 @@
             );
         };
 
-        this.commitDeleteHost_HLM = function() {
+        this.commitDeleteHost_Ardana = function() {
 
             var progress_count = 0;
 
-            if(!angular.isDefined(self.hlmConfirmData)) {
+            if(!angular.isDefined(self.ardanaConfirmData)) {
                 self.showConfirmDeleteModalFlag = false;
                 return;
             }
 
             var deleteNode = {
-                'id': self.hlmConfirmData.id,
-                'name': self.hlmConfirmData.name
+                'id': self.ardanaConfirmData.id,
+                'name': self.ardanaConfirmData.name
             };
-            if(angular.isDefined(self.hlmConfirmData.region)) {
-                deleteNode.region = self.hlmConfirmData.region;
+            if(angular.isDefined(self.ardanaConfirmData.region)) {
+                deleteNode.region = self.ardanaConfirmData.region;
             }
 
-            var originState = self.hlmConfirmData.state;
+            var originState = self.ardanaConfirmData.state;
             self.updatingHostOverlayFlag = true;
 
             //just want to find out the compute host to delete exists
-            //get id to call hlm process later
-            var hlmServer;
-            angular.forEach(self.hlmServerInfo, function(value, key) {
+            //get id to call Ardana process later
+            var ardanaServer;
+            angular.forEach(self.ardanaServerInfo, function(value, key) {
                 if(angular.isDefined(value.hostname) &&
                     value.hostname === deleteNode.name) {
-                    hlmServer = {
-                        'id': key, 'value': self.hlmServerInfo[key]
+                    ardanaServer = {
+                        'id': key, 'value': self.ardanaServerInfo[key]
                     };
                 }
             });
 
-            if (!hlmServer) {
+            if (!ardanaServer) {
                 addNotification(
                     "error",
                     $translate.instant(
-                        "compute.compute_nodes.hlm.delete.notification.determine_hlm_id",
+                        "compute.compute_nodes.ardana.delete.notification.determine_ardana_id",
                         {hostname: deleteNode.name}
                     )
                 );
@@ -668,11 +668,11 @@
                 return;
             }
 
-            ArdanaService.delete(deleteNode, hlmServer, self.encryptionKey).then(
+            ArdanaService.delete(deleteNode, ardanaServer, self.encryptionKey).then(
                 function () {
                     addNotification("info",
                         $translate.instant(
-                            "compute.compute_nodes.hlm.delete.notification.success",
+                            "compute.compute_nodes.ardana.delete.notification.success",
                             {'name': deleteNode.name})
                     );
                     //when it is done just wait a little and refresh it
@@ -703,13 +703,13 @@
                     var errorCode = _.get(error, 'data.errorCode');
                     if (errorCode) {
                         errorNotification = $translate.instant(
-                            "compute.compute_nodes.hlm.delete.notification.error", {
+                            "compute.compute_nodes.ardana.delete.notification.error", {
                                 name: deleteNode.name,
-                                details: $translate.instant("compute.compute_nodes.hlm.errors." + errorCode)
+                                details: $translate.instant("compute.compute_nodes.ardana.errors." + errorCode)
                             });
                     } else {
                         errorNotification = $translate.instant(
-                            "compute.compute_nodes.hlm.delete.notification.error",
+                            "compute.compute_nodes.ardana.delete.notification.error",
                             {'name': deleteNode.name, 'details': error.data ? error.data[0].data : ''}
                         );
                     }
@@ -717,7 +717,7 @@
                     log('error', 'Failed to delete compute host ' + deleteNode.name);
                     log('error', JSON.stringify(error));
 
-                    self.logViewHLM.addCustomNotification("error", errorNotification, error);
+                    self.logViewArdana.addCustomNotification("error", errorNotification, error);
 
                     //refresh it to change the state when temp set during
                     //progress
@@ -740,7 +740,7 @@
                 function (progress_data) { //don't see there is progress response, leave it here for now
                     if (progress_data) {
                         log('info', 'Deletion in progress for compute host ' + deleteNode.name + ' state=' + progress_data.state);
-                        //see the corresponding comments in commitActivateHost_HLM
+                        //see the corresponding comments in commitActivateHost_Ardana
                         if(angular.isDefined(self.setProgressStateFunction) && progress_count === 0) {
                             self.setProgressStateFunction(deleteNode.id, progress_data.state );
                             progress_count++;
@@ -750,13 +750,13 @@
             );
         };
 
-        this.logViewHLM = {
+        this.logViewArdana = {
             show: false,
             stackableScope: {
                 pRef: undefined,
                 log: undefined
             },
-            //template: "compute/templates/hlm/log_view.html",
+            //template: "compute/templates/Ardana/log_view.html",
             colouriser: AnsiColoursService.getInstance(),
             addCustomNotification: function (level, message, error) {
                 // The error object may come from a failed request or the response to a metadata request
@@ -769,8 +769,8 @@
                 // Only added the action obj if we have something to link to
                 if (pRef || log) {
                     action = {
-                        label: "compute.compute_nodes.hlm.notification.action.label",
-                        func: self.logViewHLM.showLog,
+                        label: "compute.compute_nodes.ardana.notification.action.label",
+                        func: self.logViewArdana.showLog,
                         param: {
                             pRef: pRef,
                             log: log
@@ -783,57 +783,57 @@
                 var log = opts.log;
                 if (log) {
                     // Already have a log, show it straight away
-                    self.logViewHLM.stackableScope.log =
-                        self.logViewHLM.colouriser.ansiColoursToHtml(log);
+                    self.logViewArdana.stackableScope.log =
+                        self.logViewArdana.colouriser.ansiColoursToHtml(log);
                 } else if (opts.pRef) {
                     // No log, show 'fetching' message and reach out to the backend
-                    self.logViewHLM.stackableScope.log = $translate.instant(
-                        "compute.compute_nodes.hlm.logView.fetching");
+                    self.logViewArdana.stackableScope.log = $translate.instant(
+                        "compute.compute_nodes.ardana.logView.fetching");
                     ArdanaService.getLog(opts.pRef).
                     then(function (logData) {
-                    self.logViewHLM.stackableScope.log =
-                        self.logViewHLM.colouriser.ansiColoursToHtml(logData.data.log);
+                    self.logViewArdana.stackableScope.log =
+                        self.logViewArdana.colouriser.ansiColoursToHtml(logData.data.log);
                     })
                     .catch(function () {
-                        self.logViewHLM.stackableScope.log = $translate.instant(
-                            "compute.compute_nodes.hlm.logView.failedToFetch");
+                        self.logViewArdana.stackableScope.log = $translate.instant(
+                            "compute.compute_nodes.ardana.logView.failedToFetch");
                     });
                 } else {
                     // No log, no process reference
-                    self.logViewHLM.stackableScope.log = $translate.instant(
-                        "compute.compute_nodes.hlm.logView.noLogDetails");
+                    self.logViewArdana.stackableScope.log = $translate.instant(
+                        "compute.compute_nodes.ardana.logView.noLogDetails");
                 }
 
-                self.logViewHLM.show = true;
+                self.logViewArdana.show = true;
             }
         };
 
         //global variables could be exposed to controller or directive
-        //HLM
+        //Ardana
         this.initService = function(callbacks) {
-            self.hlmConfirmData = {};
+            self.ardanaConfirmData = {};
             self.encryptionKey = '';
-            self.hlmServerInfo = '';
+            self.ardanaServerInfo = '';
             self.showConfirmDeactivateModalFlag = false;
             self.showConfirmActivateModalFlag = false;
             self.showConfirmDeleteModalFlag = false;
             self.showConfirmAddModalFlag = false;
 
             //init ask encryption modal
-            self.askEncryptionModalHLM._show = false;
-            self.askEncryptionModalHLM.stackableScope.values = {};
+            self.askEncryptionModalArdana._show = false;
+            self.askEncryptionModalArdana.stackableScope.values = {};
 
             //init add modal
-            self.addComputeNodeModalHLM._show = false;
-            self.addComputeNodeModalHLM.stackableScope.values = {};
-            self.addComputeNodeModalHLM.stackableScope.selections = {
+            self.addComputeNodeModalArdana._show = false;
+            self.addComputeNodeModalArdana.stackableScope.values = {};
+            self.addComputeNodeModalArdana.stackableScope.selections = {
                 nicMappings: [],
                 groups: []
             };
 
             //init logview
-            self.logViewHLM.show = false;
-            self.logViewHLM.stackableScope = {
+            self.logViewArdana.show = false;
+            self.logViewArdana.stackableScope = {
                 pRef: undefined,
                 log: undefined
             };

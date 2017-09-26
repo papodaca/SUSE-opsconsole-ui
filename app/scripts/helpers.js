@@ -51,9 +51,9 @@
 
     And immediately after it would be the error message (in an error-span element):
 
-      <error-span condition="common.env_hostname"          text="hpvalidate.hostname"></error-span>
+      <error-span condition="common.env_hostname"          text="ocvalidate.hostname"></error-span>
                              --- ------------                 -------------------
-                <form> name --^    ^-- <input> name             ^-- error messsage (typically "hpvalidate" plus validation type)
+                <form> name --^    ^-- <input> name             ^-- error messsage (typically "ocvalidate" plus validation type)
 
     The validation [type] can be either:
         1. A value in the ocValidators constant,                   like this:    oc-validate="ocValidators.cidr"
@@ -70,7 +70,7 @@
 
         2. The <error-span> needs the range also, but as input to translate:
 
-            <error-span ... text="{{'hpvalidate.intRange' | translate: {start:5, end:10} }}"></error-span>
+            <error-span ... text="{{'ocvalidate.intRange' | translate: {start:5, end:10} }}"></error-span>
 
     */
 
@@ -570,15 +570,7 @@
                 // compare auth url between config file and one used for auth
                 // if they changed then expire the tokens and force logout
                 var config_auth_url = $rootScope.appConfig.bll_url;
-                if(!angular.isDefined(config_auth_url)){
-                    //TODO - remove once ansible scripts updated to remove cloudsystem from url config
-                    config_auth_url = $rootScope.appConfig.cloudsystem_bll_url;
-                }
                 var cookie_auth_url = auth_cookie.bll_url;
-                if(!angular.isDefined(cookie_auth_url)){
-                    //TODO - remove once ansible scripts updated to remove cloudsystem from url config
-                    config_auth_url = auth_cookie.cloudsystem_bll_url;
-                }
 
                 //expired or url doesn't match
                 if (now > expire || !angular.equals(config_auth_url, cookie_auth_url)) {
@@ -618,7 +610,7 @@
     helpers.factory('log', ['$rootScope', '$log', function ($rootScope, $log) {
         return function (level, message) {
             // check if level in configured enabled logging levels
-            // logging levels configured in cloud_system.json
+            // logging levels configured in opscon_config.json
             if ($rootScope.appConfig.console_logging.indexOf(level) >= 0) {
                 switch (level) {
                     case "warn":
@@ -756,9 +748,6 @@
     helpers.constant('buildBllUrl', function () {
         if(angular.isDefined(window.appConfig) && angular.isDefined(window.appConfig.bll_url)){
             return  window.appConfig.bll_url;
-        } else if(angular.isDefined(window.appConfig) && angular.isDefined(window.appConfig.cloudsystem_bll_url)){
-            //legacy use case TODO- remove once setup scripts have been updated
-            return  window.appConfig.cloudsystem_bll_url;
         }
 
         return window.location.protocol + "//" + window.location.hostname + ":" + window.location.port + "/api/v1/";
@@ -1183,7 +1172,7 @@
                         unknown: 0
                         warning: 0
                     }
-                    padawan-ccp-ca-ma-mgt: {
+                    apprentice-ccp-ca-ma-mgt: {
                         critical: 0
                         ok: 1
                         total: 1
@@ -2209,9 +2198,9 @@
                     "cluster": "compute",
                     "control_planes": "ccp",
                     "nodes": [
-                        "padawan-ccp-comp0001-mgmt",
-                        "padawan-ccp-comp0002-mgmt",
-                        "padawan-ccp-comp0003-mgmt"
+                        "apprentice-ccp-comp0001-mgmt",
+                        "apprentice-ccp-comp0002-mgmt",
+                        "apprentice-ccp-comp0003-mgmt"
                     ]
                 }
             */
@@ -2253,9 +2242,9 @@
                     "cluster": "compute",
                     "control_planes": "ccp",
                     "nodes": [
-                        "padawan-ccp-comp0001-mgmt": {data},
-                        "padawan-ccp-comp0002-mgmt": {data},
-                        "padawan-ccp-comp0003-mgmt": {data}
+                        "apprentice-ccp-comp0001-mgmt": {data},
+                        "apprentice-ccp-comp0002-mgmt": {data},
+                        "apprentice-ccp-comp0003-mgmt": {data}
                     ]
                 }
             */

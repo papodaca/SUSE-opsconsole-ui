@@ -12,7 +12,7 @@ describe('system appliances', function() {
     appliances.get();
   });
 
-  if (browser.params.dev_mode === "true" || browser.params.env === "cs") {
+  if (browser.params.dev_mode === "true" || browser.params.env === "legacy") {
     it('should have the correct url', function() {
       expect(browser.getCurrentUrl())
         .toBe(browser.baseUrl + '/#/system/appliance_list');
@@ -22,6 +22,6 @@ describe('system appliances', function() {
       expect(browser.getTitle()).toEqual('Appliances');
     });
   } else {
-    console.log('System Appliances skipped - dev_mode false and in hos environment.');
+    console.log('System Appliances skipped - dev_mode false and in stdcfg environment.');
   }
 });

@@ -10,15 +10,15 @@ var CentralDashboard = function() {
   this.navigate = new HamburgerMenu();
   this.loginPage = new Login();
 
-  this.additionalResourcesPopover = $('.popover-items .popover-item .helion-icon-App');
+  this.additionalResourcesPopover = $('.popover-items .popover-item .ardana-icon-App');
 
-  this.notificationPopover = $('.popover-items .popover-item .helion-icon-Notification');
+  this.notificationPopover = $('.popover-items .popover-item .ardana-icon-Notification');
   this.clearNotificationsBtn = $('button[ng-click="clear();"]');
   this.markNotificationsViewedBtn = $('button[ng-click="markViewed();"]');
 
-  this.helpPopover = $('.popover-items .popover-item .helion-icon-Help');
+  this.helpPopover = $('.popover-items .popover-item .ardana-icon-Help');
 
-  this.accountPopover = $('.popover-items .popover-item .helion-icon-User_settings');
+  this.accountPopover = $('.popover-items .popover-item .ardana-icon-User_settings');
   this.logoutLink = element(by.linkText('Log Out'));
 
   // Central Dashboard

@@ -1325,7 +1325,7 @@
       "status": "POWERED ON",
       "lan": "R_Unknown",
       "hostname": "10.1.213.11",
-      "name": "cs-mgmt0-MAT",
+      "name": "legacy-mgmt0-MAT",
       "lan_raw": "R_Unknown",
       "network_interfaces": [
         {
@@ -1390,7 +1390,7 @@
           "gateway": null
         },
         {
-          "portgroup": "hpcs-data51105c",
+          "portgroup": "legacy-data51105c",
           "dns_primary": null,
           "name": "VxLAN Network",
           "id": 5,
@@ -1405,7 +1405,7 @@
         }
       ],
       "storage": "R_Unknown",
-      "imagename": "cs-mgmt-12-gozer",
+      "imagename": "legacy-mgmt-12-gozer",
       "role": "ManagementController",
       "memory": "8",
       "cpu": {
@@ -1418,7 +1418,7 @@
       "status": "POWERED ON",
       "lan": "R_Unknown",
       "hostname": "10.1.213.11",
-      "name": "cs-mgmt2-MAT",
+      "name": "legacy-mgmt2-MAT",
       "lan_raw": "R_Unknown",
       "network_interfaces": [
         {
@@ -1483,7 +1483,7 @@
           "gateway": null
         },
         {
-          "portgroup": "hpcs-data51105c",
+          "portgroup": "legacy-data51105c",
           "dns_primary": null,
           "name": "VxLAN Network",
           "id": 5,
@@ -1498,7 +1498,7 @@
         }
       ],
       "storage": "R_Unknown",
-      "imagename": "cs-mgmt-12-gozer",
+      "imagename": "legacy-mgmt-12-gozer",
       "role": "ManagementController",
       "memory": "8",
       "cpu": {
@@ -1511,7 +1511,7 @@
       "status": "POWERED ON",
       "lan": "R_Unknown",
       "hostname": "10.1.213.11",
-      "name": "cs-controller2-MAT",
+      "name": "legacy-controller2-MAT",
       "lan_raw": "R_Unknown",
       "network_interfaces": [
         {
@@ -1562,7 +1562,7 @@
           "gateway": null
         },
         {
-          "portgroup": "hpcs-data51105c",
+          "portgroup": "legacy-data51105c",
           "dns_primary": null,
           "name": "VxLAN Network",
           "id": 5,
@@ -1621,7 +1621,7 @@
         }
       ],
       "storage": "R_Unknown",
-      "imagename": "cs-controller-12-gozer",
+      "imagename": "legacy-controller-12-gozer",
       "role": "CloudController",
       "memory": "32",
       "cpu": {
@@ -1634,7 +1634,7 @@
       "status": "POWERED ON",
       "lan": "R_Unknown",
       "hostname": "10.1.213.11",
-      "name": "cs-enterprise1-controller-MAT",
+      "name": "legacy-enterprise1-controller-MAT",
       "lan_raw": "R_Unknown",
       "network_interfaces": [
         {
@@ -1686,7 +1686,7 @@
         }
       ],
       "storage": "R_Unknown",
-      "imagename": "cs-enterprise-12-gozer",
+      "imagename": "legacy-enterprise-12-gozer",
       "role": "EnterpriseController",
       "memory": "20",
       "cpu": {
@@ -1699,7 +1699,7 @@
       "status": "POWERED ON",
       "lan": "R_Unknown",
       "hostname": "10.1.213.11",
-      "name": "cs-update-controller-MAT",
+      "name": "legacy-update-controller-MAT",
       "lan_raw": "R_Unknown",
       "network_interfaces": [
         {
@@ -1735,7 +1735,7 @@
         }
       ],
       "storage": "R_Unknown",
-      "imagename": "cs-update-12-gozer",
+      "imagename": "legacy-update-12-gozer",
       "role": "UpdateAppliance",
       "memory": "8",
       "cpu": {
@@ -1748,7 +1748,7 @@
       "status": "POWERED ON",
       "lan": "R_Unknown",
       "hostname": "10.1.213.11",
-      "name": "cs-monitoring3-MAT",
+      "name": "legacy-monitoring3-MAT",
       "lan_raw": "R_Unknown",
       "network_interfaces": [
         {
@@ -1767,7 +1767,7 @@
         }
       ],
       "storage": "R_Unknown",
-      "imagename": "cs-monasca-12-gozer",
+      "imagename": "legacy-monasca-12-gozer",
       "role": "MonascaController",
       "memory": "8",
       "cpu": {
@@ -1780,7 +1780,7 @@
       "status": "POWERED ON",
       "lan": "R_Unknown",
       "hostname": "10.1.213.11",
-      "name": "cs-monitoring2-MAT",
+      "name": "legacy-monitoring2-MAT",
       "lan_raw": "R_Unknown",
       "network_interfaces": [
         {
@@ -1799,7 +1799,7 @@
         }
       ],
       "storage": "R_Unknown",
-      "imagename": "cs-monasca-12-gozer",
+      "imagename": "legacy-monasca-12-gozer",
       "role": "MonascaController",
       "memory": "8",
       "cpu": {
@@ -1812,7 +1812,7 @@
       "status": "POWERED ON",
       "lan": "R_Unknown",
       "hostname": "10.1.213.11",
-      "name": "cs-monitoring1-MAT",
+      "name": "legacy-monitoring1-MAT",
       "lan_raw": "R_Unknown",
       "network_interfaces": [
         {
@@ -1831,7 +1831,7 @@
         }
       ],
       "storage": "R_Unknown",
-      "imagename": "cs-monasca-12-gozer",
+      "imagename": "legacy-monasca-12-gozer",
       "role": "MonascaController",
       "memory": "8",
       "cpu": {
@@ -1844,7 +1844,7 @@
       "status": "POWERED ON",
       "lan": "R_Unknown",
       "hostname": "10.1.213.11",
-      "name": "cs-mgmt1-MAT",
+      "name": "legacy-mgmt1-MAT",
       "lan_raw": "R_Unknown",
       "network_interfaces": [
         {
@@ -1909,7 +1909,7 @@
           "gateway": null
         },
         {
-          "portgroup": "hpcs-data51105c",
+          "portgroup": "legacy-data51105c",
           "dns_primary": null,
           "name": "VxLAN Network",
           "id": 5,
@@ -1924,7 +1924,7 @@
         }
       ],
       "storage": "R_Unknown",
-      "imagename": "cs-mgmt-12-gozer",
+      "imagename": "legacy-mgmt-12-gozer",
       "role": "ManagementController",
       "memory": "8",
       "cpu": {
@@ -1937,7 +1937,7 @@
       "status": "POWERED ON",
       "lan": "R_Unknown",
       "hostname": "10.1.213.11",
-      "name": "cs-mgmt-controller-MAT",
+      "name": "legacy-mgmt-controller-MAT",
       "lan_raw": "R_Unknown",
       "network_interfaces": [
         {
@@ -1988,7 +1988,7 @@
           "gateway": null
         },
         {
-          "portgroup": "hpcs-data51105c",
+          "portgroup": "legacy-data51105c",
           "dns_primary": null,
           "name": "VxLAN Network",
           "id": 5,
@@ -2047,7 +2047,7 @@
         }
       ],
       "storage": "R_Unknown",
-      "imagename": "cs-controller-12-gozer",
+      "imagename": "legacy-controller-12-gozer",
       "role": "CloudController",
       "memory": "32",
       "cpu": {
@@ -2060,7 +2060,7 @@
       "status": "POWERED ON",
       "lan": "R_Unknown",
       "hostname": "10.1.213.11",
-      "name": "cs-controller1-MAT",
+      "name": "legacy-controller1-MAT",
       "lan_raw": "R_Unknown",
       "network_interfaces": [
         {
@@ -2111,7 +2111,7 @@
           "gateway": null
         },
         {
-          "portgroup": "hpcs-data51105c",
+          "portgroup": "legacy-data51105c",
           "dns_primary": null,
           "name": "VxLAN Network",
           "id": 5,
@@ -2170,7 +2170,7 @@
         }
       ],
       "storage": "R_Unknown",
-      "imagename": "cs-controller-12-gozer",
+      "imagename": "legacy-controller-12-gozer",
       "role": "CloudController",
       "memory": "32",
       "cpu": {
@@ -2183,7 +2183,7 @@
       "status": "POWERED ON",
       "lan": "R_Unknown",
       "hostname": "10.1.213.11",
-      "name": "cs-enterprise2-controller-MAT",
+      "name": "legacy-enterprise2-controller-MAT",
       "lan_raw": "R_Unknown",
       "network_interfaces": [
         {
@@ -2235,7 +2235,7 @@
         }
       ],
       "storage": "R_Unknown",
-      "imagename": "cs-enterprise-12-gozer",
+      "imagename": "legacy-enterprise-12-gozer",
       "role": "EnterpriseController",
       "memory": "20",
       "cpu": {
@@ -2248,7 +2248,7 @@
       "status": "POWERED ON",
       "lan": "R_Unknown",
       "hostname": "10.1.213.11",
-      "name": "cs-enterprise-controller-MAT",
+      "name": "legacy-enterprise-controller-MAT",
       "lan_raw": "R_Unknown",
       "network_interfaces": [
         {
@@ -2300,7 +2300,7 @@
         }
       ],
       "storage": "R_Unknown",
-      "imagename": "cs-enterprise-12-gozer",
+      "imagename": "legacy-enterprise-12-gozer",
       "role": "EnterpriseController",
       "memory": "20",
       "cpu": {

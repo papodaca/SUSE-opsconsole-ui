@@ -2,11 +2,11 @@
     <div class="oc-modal">
         <div class="oc-modal-header">
             <span ng-show="headertemplateurl" ng-include="headertemplateurl"></span>
-            <span ng-show="!headertemplateurl && type=='error'"><i class="helion-icon helion-icon-Critical_L color-critical"></i></span>
-            <span ng-show="!headertemplateurl && type=='warning'"><i class="helion-icon helion-icon-Alert color-warning"></i></span>
+            <span ng-show="!headertemplateurl && type=='error'"><i class="ardana-icon ardana-icon-Critical_L color-critical"></i></span>
+            <span ng-show="!headertemplateurl && type=='warning'"><i class="ardana-icon ardana-icon-Alert color-warning"></i></span>
             <span ng-show="!headertemplateurl" ng-bind="headerTitle | translate"></span>
             <span ng-show="(closable() || isClosable)" align="right" class="close_modal"
-                  ng-class="{'error-close-modal helion-icon helion-icon-Close': type=='error' || type=='warning' }"
+                  ng-class="{'error-close-modal ardana-icon ardana-icon-Close': type=='error' || type=='warning' }"
                   ng-click="closeModal()"></span>
         </div>
         <div class="oc-modal-body">

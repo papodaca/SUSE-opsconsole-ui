@@ -86,14 +86,13 @@ gulp.task('images', function(){
 
 gulp.task('configs', function(){
     // Merge the official config file with a local file of overrides, if present
-    var result = gulp.src(['app/cloud_system.json', 'app/local/config.json'])
+    var result = gulp.src(['app/opscon_config.json', 'app/local/config.json'])
         .pipe(plugins.jsonminify())           // remove comments in json files
-        .pipe(plugins.extend('cloud_system.json', true, 4));
+        .pipe(plugins.extend('opscon_config.json', true, 4));
 
     if(common.config && common.config.proxy) {
         return result
             .pipe(plugins.jsonEditor({
-                cloudsystem_bll_url: common.proxyPath,
                 bll_url: common.proxyPath
             }))
             .pipe(gulp.dest('./.tmp'));

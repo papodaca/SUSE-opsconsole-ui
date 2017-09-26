@@ -18,7 +18,6 @@ angular.module("operations-ui").factory("styleutils", function () {
         return null;
     }
 
-    // https://h10014.www1.hp.com/hpweb/experience/make/infographics/color.aspx
     var BLUES = [
         getStyleSheetPropertyValue('.oc-graph-blue-1', 'color'),
         getStyleSheetPropertyValue('.oc-graph-blue-2', 'color'),
