@@ -184,7 +184,7 @@
                     };
 
                     //this function is used to set the table state during progress
-                    //especially for hlm that the transition state is not persisted.
+                    //especially for ardana that the transition state is not persisted.
                     var setProgressState = function(id, state) {
                         if(!angular.isDefined(id)) {
                             return;
@@ -238,32 +238,32 @@
                     }
 
                     scope.activateComputeHost = function(data) {
-                        //TODO need a better way to diff cs/hos
-                        if($rootScope.appConfig.env === 'hos') {
+                        //TODO need a better way to diff envs
+                        if($rootScope.appConfig.env === 'stdcfg') {
                             if(!angular.isDefined(scope.computeHostServiceFromDetail)) {
                                 closeDetailModal();
                             }
-                            computeHostHelperService.activateCompute_HLM(data);
+                            computeHostHelperService.activateCompute_Ardana(data);
                         }
                     };
 
                     scope.deactivateComputeHost = function(data) {
-                        //TODO need better way to diff cs/hos
-                        if($rootScope.appConfig.env === 'hos') {
+                        //TODO need better way to diff envs
+                        if($rootScope.appConfig.env === 'stdcfg') {
                             if(!angular.isDefined(scope.computeHostServiceFromDetail)) {
                                 closeDetailModal();
                             }
-                            computeHostHelperService.deactivateCompute_HLM(data);
+                            computeHostHelperService.deactivateCompute_Ardana(data);
                         }
                     };
 
                     scope.deleteComputeHost = function(data) {
-                        //TODO need better way to diff cs/hos
-                        if($rootScope.appConfig.env === 'hos') {
+                        //TODO need better way to diff envs
+                        if($rootScope.appConfig.env === 'stdcfg') {
                             if(!angular.isDefined(scope.computeHostServiceFromDetail)) {
                                 closeDetailModal();
                             }
-                            computeHostHelperService.deleteCompute_HLM(data);
+                            computeHostHelperService.deleteCompute_Ardana(data);
                         }
                     };
                 }

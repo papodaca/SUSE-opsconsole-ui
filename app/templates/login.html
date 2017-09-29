@@ -4,7 +4,7 @@
         <div id="opscon-login-logo" style="width:auto; display:inline-block;">
             <img class="login-branded-logo" src="images/icons/logos/login-logo.png">
         </div>
-        <div id='login-white-box-hos'>
+        <div id='login-white-box-stdcfg'>
             <div id="product-title-ops">
                 <span>{{ 'branding.product.login.title' | translate }}</span><br>
                 <span>{{ 'common.ops_console' | translate }}</span>
@@ -23,7 +23,7 @@
                     </div>
                     <input placeholder="{{ 'login.password.placeholder' | translate }}" ng-show="!showpass" ng-disabled="authenticating" ng-class="(auth_error) ? 'login-edit ng-pristine ng-invalid' : 'login-edit ng-pristine ng-valid'" type="password" ng-model="user.password" ng-keydown="checkEnter($event)" autocomplete="off" ng-required="'true'">
                     <input placeholder="{{ 'login.password.placeholder' | translate }}" ng-show="showpass" ng-disabled="authenticating" ng-class="(auth_error) ? 'login-edit ng-pristine ng-invalid' : 'login-edit ng-pristine ng-valid'" type="text" ng-model="user.password" ng-keydown="checkEnter($event)" autocomplete="off" ng-required="'true'">
-                    <span class="helion-icon logineye" ng-click="showpass = !showpass" ng-class="{'helion-icon-View' : !showpass, 'helion-icon-View_pressed' : showpass}"></span>
+                    <span class="ardana-icon logineye" ng-click="showpass = !showpass" ng-class="{'ardana-icon-View' : !showpass, 'ardana-icon-View_pressed' : showpass}"></span>
                 </div>
             </ng-form>
             <div id="login-btn">
@@ -32,7 +32,7 @@
             </div>
         </div>
         <div id="login-error-box" ng-if="auth_error">
-            <span class="login-error-icon helion-icon helion-icon-Error_outline"></span>
+            <span class="login-error-icon ardana-icon ardana-icon-Error_outline"></span>
             <span class="login-error-message" >{{ auth_error_message }}</span>
         </div>
     </div>

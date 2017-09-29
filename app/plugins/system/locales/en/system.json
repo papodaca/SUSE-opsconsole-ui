@@ -3,7 +3,6 @@
     "system.applianceslistlabel": "Appliances",
     "system.system_summary_label": "System Summary",
     "system.summary.security_label": "Security",
-    "system.summary.cloudsystem_admin_label":"Miscellaneous Settings",
     "system.summary.appliances_desc":"View and manage virtual appliances in CloudSystem",
     "system.summary.installed_appliances": "Installed Appliances",
     "system.summary.ha_proxies": "Appliance Public Networks",
@@ -113,7 +112,7 @@
     "system.filter.role.management-role": "Management Controller",
     "system.filter.role.controller-role": "Cloud Controller",
     "system.filter.role.enterprise-role": "Enterprise Controller",
-    "system.filter.role.hlm-role": "HLM Controller",
+    "system.filter.role.ardana-role": "Ardana Controller",
     "system.filter.role.db_rabbit-role": "DB Rabbit Controller",
     "system.filter.role.monitoring-role": "Monitoring Controller",
     "system.filter.role.network-role": "Network Controller",
@@ -488,7 +487,7 @@
     "system.users.add_successful": "The user {{user}} was successfully created.",
     "system.users.update_successful": "The user {{user}} was successfully updated.",
 
-    "hpvalidate.project": "Select a project",
+    "ocvalidate.project": "Select a project",
 
     "system.ldap.test_button": "Test Settings And Save",
     "system.ldap.return_to_test": "Return to Settings",
@@ -551,19 +550,6 @@
     "system.supportdump.error": "Support Dump Creation failed",
     "system.supportdump.available" : "Support Dump created successfully.",
 
-    "system.patch_update.upload_install": "Upload and Install",
-    "system.patch_update.header": "Update CloudSystem",
-    "system.patch_update.upload_instructions": "Drag and drop a file or select a file to upload.",
-    "system.patch_update.browse": "Browse",
-    "system.patch_update.browse_again": "Browse Again",
-    "system.patch_update.help_text_2": "Go to <a href=\"{{url}}\">www.hp.com/go/cloudsystem/download</a> for the latest updates to CloudSystem.",
-    "system.patch_update.help_text_1": "INSTRUCTIONS: Download both the Update File and Signature file before beginning. Once ready, upload both files to initiate the update installation process.",
-    "system.patch_update.file_error": "File Error: You must upload both the correct Update and Signature file to continue the installation. Please try again.",
-    "system.patch_update.help_text_selected": "You have selected the following files:",
-    "system.patch_update.help_text_selected_bottom": "Or drag another file over this window to select a different file...",
-    "system.patch_update.drawer_title": "Update CloudSystem: Install Update",
-    "system.patch_update.drawer_subtitle": "Now Installing:",
-    "system.patch_update.drawer_info_text": "NOTE: Once the installation is complete, your login session may be lost and you may be returned to the login screen.",
     "system.integrated.label": "Integrated UIs",
     "system.integrated.description": "Open a related console for managing parts of your solution not managed through the Operations Console",
 
@@ -588,7 +574,6 @@
     "system.integrated.dropdown.marketplace.portal":"HPE CSA Marketplace Portal",
     "system.integrated.dropdown.operationsorchestration.portal":"HPE Operations Orchestration",
 
-    "system.patch_update.upload.error": "Update: Failed to upload update files.",
     "system.vcenter.table.header.server": "Server",
     "system.vcenter.table.header.state": "State",
     "system.vcenter.table.header.address": "Address/Port",
@@ -596,13 +581,9 @@
     "system.vcenter.table.header.admin": "Administrator",
     "system.vcenter.table.header.clusters": "Activated Clusters",
 
-    "system.patch_update.complete": "Reload Ops Console",
-
     "system.users.confirmTitle": "Remove User(s): Confirmation",
     "system.users.confirmText1": "You are about to remove {{userCount}} User(s).",
     "system.users.confirmText2": "This action cannot be undone. Select \"Confirm Removal\" to continue.",
-
-    "system.patch_update.autoscroll": "Autoscroll",
 
     "system.ip_range_origin_invalid": "Changes can only be added to the existing IP range(s) {{original}}.",
     "system.vcenter.status.Registering": "Registering",

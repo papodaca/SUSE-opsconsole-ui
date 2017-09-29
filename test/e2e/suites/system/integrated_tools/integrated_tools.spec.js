@@ -12,7 +12,7 @@ describe('integrated tools', function() {
     integratedTools.get();
   });
 
-  if (browser.params.dev_mode === "true" || browser.params.env === "cs") {
+  if (browser.params.dev_mode === "true" || browser.params.env === "legacy") {
     it('should have the correct url', function() {
       expect(browser.getCurrentUrl())
         .toBe(browser.baseUrl + '/#/system/integrated_tools');
@@ -22,6 +22,6 @@ describe('integrated tools', function() {
       expect(browser.getTitle()).toEqual('Integrated Tools');
     });
   } else {
-    console.log('System Integrated Tools skipped - dev_mode false and in hos environment.');
+    console.log('System Integrated Tools skipped - dev_mode false and in stdcfg environment.');
   }
 });

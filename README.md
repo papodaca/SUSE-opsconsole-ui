@@ -61,9 +61,9 @@ gulp gatecheck
 ```
 gulp protractor
 ```
-The --env option can be used to choose between testing a hos or cs environment
+The --env option can be used to choose between testing a standard or legacy environment
 ```
-gulp protractor --env hos
+gulp protractor --env stdcfg
 ```
 The --no-coverage option can be used to ignore code coverage report creation
 ```
@@ -77,10 +77,10 @@ cp app/local/config.json.sample app/local/config.json
   * Add some good additional parameters
 ```json
 {
-    "bll_url": "https://192.168.245.5:9095/api/v1/", //local hos
+    "bll_url": "https://192.168.245.5:9095/api/v1/", //local opsconsole-server
     "debug_mode": "true",
     "dev_mode": true,
-    "env": "hos"
+    "env": "stdcfg"
 }
 ```
 
@@ -90,7 +90,7 @@ When connecting to a backend that does not have CORS enabled the web browser wil
 app/local/config.json:
 ```json
 {
-    "bll_url": "https://10.241.122.5:9095/api/v1/", //remote hos
+    "bll_url": "https://10.241.122.5:9095/api/v1/", //remote opsconsole-server
     "proxy": true
 }
 ```

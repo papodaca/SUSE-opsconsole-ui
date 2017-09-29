@@ -134,8 +134,8 @@
                                     ocValidators.ipAddress
                                 ],
                                 column_errors: [
-                                  "hpvalidate.cidr",
-                                  "hpvalidate.ipAddress"
+                                  "ocvalidate.cidr",
+                                  "ocvalidate.ipAddress"
                                 ]
                             },
                             ip_range: {
@@ -145,7 +145,7 @@
                                 column_types: ["string"],
                                 column_placeholders: ['a.b.c.d-e.f.g.h or a.b.c.d or a.b.c.d,a.b.c.e'],
                                 column_patterns: [ocValidators.ipRange],
-                                column_errors: ["hpvalidate.ipRange"]
+                                column_errors: ["ocvalidate.ipRange"]
                             }
                         };
 

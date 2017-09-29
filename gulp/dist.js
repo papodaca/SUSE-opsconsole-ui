@@ -23,10 +23,10 @@ gulp.task('dist-images', ['images'], function () {
   envs.forEach(function(env) {
     streams.push(
       gulp.src(["app/bower_components/jquery-ui/themes/base/images/**/*.*"])
-        .pipe(gulp.dest('dist.' + env.name + '/styles/images')));
+        .pipe(gulp.dest('dist.' + env.name +  '/styles/images')));
     streams.push(
       gulp.src([".tmp/images/**/*.*"])
-        .pipe(gulp.dest('dist.' + env.name + '/images'))
+        .pipe(gulp.dest('dist.' + env.name +  '/images'))
     );
   });
   return plugins.mergeStream.apply(null, streams);
@@ -45,17 +45,17 @@ gulp.task('dist-icons', ['dist-images'], function () {
 
 gulp.task('dist-configfile', function (cb) {
   envs.forEach(function(env) {
-    var config = JSON.parse(fs.readFileSync("app/cloud_system.json", {encoding: "utf-8"}));
+    var config = JSON.parse(fs.readFileSync("app/opscon_config.json", {encoding: "utf-8"}));
     config.env = env.name;
 
-    //the actual HOS build creates cloud_system.json from a template, this
-    //change just makes local minified dev environments point to the HOS specific dashboard
-    if(env.name === 'hos'){
+    //the actual build creates opscon_config.json from a template, this
+    //change just makes local minified dev environments point to the specific dashboard
+    if(env.name === 'stdcfg'){
       config.default_route = "/general/dashboard_alarms_summary";
     }
 
     var filePath = 'dist.' + env.name,
-        fileName = filePath + '/cloud_system.json';
+        fileName = filePath + '/opscon_config.json';
     fs.mkdirSync(filePath);
     fs.writeFileSync(fileName, JSON.stringify(config), {encoding: "utf-8"});
   });

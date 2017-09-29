@@ -38,8 +38,8 @@ describe('compute summary', function() {
       expect(computeSummary.pageTitle.getText()).toEqual('Compute Summary');
     });
 
-    if (browser.params.env === 'hos') {
-      it('should have correct hos tabs', function() {
+    if (browser.params.env === 'stdcfg') {
+      it('should have correct stdcfg tabs', function() {
         expect(computeSummary.navTabList.get(2).getText())
           .toEqual('Alarm Summary');
         expect(computeSummary.navTabList.get(0).getText())
@@ -48,19 +48,19 @@ describe('compute summary', function() {
           .toEqual('Capacity Summary');
       });
 
-      it('should have the correct hos tab selected', function() {
+      it('should have the correct stdcfg tab selected', function() {
         expect(computeSummary.selectedTab.getText())
           .toEqual('Inventory Summary');
       });
-    } else if(browser.params.env === 'cs') {
-      it('should have the correct cs tabs', function() {
+    } else if(browser.params.env === 'legacy') {
+      it('should have the correct legacy tabs', function() {
         expect(computeSummary.navTabList.get(0).getText())
           .toEqual('Compute Summary');
         expect(computeSummary.navTabList.get(1).getText())
           .toEqual('Alarm Summary');
       });
 
-      it('should have the correct cs tab selected', function() {
+      it('should have the correct legacy tab selected', function() {
         expect(computeSummary.selectedTab.getText()).toEqual('Compute Summary');
       });
     }
@@ -260,9 +260,9 @@ describe('compute summary', function() {
     });
   });
 
-  // HOS ONLY
+  // stdcfg ONLY
   // these tests are placeholders until I figure out what to test here
-  if(browser.params.env === 'hos') {
+  if(browser.params.env === 'stdcfg') {
     describe('inventory summary tab', function() {
       beforeAll(function() {
         computeSummary.getNavTab('Inventory Summary').click();
@@ -297,8 +297,8 @@ describe('compute summary', function() {
     });
   }
 
-  // CS ONLY
-  if(browser.params.env === 'cs') {
+  // legacy ONLY
+  if(browser.params.env === 'legacy') {
     describe('compute summary tab', function() {
       beforeAll(function() {
         computeSummary.getNavTab('Compute Summary').click();

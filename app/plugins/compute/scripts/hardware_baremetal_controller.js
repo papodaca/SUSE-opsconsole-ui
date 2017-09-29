@@ -194,7 +194,7 @@
                 );
             };
 
-            if ($rootScope.appConfig.env === "cs") {
+            if ($rootScope.appConfig.env === "legacy") {
                 // Function to get the baremetal list
                 $scope.baremetal_list();
             }

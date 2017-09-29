@@ -10,12 +10,12 @@ var argumentOptions = {
         coverage: true
     }
 };
-var validEnvs = [null, 'hos', 'cs'];
+var validEnvs = [null, 'stdcfg', 'legacy'];
 
 var args = minimist(process.argv.slice(2), argumentOptions);
 
 if (validEnvs.indexOf(args.env) == -1) {
-    console.log('The env option must be either hos or cs');
+    console.log('The env option must be either stdcfg or legacy');
     process.exit(1);
 }
 

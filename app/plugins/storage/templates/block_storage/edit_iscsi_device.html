@@ -3,7 +3,7 @@
               value="$parent.bsEditControl.register3PARISCSIDevice.name"
               label="storage.register.content.blockstoragedevice.general.name"
               validate="englishonly"
-              validate-text="hpvalidate.englishonly"
+              validate-text="ocvalidate.englishonly"
               oc-required="true"
               type="text">
     </oc-input>
@@ -11,7 +11,7 @@
     <oc-input name="hp_3par_iscsi_ipaddress"
               value="$parent.bsEditControl.register3PARISCSIDevice.ipaddress"
               label="storage.register.content.blockstoragedevice.general.ipaddress"
-              validate-text="hpvalidate.ipAddress"
+              validate-text="ocvalidate.ipAddress"
               validate="ipAddress"
               oc-required="true"
               type="text">
@@ -20,7 +20,7 @@
     <oc-input name="hp_3par_iscsi_port"
               value="$parent.bsEditControl.register3PARISCSIDevice.portnumber"
               label="storage.register.content.blockstoragedevice.general.portnumber"
-              validate-text="hpvalidate.port"
+              validate-text="ocvalidate.port"
               validate="port"
               oc-required="true"
               type="text">
@@ -29,7 +29,7 @@
     <oc-input name="hp_3par_iscsi_username"
               value="$parent.bsEditControl.register3PARISCSIDevice.username"
               label="storage.register.content.blockstoragedevice.general.username"
-              validate-text="hpvalidate.name"
+              validate-text="ocvalidate.name"
               oc-required="true"
               type="text">
     </oc-input>
@@ -38,14 +38,14 @@
         <oc-input name="hp_3par_iscsi_password"
                   value="$parent.bsEditControl.register3PARISCSIDevice.password"
                   label="storage.register.content.blockstoragedevice.general.password"
-                  validate-text="hpvalidate.password"
+                  validate-text="ocvalidate.password"
                   oc-required="true"
                   type="{{ $parent.bsEditControl.register3PARISCSIDevice.showPass1 ? 'text' : 'password'}}">
         </oc-input>
 
         <div class="register-showpass">
-            <i class="gi-2x helion-icon view-color"
-               ng-class="{'helion-icon-View_pressed': $parent.bsEditControl.register3PARISCSIDevice.showPass1, 'helion-icon-View': !$parent.bsEditControl.register3PARISCSIDevice.showPass1}"
+            <i class="gi-2x ardana-icon view-color"
+               ng-class="{'ardana-icon-View_pressed': $parent.bsEditControl.register3PARISCSIDevice.showPass1, 'ardana-icon-View': !$parent.bsEditControl.register3PARISCSIDevice.showPass1}"
                ng-click="$parent.bsEditControl.toggleRegisterShowPass('3ParISCSI')"></i>
         </div>
     </div>
@@ -56,7 +56,7 @@
     <oc-input name="hp_3par_iscsi_san_ip"
               value="$parent.bsEditControl.register3PARISCSIDevice.sanipaddress"
               label="storage.register.content.blockstoragedevice.sanconfiguration.ipaddress"
-              validate-text="hpvalidate.ipAddress"
+              validate-text="ocvalidate.ipAddress"
               validate="ipAddress"
               oc-required="true"
               type="text">
@@ -65,7 +65,7 @@
     <oc-input name="hp_3par_iscsi_username"
               value="$parent.bsEditControl.register3PARISCSIDevice.sanusername"
               label="storage.register.content.blockstoragedevice.sanconfiguration.username"
-              validate-text="hpvalidate.name"
+              validate-text="ocvalidate.name"
               oc-required="true"
               type="text">
     </oc-input>
@@ -74,14 +74,14 @@
         <oc-input name="hp_3par_iscsi_san_password"
                   value="$parent.bsEditControl.register3PARISCSIDevice.sanpassword"
                   label="storage.register.content.blockstoragedevice.sanconfiguration.password"
-                  validate-text="hpvalidate.password"
+                  validate-text="ocvalidate.password"
                   oc-required="true"
                   type="{{ $parent.bsEditControl.register3PARISCSIDevice.showPass2 ? 'text' : 'password'}}">
         </oc-input>
 
         <div class="register-showpass">
-            <i class="gi-2x helion-icon view-color"
-               ng-class="{'helion-icon-View_pressed': $parent.bsEditControl.register3PARISCSIDevice.showPass2, 'helion-icon-View': !$parent.bsEditControl.register3PARISCSIDevice.showPass2}"
+            <i class="gi-2x ardana-icon view-color"
+               ng-class="{'ardana-icon-View_pressed': $parent.bsEditControl.register3PARISCSIDevice.showPass2, 'ardana-icon-View': !$parent.bsEditControl.register3PARISCSIDevice.showPass2}"
                ng-click="$parent.bsEditControl.toggleRegisterShowPass('3ParISCSISan')"></i>
         </div>
     </div>
@@ -90,7 +90,7 @@
               value="$parent.bsEditControl.register3PARISCSIDevice.iscsi_ipaddress"
               label="storage.register.content.blockstoragedevice.iscsiconfiguration.ipaddress"
               validate="multiple_ipAddress"
-              validate-text="hpvalidate.multiple_ipAddress"
+              validate-text="ocvalidate.multiple_ipAddress"
               oc-required="true"
               type="text">
     </oc-input>

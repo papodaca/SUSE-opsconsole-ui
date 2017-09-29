@@ -116,19 +116,19 @@ var AlarmExplorer = function() {
   };
   this.state_alarm_severity_checkbox = function(index, severity) {
     this.selectSeverity(severity);
-    $$('i.helion-icon.helion-icon-Checkbox').filter(function(elem, index) {
+    $$('i.ardana-icon.ardana-icon-Checkbox').filter(function(elem, index) {
       return elem.isDisplayed();
     }).get(index).click();
   };
   this.state_undetermined_severity_checkbox = function(index) {
     createAlarmDefModal.state_undetermined_tab.click();
-    $$('i.helion-icon.helion-icon-Checkbox').filter(function(elem, index) {
+    $$('i.ardana-icon.ardana-icon-Checkbox').filter(function(elem, index) {
       return elem.isDisplayed();
     }).get(index).click();
   };
   this.state_ok_severity_checkbox = function(index) {
     createAlarmDefModal.state_ok_tab.click();
-    $$('i.helion-icon.helion-icon-Checkbox').filter(function(elem, index) {
+    $$('i.ardana-icon.ardana-icon-Checkbox').filter(function(elem, index) {
       return elem.isDisplayed();
     }).get(index).click();
   };

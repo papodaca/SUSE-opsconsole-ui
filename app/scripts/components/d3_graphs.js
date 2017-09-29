@@ -19,7 +19,7 @@
                 },
                 templateUrl: 'components/d3_components/d3_graphs.html',
                 link: function (scope, ele, attrs) {
-                    scope.id = ele.attr('chartid') || generateDynamicID("hp_d3_chart");
+                    scope.id = ele.attr('chartid') || generateDynamicID("d3_chart");
                     scope.legendConfig = scope.config.legendConfig;
                     scope.graphOptions = scope.config.graphOptions;
                     scope.loading = scope.config.loading ? scope.config.loading : false;

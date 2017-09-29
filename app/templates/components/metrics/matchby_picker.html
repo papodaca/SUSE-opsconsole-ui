@@ -7,13 +7,13 @@
 <div class="enum_filter_wrapper col-md-7 metric-selector">
     <div class="octable_header_wrapper_enum_row enumerated_filter_control">
         <span class="enum_filter_icon">
-          <i class="helion-icon helion-icon-Filter"></i>
+          <i class="ardana-icon ardana-icon-Filter"></i>
         </span>
         <span class="enum_filter_input">
           <input type="text" ng-model="dimensionFilter"/>
         </span>
         <span class="enum_filter_clear" ng-click="dimensionFilter=''">
-          <i class="helion-icon helion-icon-Close"></i>
+          <i class="ardana-icon ardana-icon-Close"></i>
         </span>
     </div>
 </div>
@@ -30,7 +30,7 @@
   <div class="metric-picker-item col-sm-8">
     <div class="match-by">
       <oc-checkbox
-        hp-disabled="dimension.$rowSelected"
+        oc-disabled="dimension.$rowSelected"
         disabled-clear="true"
         ng-model="dimension.$matchBy"></oc-checkbox>
     </div>

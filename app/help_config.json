@@ -2,7 +2,7 @@
 // (c) Copyright 2017 SUSE LLC
 {
   //the help path will be help_base_url + "/" +  doc key
-  "help_base_url": "http://docs.hpcloud.com/permalink/helion-openstack/4.0",
+  "help_base_url": "http://example.com/permalink/productname/versionnumber",
   "help_default_page": "opsconsole_overview",
   //if the doc is localized, the help path will be
   //help_base_url + "/" + locale + "/"+ doc key

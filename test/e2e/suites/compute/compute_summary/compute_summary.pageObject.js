@@ -18,7 +18,7 @@ var ComputeSummary = function() {
   // the currently selected navTab
   this.selectedTab = this.navTabs.$('.selected');
 
-  // tab containers (hos only?)
+  // tab containers (stdcfg only?)
   this.alarmContainer = $('div#compute_alarm_main');
 
   // header before octable_std_header
@@ -33,7 +33,7 @@ var ComputeSummary = function() {
   this.thLastCheck = octable.tableHeader.$('th[column-sort="lastCheck"]');
   this.thDimension = octable.tableHeader.$('th[column-sort="dimension"]');
 
-  ///////////////// CS SPECIFIC ELEMENTS BELOW ////////////////////////////
+  ///////////////// legacy SPECIFIC ELEMENTS BELOW ////////////////////////////
 
   this.computeContainer = $('div[ng-controller="ComputeSummaryController"]');
 
@@ -46,14 +46,14 @@ var ComputeSummary = function() {
       return card.isDisplayed();
     });
 
-  ///////////////// END CS SPECIFIC ELEMENTS //////////////////////////////
+  ///////////////// END legacy SPECIFIC ELEMENTS //////////////////////////////
 
-  ///////////////// HOS SPECIFIC ELEMENTS /////////////////////////////////
+  ///////////////// stdcfg SPECIFIC ELEMENTS /////////////////////////////////
 
   this.inventoryContainer = $('div.compute_inventory_summary');
   this.capacityContainer = $('div[ng-controller="ComputeCapacitySummaryController"]');
 
-  ///////////////// END HOS SPECIFIC ELEMETNS /////////////////////////////
+  ///////////////// END stdcfg SPECIFIC ELEMETNS /////////////////////////////
 
   // returns a navTab element by text
   this.getNavTab = function(tab_name) {

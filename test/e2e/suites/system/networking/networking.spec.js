@@ -12,7 +12,7 @@ describe('system networking', function() {
     systemNetworking.get();
   });
 
-  if (browser.params.dev_mode === "true" || browser.params.env === "cs") {
+  if (browser.params.dev_mode === "true" || browser.params.env === "legacy") {
     it('should have the correct url', function() {
       expect(browser.getCurrentUrl())
         .toBe(browser.baseUrl + '/#/system/system_networking');
@@ -22,6 +22,6 @@ describe('system networking', function() {
       expect(browser.getTitle()).toEqual('Networking');
     });
   } else {
-    console.log('System Networking skipped - dev_mode false and in hos environment.');
+    console.log('System Networking skipped - dev_mode false and in stdcfg environment.');
   }
 });

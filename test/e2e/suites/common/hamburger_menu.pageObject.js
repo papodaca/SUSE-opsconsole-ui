@@ -20,9 +20,6 @@ var HamburgerMenu = function() {
         return "STORAGE";
       case "networking":
         return "NETWORKING";
-      case "heliondevplatform":
-      case "hdp_helionce":
-        return "DEV PLATFORM";
       case "system":
         return "SYSTEM";
       default:

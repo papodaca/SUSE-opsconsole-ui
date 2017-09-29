@@ -28,10 +28,10 @@
 
                 link : function(scope, el, attr) {
                     var iconCondMap = {
-                        'ok' : 'helion-icon-Active_L',
-                        'warn' : 'helion-icon-Alert_pressed',
-                        'critical' : 'helion-icon-Critical_L',
-                        'unknown' : 'helion-icon-Unknown_L'
+                        'ok' : 'ardana-icon-Active_L',
+                        'warn' : 'ardana-icon-Alert_pressed',
+                        'critical' : 'ardana-icon-Critical_L',
+                        'unknown' : 'ardana-icon-Unknown_L'
                     };
                     scope.condIcon = 'none';
                     scope.$watch('scope.ctrl.data', function() {

@@ -186,7 +186,7 @@
                         case 'email':
                             isValid = ocValidators.email.test(addressKey);
                             if(!isValid) {
-                                $scope.invalidAddressKeyMsg =  $translate.instant('hpvalidate.email');
+                                $scope.invalidAddressKeyMsg =  $translate.instant('ocvalidate.email');
                             }
                             break;
                         case 'webhook':
@@ -195,7 +195,7 @@
                         case 'slack':
                             isValid = ocValidators.url.test(addressKey);
                             if(!isValid) {
-                                $scope.invalidAddressKeyMsg =  $translate.instant('hpvalidate.url');
+                                $scope.invalidAddressKeyMsg =  $translate.instant('ocvalidate.url');
                             }
                             break;
                     }

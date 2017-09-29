@@ -17,7 +17,7 @@
             $scope.activateTaskList = [];
             $scope.enableAutoActivate = false;
 
-            //"is_foundation_installed":"True" in cloud_system.json
+            //"is_foundation_installed":"True" in opscon_config.json
             //allow auto activate in create cluster
             if($rootScope.appConfig &&
                angular.isDefined($rootScope.appConfig.is_foundation_installed) && (

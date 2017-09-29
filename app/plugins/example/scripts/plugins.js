@@ -79,10 +79,10 @@
           },
           {
             type: 'controller',
-            controllerName: "helion_icon_example",
-            path: '/icon_example_helion',
-            template: 'icons_helion.html',
-            label: 'example.icon.helion',
+            controllerName: "ardana_icon_example",
+            path: '/icon_example_ardana',
+            template: 'icons_ardana.html',
+            label: 'example.icon.ardana',
             order: 60
           },
           {
@@ -309,7 +309,7 @@
         };
         $scope.metricCardData3 = {
             value: 1,
-            unit: 'HP',
+            unit: 'horsepower',
             range: '0 (min) - 100 (max)',
             condition: 'critical'
         };

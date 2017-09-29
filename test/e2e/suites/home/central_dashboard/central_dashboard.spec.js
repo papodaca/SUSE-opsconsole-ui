@@ -21,7 +21,7 @@ describe('central dashboard', function() {
   });
 
   it('should have the correct title', function() {
-    if (browser.params.env == 'hos') {
+    if (browser.params.env == 'stdcfg') {
       expect(browser.getTitle()).toEqual('Central Dashboard');
     } else {
       expect(browser.getTitle()).toEqual('Alarms Dashboard');

@@ -1,6 +1,6 @@
 <div id="{{ id }}" class="charts_top">
     <div ng-show="!loading && potentialError" class="chart-error">
-      <i class="helion-icon helion-icon-Error_outline"></i>
+      <i class="ardana-icon ardana-icon-Error_outline"></i>
       <div class="chart-error-text" ng-bind="'common.chart_error' | translate"></div>
     </div>
     <modal-overlay show-attribute="loading" class="chart-spinner"></modal-overlay>
@@ -11,7 +11,7 @@
           </span>
           <span class="actionRow image-padding" style="float:right">
               <div class="btn-group popupadjust" uib-dropdown>
-                  <button type="button" class="dropdown-toggle helion-icon helion-icon-More" uib-dropdown-toggle/>
+                  <button type="button" class="dropdown-toggle ardana-icon ardana-icon-More" uib-dropdown-toggle/>
                   <ul class="dropdown-menu" uib-dropdown-menu role="menu">
                       <li ng-if="!menuItem.show || (menuItem.show && menuItem.show(config))"
                           ng-repeat="menuItem in actionMenu">

@@ -660,7 +660,7 @@
                     "55f9f4a1-d358-4f43-84e2-20e29c99733c"
                 ],
                 "type": "PAGERDUTY",
-                "address": "jane.doe@hp.com"
+                "address": "jane.doe@email.com"
             }
         ]
     },
@@ -897,7 +897,7 @@
                 ],
                 "name": "Email support group",
                 "type": "EMAIL",
-                "address": "jane.doe@hp.com"
+                "address": "jane.doe@email.com"
             },
             {
                 "id": "c60ec47e-5038-4bf1-9f95-4046c6e9a760",
@@ -909,7 +909,7 @@
                 ],
                 "name": "Email Manager PDL",
                 "type": "EMAIL",
-                "address": "jane.doe@hp.com"
+                "address": "jane.doe@email.com"
             },
             {
                 "id": "c60ec47e-5038-4bf1-9f95-4046c6e9a359",
@@ -921,7 +921,7 @@
                 ],
                 "name": "Page On-call Person",
                 "type": "PAGERDUTY",
-                "address": "jane.doe@hp.com"
+                "address": "jane.doe@email.com"
             },
             {
                 "id": "c60ec47e-5038-4bf1-9f95-4046c6e9a360",
@@ -933,7 +933,7 @@
                 ],
                 "name": "Page A Manager",
                 "type": "PAGERDUTY",
-                "address": "jane.doe@hp.com"
+                "address": "jane.doe@email.com"
             }
         ]
     },

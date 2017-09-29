@@ -7,48 +7,48 @@
         var default_prefs = {
             'version': '1',
             'cardAndChartStore': {
-                'HPE.CARD.COMPUTE': {
+                'CARD.COMPUTE': {
                     'staticName': true,
                     'type': 'card',
                     'title': 'general.dashboard.card.title.compute',
                     'services': ['compute', 'image-service', 'nova-novncproxy', 'nova-conductor', 'nova-scheduler', 'nova-cert', 'baremetal']
                 },
-                'HPE.CARD.STORAGE': {
+                'CARD.STORAGE': {
                     'staticName': true,
                     'type': 'card',
                     'title': 'general.dashboard.card.title.storage',
                     'services': ['block-storage', 'object-storage', 'ceph-storage', 'vsa', 'cinder', 'cinder-scheduler', 'cinder-volume', 'glance-api', 'glance-registry', 'swift']
                 },
-                'HPE.CARD.NETWORKING': {
+                'CARD.NETWORKING': {
                     'staticName': true,
                     'title': 'general.dashboard.card.title.networking',
                     'services': ['networking', 'dns', 'bind', 'powerdns', 'neutron-dhcp-agent', 'neutron-openvswitch-agent', 'neutron-metadata-agent', 'neutron-I3-agent', 'openvswitch-switch']
                 },
-                'HPE.CARD.IDENTITY': {
+                'CARD.IDENTITY': {
                     'staticName': true,
                     'type': 'card',
                     'title': 'general.dashboard.card.title.identity',
                     'services': ['identity-service', 'keystone']
                 },
-                'HPE.CARD.TELEMETRY': {
+                'CARD.TELEMETRY': {
                     'staticName': true,
                     'type': 'card',
                     'title': 'general.dashboard.card.title.telemetry',
                     'services': ['telemetry', 'logging', 'kafka', 'monasca-transform', 'monitoring', 'metering', 'vertica']
                 },
-                'HPE.CARD.CONSOLE': {
+                'CARD.CONSOLE': {
                     'staticName': true,
                     'type': 'card',
                     'title': 'general.dashboard.card.title.console',
                     'services': ['tenant-console', 'ops-console', 'horizon']
                 },
-                'HPE.CARD.PLATFORMSERVICES': {
+                'CARD.PLATFORMSERVICES': {
                     'staticName': true,
                     'type': 'card',
                     'title': 'general.dashboard.card.title.platform',
                     'services': ['database', 'message-broker']
                 },
-                'HPE.CARD.SYSTEM': {
+                'CARD.SYSTEM': {
                     'staticName': true,
                     'type': 'card',
                     'title': 'general.dashboard.card.title.system',
@@ -56,13 +56,13 @@
                 }
             },
             'dashboards': {
-                'HPE.CENTRAL.DASHBOARD': {
-                    'HPE.ALARMSUMMARY': [
-                        'HPE.CARD.COMPUTE', 'HPE.CARD.STORAGE', 'HPE.CARD.NETWORKING',
-                        'HPE.CARD.IDENTITY', 'HPE.CARD.TELEMETRY', 'HPE.CARD.CONSOLE',
-                        'HPE.CARD.PLATFORMSERVICES', 'HPE.CARD.SYSTEM']
+                'CENTRAL.DASHBOARD': {
+                    'ALARMSUMMARY': [
+                        'CARD.COMPUTE', 'CARD.STORAGE', 'CARD.NETWORKING',
+                        'CARD.IDENTITY', 'CARD.TELEMETRY', 'CARD.CONSOLE',
+                        'CARD.PLATFORMSERVICES', 'CARD.SYSTEM']
                 },
-                'HPE.MY.DASHBOARD': {
+                'OC.MY.DASHBOARD': {
                     'DEFAULT': []
                 }
             }
@@ -70,7 +70,7 @@
         var prefs = this;
         var currentUser;
 
-        // This is the old HOS 2.x chart-related preferences upgrade
+        // This is the old chart-related preferences upgrade
         var upgradeFromVersion_0 = function(prefs) {
             // create a copy of the default prefs
             var updPrefs = $.extend(true, {}, default_prefs);
@@ -83,7 +83,7 @@
                 updPrefs.cardAndChartStore[chartName] = chart;
 
                 // now append this old chart to My Dashboard
-                updPrefs.dashboards['HPE.MY.DASHBOARD'].DEFAULT.push(chartName);
+                updPrefs.dashboards['OC.MY.DASHBOARD'].DEFAULT.push(chartName);
             }
 
             return updPrefs;
@@ -154,6 +154,10 @@
                 );
             }
             return deferred.promise;
+        };
+
+        this.getDefaultPrefs = function(){
+          return default_prefs;
         };
     }]);
 })(angular);

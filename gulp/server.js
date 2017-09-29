@@ -38,14 +38,8 @@ gulp.task('server-noreload', ['build', 'watch', 'wire-deps'], function() {
 
 gulp.task('production', function(){
     plugins.connect.server({
-        root: ['dist.cs'],
+        root: ['dist'],
         port: 9001,
-        livereload: false,
-        middleware: common.middleware
-    });
-    plugins.connect.server({
-        root: ['dist.hos'],
-        port: 9002,
         livereload: false,
         middleware: common.middleware
     });

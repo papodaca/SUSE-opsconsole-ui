@@ -1122,10 +1122,10 @@
 
             $scope.getAlarmClass = function (cond) {
                 var iconCondMap = {
-                    'OK': 'helion-icon-Active_L',
-                    'ALARM': 'helion-icon-Alert_pressed',
-                    'CRITICAL': 'helion-icon-Critical_L',
-                    'UNDETERMINED': 'helion-icon-Unknown_L'
+                    'OK': 'ardana-icon-Active_L',
+                    'ALARM': 'ardana-icon-Alert_pressed',
+                    'CRITICAL': 'ardana-icon-Critical_L',
+                    'UNDETERMINED': 'ardana-icon-Unknown_L'
                 };
 
                 return iconCondMap[cond];

@@ -1,6 +1,6 @@
 {
   "name": "gulp-ng-seed",
-  "version": "0.2.10",
+  "version": "0.6.00",
   "main": "app.js",
   "dependencies": {
     "decompress-unzip": "~2.1.2",

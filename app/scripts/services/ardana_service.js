@@ -39,8 +39,8 @@
         // Make a request to the Ardana Service backend to discover if the service is up and running
         this.readyPromise = updateIsAvailable();
 
-        var findStartLimitRegEx = /(?:hlm-start.yml --limit )(\S+)/;
-        var findStopLimitRegEx = /(?:hlm-stop.yml --limit )(\S+)/;
+        var findStartLimitRegEx = /(?:ardana-start.yml --limit )(\S+)/;
+        var findStopLimitRegEx = /(?:ardana-stop.yml --limit )(\S+)/;
 
         var that = this;
 
@@ -74,7 +74,7 @@
 
         /**
          * @ngdoc method
-         * @description Returns the hlm playbook log for the given process reference
+         * @description Returns the ardana playbook log for the given process reference
          * @param {string} pRef process reference
          *
          * @returns {object} promise containing bll response
@@ -89,7 +89,7 @@
 
         /**
          * @ngdoc method
-         * @description Is the hlm configuration encrypted?
+         * @description Is the ardana configuration encrypted?
          *
          * @returns {boolean} true if encrypted
          */
@@ -99,7 +99,7 @@
 
         /**
          * @ngdoc method
-         * @description Is the hlm configuration encrypted (updates {@link #isConfigEncrypted})?
+         * @description Is the ardana configuration encrypted (updates {@link #isConfigEncrypted})?
          *
          * @returns {object} promise for when update has completed (does not contain result)
          */
@@ -153,13 +153,13 @@
          * @ngdoc method
          * @description Deactivate a single compute node
          * @param {object} node contains compute node name and id
-         * @param {string} encryptionKey HLM configuration processor encryption key
+         * @param {string} encryptionKey ardana configuration processor encryption key
          * @returns {boolean} promise containing bll response
          */
         function deactivate(node, encryptionKey) {
             return _singleOp(node, 'deactivating', function() {
                 var data = {
-                    path: playbooksAPI + 'hlm_stop',
+                    path: playbooksAPI + 'ardana_stop',
                     request_data: {
                         limit: node.name,
                         encryptionKey: encryptionKey
@@ -181,13 +181,13 @@
          * @ngdoc method
          * @description Activate a single compute node
          * @param {object} node contains compute node name (host name)
-         * @param {string} encryptionKey HLM configuration processor encryption key
+         * @param {string} encryptionKey ardana configuration processor encryption key
          * @returns {boolean} promise containing bll response
          */
         function activate(node, encryptionKey) {
             return _singleOp(node, 'activating', function() {
                 var data = {
-                    path: playbooksAPI + 'hlm_start',
+                    path: playbooksAPI + 'ardana_start',
                     request_data: {
                         limit: node.name,
                         encryptionKey: encryptionKey
@@ -209,21 +209,21 @@
          * @ngdoc method
          * @description Delete a single compute node
          * @param {object} server server line object to delete
-         * @param {object} hlmServer HLM server object of node to delete
-         * @param {string} encryptionKey HLM configuration processor encryption key
+         * @param {object} ardanaServer ardana server object of node to delete
+         * @param {string} encryptionKey ardana configuration processor encryption key
          * @returns {boolean} promise containing bll response
          */
-        function deleteServer(server, hlmServer, encryptionKey) {
+        function deleteServer(server, ardanaServer, encryptionKey) {
             var data = {
                 operation: 'delete_compute_host',
                 request_data: {
-                    serverid: hlmServer.id,
+                    serverid: ardanaServer.id,
                     novaServiceDelete: {
                         hostname: server.name
                     },
                     process: {
-                        commitMessage: $translate.instant('compute.compute_nodes.hlm.delete.gitCommitMessage',
-                            {name: hlmServer.id}),
+                        commitMessage: $translate.instant('compute.compute_nodes.ardana.delete.gitCommitMessage',
+                            {name: ardanaServer.id}),
                         encryptionKey: encryptionKey
                     }
                 }
@@ -242,7 +242,7 @@
 
         /**
          * @ngdoc method
-         * @description Fetch the HLM input model
+         * @description Fetch the ardana input model
          * @returns {boolean} promise containing bll response
          */
         function getModel() {
@@ -260,7 +260,7 @@
         }
 
         /**
-         * get the server info from hlm service
+         * get the server info from ardana service
          */
         function getServerInfo() {
             return bllApiRequest.get('ardana', {path: modelAPI + serverInfo}).then(
@@ -281,7 +281,7 @@
 
         /**
          * @ngdoc method
-         * @description Fetch a subset of the HLM input model that deals with server data
+         * @description Fetch a subset of the ardana input model that deals with server data
          */
         function getServerDetails() {
             return bllApiRequest.get('ardana', {
@@ -302,27 +302,27 @@
         /**
          * @ngdoc method
          * @description Add a single compute node
-         * @param {object} hlmServer HLM server object of node to add
-         * @param {string} encryptionKey HLM configuration processor encryption key
+         * @param {object} ardanaServer ardana server object of node to add
+         * @param {string} encryptionKey ardana configuration processor encryption key
          * @param {boolean} limitToNewServer True if the deploy step should --limit to the new server
          * @returns {boolean} promise containing bll response
          */
-        function addServer(hlmServer, encryptionKey, limitToNewServer) {
+        function addServer(ardanaServer, encryptionKey, limitToNewServer) {
             var data = {
                 path: serverAPI + 'process',
                 request_data: {
-                    server: hlmServer,
+                    server: ardanaServer,
                     process: {
-                        commitMessage: $translate.instant('compute.compute_nodes.hlm.add.gitCommitMessage',
-                            {name: hlmServer.id}),
+                        commitMessage: $translate.instant('compute.compute_nodes.ardana.add.gitCommitMessage',
+                            {name: ardanaServer.id}),
                         encryptionKey: encryptionKey,
-                        limitToId: limitToNewServer ? hlmServer.id : ''
+                        limitToId: limitToNewServer ? ardanaServer.id : ''
                     }
                 }
             };
-            if(angular.isDefined(hlmServer.region)) {
+            if(angular.isDefined(ardanaServer.region)) {
                 var options = {
-                    'region': hlmServer.region
+                    'region': ardanaServer.region
                 };
                 return bllApiRequest.post('ardana',data, options).then(_.partial(_handleBllResponse));
             }
@@ -334,7 +334,7 @@
         function _singleOp(node, busy_state, httpFunc) {
             var deferred = $q.defer();
             if (!that.isAvailable()) {
-                deferred.reject('HLM Services are not available');
+                deferred.reject('ardana Services are not available');
             } else {
                 if (!node || !node.name || node.name.length === 0) {
                     deferred.reject('Can not perform operation - a node must be specified');
@@ -368,7 +368,7 @@
         /**
          * @ngdoc method
          * @description Find all compute roles (contain nova-compute)
-         * @param {object} model HLM input model
+         * @param {object} model ardana input model
          * @return {Array} All compute roles that contain nova-compute
          */
         function findComputeRoles(model) {
@@ -410,7 +410,7 @@
         /**
          * @ngdoc method
          * @description Find all leaf server groups (and their group hierarchy)
-         * @param {object} model HLM input model
+         * @param {object} model ardana input model
          * @return {Array} Array of leaf groups. Each element is a string containing breadcrumb of group hierarchy
          */
         function findLeafServerGroups(model) {
@@ -490,7 +490,7 @@
                 stop: {}
             };
 
-            //Example commandString (end of) 'hlm-start.yml --limit padawan-ccp-comp0001-mgmt'
+            //Example commandString (end of) 'ardana-start.yml --limit apprentice-ccp-comp0001-mgmt'
             return listAnsiblePlays(lagTicks ? Math.floor(lagTicks / 1000) : undefined).then(function(response) {
                 if (!response.data) {
                     return result;

@@ -11,14 +11,14 @@
        slug: 'general',
        type: 'menu',
        label: 'general.home',
-       envs: ['hos', 'cs'],
+       envs: ['stdcfg'],
        needBllPlugins: ['monitor', 'preferences'],
        icon: 'Home',
        order:1,
        children: [
          {
            type: 'controller',
-           envs: ['hos', 'cs'],
+           envs: ['stdcfg'],
            needBllPlugins: ['monitor'],
            controllerName: "AlarmPageController",
            path: '/alarm_explorer',
@@ -28,7 +28,7 @@
          },
          {
            type: 'controller',
-           envs: ['hos', 'cs'],
+           envs: ['stdcfg'],
            needBllPlugins: ['monitor', 'preferences'],
            controllerName: "MonitoringDashboardController",
            path: '/dashboard',

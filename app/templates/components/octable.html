@@ -60,7 +60,7 @@
 
                     <!-- check for help tooltip -->
                     <span ng-if="header.helpTooltip && (header.tooltipShow === undefined || header.tooltipShow(data))">
-                        <span class="oc-info helion-icon helion-icon-Unknown_L" uib-tooltip="{{header.helpTooltip(data[header.displayfield])}}"
+                        <span class="oc-info ardana-icon ardana-icon-Unknown_L" uib-tooltip="{{header.helpTooltip(data[header.displayfield])}}"
                               tooltip-placement="{{header.tooltipplacement || 'right'}}"></span>
                     </span>
 
@@ -68,7 +68,7 @@
                 <td ng-if="actionable" class="actionRow image-padding" ng-click="tableActionMenuOpenClose($event, data)">
                     <div class="btn-group popupadjust" uib-dropdown is-open="data.$actionMenuOpen">
                         <button type="button" class="dropdown-toggle" uib-dropdown-toggle>
-                            <i class="helion-icon helion-icon-More more-icon"></i>
+                            <i class="ardana-icon ardana-icon-More more-icon"></i>
                         </button>
                         <ul class="dropdown-menu" uib-dropdown-menu role="menu">
                             <li ng-if="expandable && !data.$expanded && !tableConfig.expandAction">
@@ -112,7 +112,7 @@
                 <div class="btn-group" ng-class="{'popupadjust' : data.$expanded}" uib-dropdown is-open="data.$tileActionMenuOpen"
                      ng-if="tableConfig.actionMenuConfig.length > 0" ng-click="tileActionMenuOpenClose($event, data)">
                     <button type="button" class="dropdown-toggle embedded-btn" uib-dropdown-toggle>
-                        <i class="helion-icon helion-icon-More more-icon"></i>
+                        <i class="ardana-icon ardana-icon-More more-icon"></i>
                     </button>
                     <ul class="dropdown-menu" uib-dropdown-menu role="menu">
                         <li ng-if="expandable && !data.$expanded && !tableConfig.expandAction">

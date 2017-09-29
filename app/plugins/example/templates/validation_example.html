@@ -14,8 +14,8 @@
 </pre>
     And immediately after it would be the error message (in an error-span element):
 <pre>
-       &lt;error-span condition="<span style="color:green;">common.env_hostname</span>"   text="<span style="color:green;">hpvalidate.hostname</span>"&gt;&lt;/error-span&gt;
-               <span style="color:green;font-style:italic;">&lt;form&gt; name ————^    ^———— &lt;input&gt; name             ^———— error message (typically "hpvalidate" plus validation type)</span>
+       &lt;error-span condition="<span style="color:green;">common.env_hostname</span>"   text="<span style="color:green;">ocvalidate.hostname</span>"&gt;&lt;/error-span&gt;
+               <span style="color:green;font-style:italic;">&lt;form&gt; name ————^    ^———— &lt;input&gt; name             ^———— error message (typically "ocvalidate" plus validation type)</span>
 </pre>
     The validation <i>[type]</i> can be either:
 <ul>
@@ -34,13 +34,13 @@
       <div class="form-group">
 
         <input name="username" type="text" class="control-input" placeholder="username" oc-validate="ocValidators.ipaddr_hostname" ng-model="user.name" required />
-        <error-span condition="userform.username" text="hpvalidate.username"></error-span>
+        <error-span condition="userform.username" text="ocvalidate.username"></error-span>
 
       </div>
       <div class="form-group">
 
         <input name="email" type="email" placeholder="Email" ng-model="user.email" class="control-input" oc-validate="ocValidators.email"/>
-        <error-span condition="userform.email" text="hpvalidate.email"></error-span>
+        <error-span condition="userform.email" text="ocvalidate.email"></error-span>
 
       </div>
       <button class="btn btn-primary" type="submit" ng-disabled="userform.$invalid">OK!</button>
@@ -65,13 +65,13 @@ p.controller('MyController', ['$scope', 'ocValidators', function($scope, ocValid
   &lt;div class="form-group"&gt;
      &lt;input name="<span style="color:blue">username</span>" type="text" <span style="color:red;">class="control-input"</span> <span style="color:red;">oc-validate="ocValidators.<span style="color:green">username</span>"</span> required
                placeholder="username" ng-model="user.name"/&gt;
-     <span style="color:red;">&lt;error-span condition="userform.<span style="color:blue">username</span>" text="hpvalidate.<span style="color:green">username</span>"&gt;&lt;/error-span&gt;</span>
+     <span style="color:red;">&lt;error-span condition="userform.<span style="color:blue">username</span>" text="ocvalidate.<span style="color:green">username</span>"&gt;&lt;/error-span&gt;</span>
   &lt;/div&gt;
 
   &lt;div class="form-group"&gt;
      &lt;input name="<span style="color:blue">email</span>" type="email" placeholder="Email" ng-model="user.email" <span style="color:red;">class="control-input"</span>
                 <span style="color:red;">oc-validate="ocValidators.<span style="color:green">email</span>"</span>/&gt;
-     <span style="color:red;">&lt;error-span condition="userform.<span style="color:blue">email</span>" text="hpvalidate.<span style="color:green">email</span>"&gt;&lt;/error-span&gt;</span>
+     <span style="color:red;">&lt;error-span condition="userform.<span style="color:blue">email</span>" text="ocvalidate.<span style="color:green">email</span>"&gt;&lt;/error-span&gt;</span>
   &lt;/div&gt;
 
   &lt;button class="btn btn-primary" type="submit" ng-disabled="userform.$invalid"&gt;OK!&lt;/button&gt;
